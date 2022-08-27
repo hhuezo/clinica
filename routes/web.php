@@ -19,3 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/consultas', 'ClinicaController@consultas');
+Route::get('/consultas_domicilio', 'ClinicaController@consultas_domicilio');
+Route::get('/jornadas', 'ClinicaController@jornadas');
+Route::get('/staff', 'ClinicaController@staff');
+Route::get('/alianzas', 'ClinicaController@alianzas');
+Route::get('/contacto', 'ClinicaController@contacto');
