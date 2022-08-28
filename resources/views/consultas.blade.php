@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
 	<!--Favicon-->
-	<link rel="icon" href="images/LOGO.png" type="image/x-icon">
+	<link rel="icon" href="{{ asset('dentco-html/images/LOGO.png') }}" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 	<link href='https://css.gg/awards.css' rel='stylesheet'>
 	<!-- Google Fonts -->
