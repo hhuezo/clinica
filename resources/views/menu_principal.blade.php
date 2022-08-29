@@ -50,7 +50,7 @@
 											</ul>
 										</li>
 										<li class="nav-item">
-											<a href="acerca.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Acerca de Nosotros</a>
+											<a href="{{url('acerca')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Acerca de Nosotros</a>
 											<ul class="dropdown-menu">
 												<li><a class="dropdown-item" href="{{url('staff')}}">Nuestro Staff</a></li>
 											</ul>

@@ -43,4 +43,11 @@ class ClinicaController extends Controller
         return view('servicios');
     }
 
+    public function acerca()
+    {
+        return view('acerca');
+    }
+
+
+
 }
