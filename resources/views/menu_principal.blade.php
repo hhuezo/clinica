@@ -19,10 +19,19 @@
 							<a href="https://www.facebook.com/unidadmedicanr/" class="hovicon"><i class="icon-facebook-logo-circle"></i></a>
 
 							<a href="#" class="hovicon"><i class="icon-google-plus-circle"></i></a>
+
+
 						</span>
+
 					</div>
+
+
 				</div>
+
 			</div>
+            <div class="col-auto ml-auto d-flex align-items-center">
+                <a href="{{url('login')}}" class="hovicon">Ingresar</a>
+            </div>
 		</div>
 		<div class="header-content">
 			<div class="container">
