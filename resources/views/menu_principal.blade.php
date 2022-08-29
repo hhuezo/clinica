@@ -56,10 +56,10 @@
 											</ul>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="alianzas.html">Alianzas</a>
+											<a class="nav-link" href="{{url('alianzas')}}">Alianzas</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="contacto.html">Contáctenos</a>
+											<a class="nav-link" href="{{url('contacto')}}">Contáctenos</a>
 										</li>
 									</ul>
 								</div>
