@@ -4,9 +4,9 @@ namespace App\catalogo;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Especialidad extends Model
+class Categoria extends Model
 {
-    protected $table = 'especialidad';
+    protected $table = 'categoria';
 
     protected $primaryKey = 'Id';
 
@@ -15,16 +15,14 @@ class Especialidad extends Model
 
     protected $fillable = [
         'Nombre',
-        'Foto',
-        'Categoria',
         'Activo'
     ];
 
     protected $guarded = [];
 
 
-    public function dotores()
+    public function espacialidades()
     {
-        return $this->hasMany('App\catalogo\Doctor', 'Especialidad');
+        return $this->hasMany('App\catalogo\Especialidad', 'Categoria');
     }
 }
