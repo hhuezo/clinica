@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\catalogo\Categoria;
+use App\catalogo\Doctor;
 use App\catalogo\Especialidad;
+use App\catalogo\PerfilProfesional;
 use Illuminate\Http\Request;
 
 class CitasController extends Controller
@@ -12,19 +14,9 @@ class CitasController extends Controller
     {
         $categorias = Categoria::where('Activo','=',1)->get();
         $especialidades = Especialidad::where('Activo','=',1)->get();
-        dd($especialidades);
-        return view('citas/',['especialidades'=>$especialidades,'categorias'=>$categorias]);
+        return view('citas.index',['especialidades'=>$especialidades,'categorias'=>$categorias]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -56,7 +48,9 @@ class CitasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $doctores = Doctor::where('Especialidad','=',$id)->where('Activo','=',1)->get();
+        $perfiles_profesionales = PerfilProfesional::where('Activo','=',1)->get();
+        return view('citas.reserva', ['categoria' => Categoria::findOrFail($id),'doctores' => $doctores,'perfiles_profesionales' => $perfiles_profesionales]);
     }
 
     /**

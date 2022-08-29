@@ -21,6 +21,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('citas', 'CitasController');
+Route::post('citas_reserva', 'ClinicaController@citas_reserva');
+
 Route::get('/consultas', 'ClinicaController@consultas');
 Route::get('/consultas_domicilio', 'ClinicaController@consultas_domicilio');
 Route::get('/jornadas', 'ClinicaController@jornadas');
