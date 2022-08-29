@@ -27,6 +27,6 @@ Route::get('/jornadas', 'ClinicaController@jornadas');
 Route::get('/staff', 'ClinicaController@staff');
 Route::get('/alianzas', 'ClinicaController@alianzas');
 Route::get('/contacto', 'ClinicaController@contacto');
-
+Route::get('/servicios', 'ClinicaController@servicios');
 
 Route::resource('catalogo/especialidad', 'catalogo\EspecialidadController');

@@ -42,7 +42,7 @@
 											<a class="nav-link" href="index.html">Inicio</a>
 										</li>
 										<li class="nav-item">
-											<a href="servicios.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Servicios</a>
+											<a href="{{url('servicios')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Servicios</a>
 											<ul class="dropdown-menu">
 												<li><a class="dropdown-item" href="{{url('consultas')}}">Consultas Médicas</a></li>
 												<li><a class="dropdown-item" href="{{url('consultas_domicilio')}}">Consultas a Domicilio</a></li>
