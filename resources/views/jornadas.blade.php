@@ -5,228 +5,37 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description" content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
+    <meta name="description"
+        content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
     <meta name="author" content="websmirno.site">
     <meta name="format-detection" content="telephone=no">
     <title>Jornadas</title>
-    <!-- Stylesheets -->
-    <link href="{{ asset('dentco-html/vendor/slick/slick.css') }}" rel="stylesheet">
-    <link href="{{ asset('dentco-html/vendor/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('dentco-html/icons/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
-    <!--Favicon-->
-    <link rel="icon" href="{{ asset('dentco-html/images/LOGO.png') }}" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-    <link href='https://css.gg/awards.css' rel='stylesheet'>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-    <!-- Google map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
+     <!-- Stylesheets -->
+     <link href="{{ asset('dentco-html/vendor/slick/slick.css') }}" rel="stylesheet">
+     <link href="{{ asset('dentco-html/vendor/animate/animate.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('dentco-html/icons/style.css') }}" rel="stylesheet">
+     <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}"
+         rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+     <link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
+     <!--Favicon-->
+     <link rel="icon" href="{{ asset('dentco-html/images/LOGO.png') }}" type="image/x-icon">
+     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+     <link href='https://css.gg/awards.css' rel='stylesheet'>
+     <!-- Google Fonts -->
+     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+     <!-- Google map -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
 </head>
 
 <body class="shop-page">
 
-<div class="quickLinks-wrap js-quickLinks-wrap-d d-none d-lg-flex">
-    <div class="quickLinks js-quickLinks">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col">
-                    <a href="#" class="link">
-                        <i class="icon-placeholder"></i><span>Nuestra Ubicación</span></a>
-                    <div class="link-drop p-0">
-                        <div id="googleMapDrop1" class="google-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d969.0412183762217!2d-89.21020602076928!3d13.708462252300757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6331b0e5d0d6d7%3A0x48b6890c846b26dc!2sUnidad%20M%C3%A9dica%20NR!5e0!3m2!1ses-419!2ssv!4v1652302725765!5m2!1ses-419!2ssv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-                    </div>
-                </div>
-                <div class="col">
-                    <a href="#" class="link">
-                        <i class="icon-clock"></i><span>Horarios</span>
-                    </a>
-                    <div class="link-drop">
-                        <h5 class="link-drop-title"><i class="icon-clock"></i>Dias y Horas Laborales</h5>
-                        <table class="row-table">
-                            <tr>
-                                <td><i>Lunes - Viernes</i></td>
-                                <td>08:00 AM - 4:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td><i>Sabado</i></td>
-                                <td> 08:00 AM - 12:00 MD</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="col">
-                    <a href="#" class="link">
-                        <i class="icon-pencil-writing"></i><span>Formulario de contacto</span>
-                    </a>
-                    <div class="link-drop">
-                        <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Escribanos</h5>
-                        <form id="requestForm" method="post" novalidate>
-                            <div class="successform">
-                                <p>Su mensaje se envio correctamente!</p>
-                            </div>
-                            <div class="errorform">
-                                <p>Algo salio mal, vuelva a intentarlo.</p>
-                            </div>
-                            <div class="input-group">
-                                <span>
-                                <i class="icon-user"></i>
-                            </span>
-                                <input name="requestname" type="text" class="form-control" placeholder="Su nombre" />
-                            </div>
-                            <div class="row row-sm-space mt-1">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <span>
-                                        <i class="icon-email2"></i>
-                                    </span>
-                                        <input name="requestemail" type="text" class="form-control" placeholder="Su correo electronico" />
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <span>
-                                        <i class="icon-smartphone"></i>
-                                    </span>
-                                        <input name="requestphone" type="text" class="form-control" placeholder="Su Telefono" />
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="input-group">
-                                <span>
-                                <i class="bi bi-chat-dots"></i>
-                            </span>
-                            <input name="duda" type="text" class="form-control" placeholder="Su consulta" />
-                            </div>
-                            <div class="text-right mt-2">
-                                <button type="submit" class="btn btn-sm btn-hover-fill">Enviar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    @include('menu_principal')
 
-
-                <div class="col">
-                    <a href="#" class="link">
-                        <i class="icon-pencil-writing"></i><span>Agendar Cita</span>
-                    </a>
-                    <div class="link-drop">
-                        <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Formulario para agendar cita</h5>
-                        <form id="requestForm" method="post" novalidate>
-                            <div class="successform">
-                                <p>Su mensaje fue enviado correctamente!</p>
-                            </div>
-                            <div class="errorform">
-                                <p>Lo sentimos parece que algo salio mal, vuelva a intentarlo.</p>
-                            </div>
-                            <div class="input-group">
-                                <span>
-                                <i class="icon-user"></i>
-                            </span>
-                                <input name="requestname" type="text" class="form-control" placeholder="Su Nombre Completo" />
-                            </div>
-                            <div class="row row-sm-space mt-1">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <span>
-                                        <i class="icon-email2"></i>
-                                    </span>
-                                        <input name="requestemail" type="text" class="form-control" placeholder="Su Correo" />
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <span>
-                                        <i class="icon-smartphone"></i>
-                                    </span>
-                                        <input name="requestphone" type="text" class="form-control" placeholder="Su numero de Telefono" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="selectWrapper input-group mt-1">
-                                <span>
-                                &bnsp;
-                            </span>
-                                <select name="requestservice" class="form-control">
-                                            <option selected="selected" disabled="disabled">Seleccione un servicio</option>
-                                            <option value="Consulta con Medicina General">Consulta con Medicina General</option>
-                                            <option value="Consulta con Ginecología y Obstetricia">Consulta con Ginecología y Obstetricia</option>
-                                            <option value="Consulta con Medicina Interna">Consulta con Medicina Interna</option>
-                                            <option value="Consulta con Pediatría">Consulta con Pediatría</option>
-                                            <option value="Consulta con Medicina de Estilo de Vida y Nutrición">Consulta con Medicina de Estilo de Vida y Nutrición</option>
-                                            <option value="Consulta con Geriatría">Consulta con Geriatría</option>
-                                            <option value="Consulta con Psiquiatría">Consulta con Psiquiatría	</option>
-                                            <option value="Consulta TAIES">Consulta TAIES</option>
-                                            <option value="Telemedicina">Telemedicina</option>
-                                            <option value="Consulta domiciliaria (Geriatría)">Consulta domiciliaria (Geriatría)</option>
-                                            <option value="Control de diabetes y presión arterial">Control de diabetes y presión arterial</option>
-                                            <option value="Control prenatal de bajo riesgo">Control prenatal de bajo riesgo</option>
-                                            <option value="Planificación familiar">Planificación familiar</option>
-                                            <option value="Toma de citologías">Toma de citologías</option>
-                                            <option value="Control de niño sano">Control de niño sano</option>
-                                            <option value="Control nutricional">Control nutricional</option>
-                                            <option value="Inyecciones">Inyecciones</option>
-                                            <option value="Curaciones y pequeña cirugía">Curaciones y pequeña cirugía</option>
-                                            <option value="Toma y lectura de electrocardiograma">Toma y lectura de electrocardiograma</option>
-                                            <option value="Toma de glucosa capilar">Toma de glucosa capilar</option>
-                                            <option value="Terapias respiratorias">Terapias respiratorias</option>
-                                            <option value="Vacunaciones">Vacunaciones</option>
-                                        </select>
-                            </div>
-                            <div class="row row-sm-space mt-1">
-                                <div class="col-sm-6">
-                                    <div class="input-group flex-nowrap">
-                                        <span>
-                                            <i class="icon-calendar2"></i>
-                                        </span>
-                                        <div class="datepicker-wrap">
-                                            <input name="requestdate" type="text" class="form-control datetimepicker" placeholder="Fecha" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 mt-1 mt-sm-0">
-                                    <div class="input-group flex-nowrap">
-                                        <span>
-                                                <i class="icon-clock"></i>
-                                        </span>
-                                        <div class="datepicker-wrap">
-                                            <input name="requesttime" type="text" class="form-control timepicker" placeholder="Hora" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-right mt-2">
-                                <button type="submit" class="btn btn-sm btn-hover-fill">Enviar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col col-close"><a href="#" class="js-quickLinks-close"><i class="icon-top" data-toggle="tooltip" data-placement="top" title="Cerrar"></i></a></div>
-            </div>
-        </div>
-        <div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left" title="Open panel">+</span></div>
-    </div>
-</div>
-<!--//quick links-->
+    <!--//quick links-->
     <div class="page-content">
-        <!--section-->
-        <div class="section mt-0">
-            <div class="breadcrumbs-wrap">
-                <div class="container">
-                    <div class="breadcrumbs">
-                        <a href="index.html">Inicio</a>
-                        <a href="servicios.html">Servicios</a>
-                        <span>Jornadas médicas empresariales a domicilio</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--//section-->
+
         <!--section-->
         <div class="section page-content-first">
             <div class="container mt-6">
@@ -234,11 +43,14 @@
                     <div class="col-md">
                         <ul class="services-nav flex-column flex-nowrap">
                             <li class="nav-item">
-                                <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Jornadas médicas</a>
+                                <a class="nav-link" href="#submenu1" data-toggle="collapse"
+                                    data-target="#submenu1">Jornadas médicas</a>
                                 <div class="collapse show" id="submenu1">
                                     <ul class="flex-column nav">
-                                        <li class="nav-item"><a class="nav-link" href="">Jornadas Médicas Empresariales a Domicilio</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="">Jornada Médica Educativa</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="">Jornadas Médicas
+                                                Empresariales a Domicilio</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="">Jornada Médica
+                                                Educativa</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -249,7 +61,8 @@
                                     <h5 class="contact-box-title">Horas Laborales</h5>
                                     <ul class="icn-list">
                                         <li><i class="icon-clock"></i>Lun - Vie 08:00 AM - 04:00 PM
-                                            <br>Sabado 08:00 AM - 12:00 MD</li>
+                                            <br>Sabado 08:00 AM - 12:00 MD
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -260,13 +73,17 @@
                                         <li><i class="icon-telephone"></i>
                                             <div class="d-flex flex-wrap">
                                                 <span>Telefono:&nbsp;&nbsp;</span>
-                                                <span>2521-3705</div>
+                                                <span>2521-3705
+                                            </div>
                                         </li>
-                            <li>
-                                <i class="icon-telephone"></i>
-                                <div class="d-flex flex-wrap">
-                                <b><span class="phone"><span class="text-nowrap"><a href="https://wa.me/70002063">WhatsApp: 7000-2063</a></span></span></b></div>
-                            </li>
+                                        <li>
+                                            <i class="icon-telephone"></i>
+                                            <div class="d-flex flex-wrap">
+                                                <b><span class="phone"><span class="text-nowrap"><a
+                                                                href="https://wa.me/70002063">WhatsApp:
+                                                                7000-2063</a></span></span></b>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -281,23 +98,32 @@
                                     <p>Parece que algo ha salido mal, intentelo de nuevo por favor.</p>
                                 </div>
                                 <input type="text" class="form-control" name="name" placeholder="Su nombre*">
-                                <input type="text" class="form-control" name="email" placeholder="Su correo electronico*">
+                                <input type="text" class="form-control" name="email"
+                                    placeholder="Su correo electronico*">
                                 <input type="text" class="form-control" name="phone" placeholder="Telefono">
                                 <textarea class="form-control" name="message" placeholder="Su pregunta*"></textarea>
-                                <button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i class="icon-right-arrow"></i><span>Enviar</span><i class="icon-right-arrow"></i></button>
+                                <button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i
+                                        class="icon-right-arrow"></i><span>Enviar</span><i
+                                        class="icon-right-arrow"></i></button>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-8 col-lg-9 mt-4 mt-md-0">
                         <div class="title-wrap">
-                            <h1>Jornadas Médicas</h1></div>
+                            <h1>Jornadas Médicas</h1>
+                        </div>
                         <div class="service-img">
-                            <img src="{{ asset('dentco-html/images/consultaser.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('dentco-html/images/consultaser.jpg') }}" class="img-fluid"
+                                alt="">
                         </div>
                         <div class="pt-2 pt-md-4">
-                            <p> Nuestro objetivo es el brindar atención médica de tipo preventiva y educativa, para la detección y tratamiento oportuno de enfermedades crónicas del personal, extendiendo consejería que aplique según sea el caso</p><br/><br/>
-                            <p>Jornada Médica Educativa.<br/><br/>
-                                Brindamos charlas educacionales sobre temas de interés solicitados, bajo sistema de programación del grupo de asistentes, guardando los estándares de bioseguridad COVID-19, destacando temas como:</p>
+                            <p> Nuestro objetivo es el brindar atención médica de tipo preventiva y educativa, para la
+                                detección y tratamiento oportuno de enfermedades crónicas del personal, extendiendo
+                                consejería que aplique según sea el caso</p><br /><br />
+                            <p>Jornada Médica Educativa.<br /><br />
+                                Brindamos charlas educacionales sobre temas de interés solicitados, bajo sistema de
+                                programación del grupo de asistentes, guardando los estándares de bioseguridad COVID-19,
+                                destacando temas como:</p>
                             <div class="mt-0 mt-lg-4"></div>
                             <div class="mt-3"></div>
                             <ul class="numbered-list-lg">
@@ -314,12 +140,19 @@
                                 <li>Depresión y ansiedad </li>
 
                                 <li>Algún tema de salud de interés específico para la empresa </li>
-                            </ul><br/><br/>
+                            </ul><br /><br />
                             <div class="mt-0 mt-lg-4"></div>
                             <div class="mt-3"></div>
                             <div class="mt-3"></div>
-                            <p>Jornada Médica para Atención Preventiva de Salud.<br/><br/>
-                                Brindamos chequeos médicos generales con enfoque preventivo, recomendaciones y/o tratamientos médicos a aquellos pacientes que lo requieran, incluyendo la toma de medidas antropométricas (Peso, talla, IMC), signos vitales (Presión arterial, ritmo cardíaco, frecuencia respiratoria, saturación de oxígeno, temperatura) y detección de factores de riesgo de enfermedades crónicas, densitometría ósea (sujeto a disponibilidad de personal especializado), lectura de exámenes, reporte médico individual con diagnósticos y plan de tratamiento, reporte general dirigido al encargado de Recursos Humanos para el uso que estime conveniente.</p>
+                            <p>Jornada Médica para Atención Preventiva de Salud.<br /><br />
+                                Brindamos chequeos médicos generales con enfoque preventivo, recomendaciones y/o
+                                tratamientos médicos a aquellos pacientes que lo requieran, incluyendo la toma de
+                                medidas antropométricas (Peso, talla, IMC), signos vitales (Presión arterial, ritmo
+                                cardíaco, frecuencia respiratoria, saturación de oxígeno, temperatura) y detección de
+                                factores de riesgo de enfermedades crónicas, densitometría ósea (sujeto a disponibilidad
+                                de personal especializado), lectura de exámenes, reporte médico individual con
+                                diagnósticos y plan de tratamiento, reporte general dirigido al encargado de Recursos
+                                Humanos para el uso que estime conveniente.</p>
                             <!--<div class="mt-3 mt-md-5 px-1 pt-1 pb-15 pt-md-2 px-md-4 bg-grey">
                                 <div id="faqAccordion1" class="faq-accordion" data-children=".faq-item">
                                     <div class="faq-item">
@@ -355,68 +188,87 @@
         </div>
         <!--//section-->
     </div>
-<!--footer-->
-<div class="footer mt-0">
-<div class="container">
-    <div class="row py-1 py-md-2 px-lg-0">
-        <div class="col-lg-4 footer-col1">
-            <div class="row flex-column flex-md-row flex-lg-column">
-                <div class="col-md col-lg-auto">
-                    <div class="footer-logo">
-                        <img src="{{ asset('dentco-html/images/LOGO.png') }}" alt="" class="img-fluid">
-                    </div>
-                    <div class="mt-2 mt-lg-0"></div>
-                    <div class="footer-social d-none d-md-block d-lg-none">
-                        <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
+    <!--footer-->
+    <div class="footer mt-0">
+        <div class="container">
+            <div class="row py-1 py-md-2 px-lg-0">
+                <div class="col-lg-4 footer-col1">
+                    <div class="row flex-column flex-md-row flex-lg-column">
+                        <div class="col-md col-lg-auto">
+                            <div class="footer-logo">
+                                <img src="{{ asset('dentco-html/images/LOGO.png') }}" alt=""
+                                    class="img-fluid">
+                            </div>
+                            <div class="mt-2 mt-lg-0"></div>
+                            <div class="footer-social d-none d-md-block d-lg-none">
+                                <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i
+                                        class="icon-facebook-logo"></i></a>
 
-                        <a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
-                        <a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i
+                                        class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i
+                                        class="icon-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="footer-social d-md-none d-lg-block">
+                                <a href="https://www.facebook.com/" target="blank" class="hovicon"><i
+                                        class="icon-facebook-logo"></i></a>
+
+                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i
+                                        class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i
+                                        class="icon-instagram"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="footer-social d-md-none d-lg-block">
-                        <a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
+                <div class="col-sm-6 col-lg-4">
 
-                        <a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
-                        <a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <h3>Nuestros Contactos</h3>
+                    <div class="h-decor"></div>
+                    <ul class="icn-list">
+                        <li><i class="icon-placeholder2"></i>Colonia San Ernesto, Pasaje San Carlos, #154, San Salvador
+                            .
+                            <br>
+                            <a href="contact.html" class="btn btn-xs btn-gradient"><i
+                                    class="icon-placeholder2"></i><span>Obtener dirección</span><i
+                                    class="icon-right-arrow"></i></a>
+                        </li>
+                        <li><i class="icon-telephone"></i><b><span class="phone"><span
+                                        class="text-nowrap">2521-3705</span></span></b>
+                        <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
+                                        href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
+                        <li><i class="icon-black-envelope"></i><a
+                                href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <style>
+            .z-padd {
+                padding-left: 0px !important;
+            }
+        </style>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row text-center text-md-left">
+                    <div class="col-sm">Copyright © 2022 <a href="#">Unidad Medica
+                            NR</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+                        <a href="#">Politicas de Privacidad</a>
+                    </div>
+                    <div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">
+                            <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
+                                            href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span>
+                            </li>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4">
-
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <h3>Nuestros Contactos</h3>
-            <div class="h-decor"></div>
-            <ul class="icn-list">
-                <li><i class="icon-placeholder2"></i>Colonia San Ernesto,  Pasaje San Carlos, #154, San Salvador .
-                    <br>
-                    <a href="contact.html" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Obtener dirección</span><i class="icon-right-arrow"></i></a>
-                </li>
-                <li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b>
-                    <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
-                <li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
-            </ul>
-        </div>
     </div>
-</div>
-<style>
-    .z-padd{
-        padding-left: 0px !important;
-    }
-</style>
-<div class="footer-bottom">
-    <div class="container">
-        <div class="row text-center text-md-left">
-            <div class="col-sm">Copyright © 2022 <a href="#">Unidad Medica NR</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
-                <a href="#">Politicas de Privacidad</a></div>
-            <div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline"><li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li></div>
-        </div>
-    </div>
-</div>
-</div>
-<!--//footer-->
+    <!--//footer-->
     <div class="backToTop js-backToTop">
         <i class="icon icon-up-arrow"></i>
     </div>
@@ -438,21 +290,24 @@
                             </div>
                             <div class="input-group">
                                 <span>
-                                <i class="icon-user"></i>
-                            </span>
-                                <input type="text" name="name" class="form-control" autocomplete="off" placeholder="Tu Nombre*" />
+                                    <i class="icon-user"></i>
+                                </span>
+                                <input type="text" name="name" class="form-control" autocomplete="off"
+                                    placeholder="Tu Nombre*" />
                             </div>
                             <div class="input-group">
                                 <span>
                                     <i class="icon-email2"></i>
                                 </span>
-                                <input type="text" name="email" class="form-control" autocomplete="off" placeholder="Correo Electronico*" />
+                                <input type="text" name="email" class="form-control" autocomplete="off"
+                                    placeholder="Correo Electronico*" />
                             </div>
                             <div class="input-group">
                                 <span>
                                     <i class="icon-smartphone"></i>
                                 </span>
-                                <input type="text" name="phone" class="form-control" autocomplete="off" placeholder="Numero Telefonico" />
+                                <input type="text" name="phone" class="form-control" autocomplete="off"
+                                    placeholder="Numero Telefonico" />
                             </div>
                             <textarea name="message" class="form-control" placeholder="Tu comentario*"></textarea>
                             <div class="text-right mt-2">
@@ -482,9 +337,10 @@
                             </div>
                             <div class="input-group">
                                 <span>
-                                <i class="icon-user"></i>
-                            </span>
-                                <input type="text" name="bookingname" class="form-control" autocomplete="off" placeholder="Su Nombre*" />
+                                    <i class="icon-user"></i>
+                                </span>
+                                <input type="text" name="bookingname" class="form-control" autocomplete="off"
+                                    placeholder="Su Nombre*" />
                             </div>
                             <div class="row row-xs-space mt-1">
                                 <div class="col-sm-6">
@@ -492,7 +348,8 @@
                                         <span>
                                             <i class="icon-email2"></i>
                                         </span>
-                                        <input type="text" name="bookingemail" class="form-control" autocomplete="off" placeholder="Su Correo*" />
+                                        <input type="text" name="bookingemail" class="form-control"
+                                            autocomplete="off" placeholder="Su Correo*" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6 mt-1 mt-sm-0">
@@ -500,7 +357,8 @@
                                         <span>
                                             <i class="icon-smartphone"></i>
                                         </span>
-                                        <input type="text" name="bookingphone" class="form-control" autocomplete="off" placeholder="Su numero Telefonico" />
+                                        <input type="text" name="bookingphone" class="form-control"
+                                            autocomplete="off" placeholder="Su numero Telefonico" />
                                     </div>
                                 </div>
                             </div>
@@ -510,7 +368,8 @@
                                         <span>
                                             <i class="icon-birthday"></i>
                                         </span>
-                                        <input type="text" name="bookingage" class="form-control" autocomplete="off" placeholder="Su Edad" />
+                                        <input type="text" name="bookingage" class="form-control"
+                                            autocomplete="off" placeholder="Su Edad" />
                                     </div>
                                 </div>
                             </div>
@@ -519,7 +378,8 @@
                                     <i class="icon-calendar2"></i>
                                 </span>
                                 <div class="datepicker-wrap">
-                                    <input name="bookingdate" type="text" class="form-control datetimepicker" placeholder="Dia" readonly>
+                                    <input name="bookingdate" type="text" class="form-control datetimepicker"
+                                        placeholder="Dia" readonly>
                                 </div>
                             </div>
                             <div class="input-group flex-nowrap mt-1">
@@ -527,7 +387,8 @@
                                     <i class="icon-clock"></i>
                                 </span>
                                 <div class="datepicker-wrap">
-                                    <input name="bookingtime" type="text" class="form-control timepicker" placeholder="Hora">
+                                    <input name="bookingtime" type="text" class="form-control timepicker"
+                                        placeholder="Hora">
                                 </div>
                             </div>
                             <textarea name="bookingmessage" class="form-control" placeholder="Su comentario"></textarea>
@@ -540,26 +401,26 @@
             </div>
         </div>
     </div>
-       <!-- Vendors -->
-       <script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/cookie/jquery.cookie.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/moment.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/popper/popper.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/bootstrap/bootstrap.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/waypoints/sticky.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/slick/slick.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/countTo/jquery.countTo.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/form-validation/jquery.form.js') }}"></script>
-       <script src="{{ asset('dentco-html/vendor/form-validation/jquery.validate.min.js') }}"></script>
-       <!-- Custom Scripts -->
-       <script src="{{ asset('dentco-html/js/app.js') }}"></script>
-       <script src="{{ asset('dentco-html/js/app-shop.js') }}"></script>
-       <script src="{{ asset('dentco-html/form/forms.js') }}"></script>
+    <!-- Vendors -->
+    <script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/cookie/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/moment.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/waypoints/sticky.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/countTo/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/form-validation/jquery.form.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/form-validation/jquery.validate.min.js') }}"></script>
+    <!-- Custom Scripts -->
+    <script src="{{ asset('dentco-html/js/app.js') }}"></script>
+    <script src="{{ asset('dentco-html/js/app-shop.js') }}"></script>
+    <script src="{{ asset('dentco-html/form/forms.js') }}"></script>
 
 </body>
 

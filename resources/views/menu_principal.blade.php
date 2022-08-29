@@ -1,4 +1,4 @@
-	<!--header-->
+    	<!--header-->
 	<header class="header">
 		<div class="header-quickLinks js-header-quickLinks d-lg-none">
 			<div class="quickLinks-top js-quickLinks-top"></div>
@@ -44,15 +44,15 @@
 										<li class="nav-item">
 											<a href="servicios.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Servicios</a>
 											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="consultas.html">Consultas Médicas</a></li>
-												<li><a class="dropdown-item" href="consultas-domicilio.html">Consultas a Domicilio</a></li>
-												<li><a class="dropdown-item" href="jornadas.html">Jornadas médicas empresariales</a></li>
+												<li><a class="dropdown-item" href="{{url('consultas')}}">Consultas Médicas</a></li>
+												<li><a class="dropdown-item" href="{{url('consultas_domicilio')}}">Consultas a Domicilio</a></li>
+												<li><a class="dropdown-item" href="{{url('jornadas')}}">Jornadas médicas empresariales</a></li>
 											</ul>
 										</li>
 										<li class="nav-item">
 											<a href="acerca.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Acerca de Nosotros</a>
 											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="staff.html">Nuestro Staff</a></li>
+												<li><a class="dropdown-item" href="{{url('staff')}}">Nuestro Staff</a></li>
 											</ul>
 										</li>
 										<li class="nav-item">
