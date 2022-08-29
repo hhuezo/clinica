@@ -50,7 +50,7 @@ class CitasController extends Controller
     {
         $doctores = Doctor::where('Especialidad','=',$id)->where('Activo','=',1)->get();
         $perfiles_profesionales = PerfilProfesional::where('Activo','=',1)->get();
-        return view('citas.reserva', ['categoria' => Categoria::findOrFail($id),'doctores' => $doctores,'perfiles_profesionales' => $perfiles_profesionales]);
+        return view('citas.reserva', ['especialidad' => Especialidad::findOrFail($id),'doctores' => $doctores,'perfiles_profesionales' => $perfiles_profesionales]);
     }
 
     /**

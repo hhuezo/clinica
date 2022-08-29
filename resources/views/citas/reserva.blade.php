@@ -40,31 +40,23 @@
 
 
 
-        <!--section-->
+        <!--//section-->
+
+
         <div class="section mt-0">
             <div class="breadcrumbs-wrap">
                 <div class="container">
                     <div class="breadcrumbs">
-                        {{$categoria->Nombre}}
-                    </div>
-
-                </div>
-
-                <div class="container">
-                    <div class="breadcrumbs">
-                        <a href="index.html">Inicio</a>
-                        <a href="servicios.html">Servicios</a>
-                        <span>aaa</span>
+                        <h1>{{$especialidad->Nombre}}</h1>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <!--//section-->
-
+        <div class="section page-content-first">
         @foreach ($doctores as $doctor)
-            <div class="section page-content-first">
+
                 <div class="container mt-6">
                     <div class="row">
                         <div class="col-md">
@@ -114,8 +106,9 @@
                     </div>
                 </div>
 
-            </div>
+
         @endforeach
+    </div>
     </div>
 
 
