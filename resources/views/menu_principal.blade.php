@@ -254,6 +254,10 @@
 	</div>
 	<!--//quick links-->
 	<div class="page-content">
+        <?php
+            if(isset($texto))
+            {
+        ?>
 		<!--section-->
 		<div class="section mt-0">
 			<div class="breadcrumbs-wrap">
@@ -261,9 +265,10 @@
 					<div class="breadcrumbs">
 						<a href="index.html">Inicio</a>
 						<a href="servicios.html">Servicios</a>
-						<span>Consultas médicas</span>
+						<span>{{$texto}}</span>
 					</div>
 				</div>
 			</div>
 		</div>
+        <?php  } ?>
 		<!--//section-->
