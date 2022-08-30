@@ -16,6 +16,7 @@ class Doctor extends Model
     protected $fillable = [
         'Nombre',
         'Foto',
+        'Titulo',
         'Especialidad',
         'Activo'
     ];
@@ -24,7 +25,7 @@ class Doctor extends Model
 
     public function especialidad()
     {
-        return $this->belongsTo('App\catalogo\Doctor', 'Doctor', 'Id');
+        return $this->belongsTo('App\catalogo\Especialidad', 'Especialidad', 'Id');
     }
 
 

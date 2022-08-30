@@ -32,3 +32,5 @@ Route::get('/contacto', 'ClinicaController@contacto');
 Route::get('/servicios', 'ClinicaController@servicios');
 Route::get('/acerca', 'ClinicaController@acerca');
 Route::resource('catalogo/especialidad', 'catalogo\EspecialidadController');
+Route::resource('catalogo/doctor', 'catalogo\DoctorController');
+Route::resource('catalogo/horario', 'catalogo\HorarioController');

@@ -23,8 +23,11 @@ class Especialidad extends Model
     protected $guarded = [];
 
 
-    public function dotores()
+
+
+    public function categoria()
     {
-        return $this->hasMany('App\catalogo\Doctor', 'Especialidad');
+        return $this->belongsTo('App\catalogo\Categoria', 'Categoria', 'Id');
     }
+
 }

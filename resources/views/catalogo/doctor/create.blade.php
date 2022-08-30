@@ -26,7 +26,7 @@
             <div class="x_content">
                 <br />
 
-                {!!Form::open(array('url'=>'catalogo/especialidad','method'=>'POST','autocomplete'=>'off'))!!}
+                {!!Form::open(array('url'=>'catalogo/doctor','method'=>'POST','autocomplete'=>'off'))!!}
                 {{Form::token()}}
 
                 <div class="form-group">
@@ -39,17 +39,23 @@
 
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Categoria</label>
+                    <label class="col-sm-3 control-label">Especialidad</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select name="Categoria" class="form-control">
-                            @foreach($categoria as $obj)
+                        <select name="Especialidad" class="form-control">
+                            @foreach($especialidad as $obj)
                             <option value="{{$obj->Id}}">{{$obj->Nombre}}</option>
                             @endforeach
                         </select>
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
-
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Titulo</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="Titulo" class="form-control" autofocus="true" required="true" onblur="this.value = this.value.toUpperCase()">
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Foto</label>
@@ -61,7 +67,6 @@
                 <div class="form-group" align="center">
                     <button class="btn btn-success" type="submit">Guardar</button>
 
-                    <a href="{{url('catalogo/especialidad/')}}"><button class="btn btn-primary" type="button">Cancelar</button></a>
                 </div>
 
                 {!!Form::close()!!}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\catalogo;
 
+use App\catalogo\Categoria;
 use App\catalogo\Especialidad;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class EspecialidadController extends Controller
     {
         if ($request) {
 
-            $especialidades = Especialidad::where('Activo', '=', '1')->get();
+            $especialidades = Especialidad::with('categoria')->where('Activo', '=', '1')->get();
+
             //dd($especialidades);
             return view('catalogo.especialidad.index', ['especialidades' => $especialidades]);
         }
@@ -27,7 +29,10 @@ class EspecialidadController extends Controller
 
     public function create()
     {
-        return view('catalogo.especialidad.create');
+        $categoria = Categoria::get();
+
+       // dd($categoria);
+        return view("catalogo.especialidad.create", ["categoria" => $categoria]);
     }
 
     public function store(EspecialidadFormRequest $request)
@@ -46,7 +51,7 @@ class EspecialidadController extends Controller
             $especialidad->save();
         }
 
-
+        $especialidad->Categoria = $request->get('Categoria');
         $especialidad->Activo = '1';
         $especialidad->save();
         alert()->success('El registro ha sido agregado correctamente');
@@ -54,21 +59,20 @@ class EspecialidadController extends Controller
     }
 
 
-
-
-
-
-
-
     public function edit($id)
     {
-        return view('catalogo.especialidad.edit', ['especialidad' => Especialidad::findOrFail($id)]);
+        $especialidad = Especialidad::with('categoria')->where('Id', '=', $id)->first();
+        $categoria = Categoria::get();
+
+        return view('catalogo.especialidad.edit', ['especialidad' => Especialidad::findOrFail($id),'categoria' => $categoria,]);
+
     }
 
     public function update(EspecialidadFormRequest $request, $id)
     {
         $especialidad = Especialidad::findOrFail($id);
         $especialidad->Nombre = $request->get('Nombre');
+        $especialidad->Categoria = $request->get('Categoria');
         $especialidad->update();
         alert()->info('El registro ha sido modificado correctamente');
         return redirect('catalogo/especialidad/' . $id . '/edit');
