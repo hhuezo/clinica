@@ -15,9 +15,9 @@ class CitasController extends Controller
 {
     public function index()
     {
-        $categorias = Categoria::where('Activo','=',1)->get();
-        $especialidades = Especialidad::where('Activo','=',1)->get();
-        return view('citas.index',['especialidades'=>$especialidades,'categorias'=>$categorias]);
+        $categorias = Categoria::where('Activo', '=', 1)->get();
+        $especialidades = Especialidad::where('Activo', '=', 1)->get();
+        return view('citas.index', ['especialidades' => $especialidades, 'categorias' => $categorias]);
     }
 
 
@@ -64,37 +64,35 @@ class CitasController extends Controller
             }
         }*/
 
-
-
-
         $array_doctor = array();
 
-        $doctores = Doctor::where('Especialidad','=',$id)->where('Activo','=',1)->get();
+        $doctores = Doctor::where('Especialidad', '=', $id)->where('Activo', '=', 1)->get();
 
         $date = Carbon::now();
 
-        foreach($doctores as $doctor)
-        {
-            array_push($array_doctor,$doctor->Id);
+        foreach ($doctores as $doctor) {
+            array_push($array_doctor, $doctor->Id);
         }
 
         $array_horarios = array();
-        $citas = Cita::where('Fecha','=',$date->format('Y-m-d'))->where('Activo','=',1)->get();
+        $citas = Cita::where('Fecha', '=', $date->format('Y-m-d'))->where('Activo', '=', 1)->get();
 
-        foreach( $citas as  $cita)
-        {
-            array_push($array_horarios,$cita->Horario);
+        foreach ($citas as  $cita) {
+            array_push($array_horarios, $cita->Horario);
         }
         //dd($array_horarios );
 
-        $horarios = Horario::whereIn('Doctor',$array_doctor)->where('Activo','=',1)->where('Dia','=',$date->format('w'))
-        ->whereNotIn('Id',$array_horarios)->orderBy('Hora')->get();
+        $horarios = Horario::whereIn('Doctor', $array_doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+            ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
 
-        $perfiles_profesionales = PerfilProfesional::where('Activo','=',1)->get();
+        $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
 
-        return view('citas.reserva', ['especialidad' => Especialidad::findOrFail($id),'doctores' => $doctores,'horarios' => $horarios,
-        'perfiles_profesionales' => $perfiles_profesionales]);
+        return view('citas.reserva', [
+            'especialidad' => Especialidad::findOrFail($id), 'doctores' => $doctores, 'horarios' => $horarios,
+            'perfiles_profesionales' => $perfiles_profesionales
+        ]);
     }
+
 
 
     public function citas_reserva(Request $request)
@@ -114,26 +112,40 @@ class CitasController extends Controller
         return redirect('citas/' . $horario->doctores->Especialidad . '/edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function horarios_get(Request $request)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+
+        $array_doctor = array();
+
+        $doctores = Doctor::where('Especialidad', '=', $request->get('Especialidad'))->where('Activo', '=', 1)->get();
+
+        $date = Carbon::parse($request->get('Fecha'));
+        //dd($date);
+        foreach ($doctores as $doctor) {
+            array_push($array_doctor, $doctor->Id);
+        }
+
+        $array_horarios = array();
+        $citas = Cita::where('Fecha', '=', $date->format('Y-m-d'))->where('Activo', '=', 1)->get();
+
+        foreach ($citas as  $cita) {
+            array_push($array_horarios, $cita->Horario);
+        }
+        //dd($array_horarios );
+
+        $horarios = Horario::whereIn('Doctor', $array_doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+            ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
+
+        $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
+
+        return view('citas.horarios_get', [
+            'especialidad' => Especialidad::findOrFail($request->get('Especialidad')), 'doctores' => $doctores, 'horarios' => $horarios,
+            'perfiles_profesionales' => $perfiles_profesionales
+        ]);
+
+
+
+
     }
 }

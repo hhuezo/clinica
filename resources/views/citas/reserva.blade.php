@@ -26,7 +26,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
 </head>
-<script src="{{asset('vendors/sweetalert/sweetalert.min.js')}}"></script>
+<script src="{{ asset('vendors/sweetalert/sweetalert.min.js') }}"></script>
+
 <body class="shop-page">
 
 
@@ -54,6 +55,7 @@
                     </div>
                     <div class="filters-row-right d-flex align-items-center">
                         <span>¿Cuándo deseas tu cita? &nbsp; &nbsp; </span>
+                        <input type="text" id="especialidad" value="{{$especialidad->Id}}">
                         <input type="date" id="calendario" value="{{ date('Y-m-d') }}">
                     </div>
                 </div>
@@ -65,7 +67,7 @@
 
 
 
-        <div class="section page-content-first">
+        <div class="section page-content-first" id="response">
             @foreach ($doctores as $doctor)
                 <div class="container mt-6">
                     <div class="row">
@@ -222,7 +224,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <input type="hidden" id="horario" name="Horario">
+                    <input type="text" id="horario" name="Horario">
                     <input type="text" id="fecha" name="Fecha">
 
                     <div class="modal-body">
@@ -266,6 +268,24 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
+        $("#calendario").change(function() {
+            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
+            var parametros = {
+                "Especialidad": document.getElementById('especialidad').value,
+                "Fecha": document.getElementById('calendario').value
+            };
+            $.ajax({
+                type: "get",
+                url: "{{ url('horarios_get') }}",
+                data: parametros,
+                success: function(data) {
+                    console.log(data);
+                    $('#response').html(data);
+                }
+            });
+
+        });
+
     });
 
     function modal_reserva_cita(id) {
@@ -275,8 +295,7 @@
 
     }
 
-    function cerrar_modal()
-    {
+    function cerrar_modal() {
         $('#modal_reserva_cita').modal('hide');
     }
 </script>

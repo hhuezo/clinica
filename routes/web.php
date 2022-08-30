@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('citas_reserva', 'CitasController@citas_reserva');
+Route::get('horarios_get', 'CitasController@horarios_get');
 Route::resource('citas', 'CitasController');
 
 
