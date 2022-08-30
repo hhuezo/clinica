@@ -20,8 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('citas_reserva', 'CitasController@citas_reserva');
 Route::resource('citas', 'CitasController');
-Route::post('citas_reserva', 'ClinicaController@citas_reserva');
+
 
 Route::get('/consultas', 'ClinicaController@consultas');
 Route::get('/consultas_domicilio', 'ClinicaController@consultas_domicilio');

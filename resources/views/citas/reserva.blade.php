@@ -26,11 +26,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
 </head>
-
+<script src="{{asset('vendors/sweetalert/sweetalert.min.js')}}"></script>
 <body class="shop-page">
 
 
     @include('menu_principal')
+
 
 
 
@@ -43,20 +44,29 @@
         <!--//section-->
 
 
-        <div class="section mt-0">
-            <div class="breadcrumbs-wrap">
-                <div class="container">
-                    <div class="breadcrumbs">
-                        <h1>{{$especialidad->Nombre}}</h1>
-                    </div>
 
+        <div class="breadcrumbs-wrap">
+            <div class="container">
+                <div class="filters-row align-items-center">
+                    <div class="filters-row-left"><span><strong>{{ $especialidad->Nombre }}</strong> </span>
+                        <div class="form-inline">
+                        </div>
+                    </div>
+                    <div class="filters-row-right d-flex align-items-center">
+                        <span>¿Cuándo deseas tu cita? &nbsp; &nbsp; </span>
+                        <input type="date" id="calendario" value="{{ date('Y-m-d') }}">
+                    </div>
                 </div>
+
             </div>
         </div>
 
-        <div class="section page-content-first">
-        @foreach ($doctores as $doctor)
 
+
+
+
+        <div class="section page-content-first">
+            @foreach ($doctores as $doctor)
                 <div class="container mt-6">
                     <div class="row">
                         <div class="col-md">
@@ -85,16 +95,15 @@
                                             data-target="#submenu1">Horarios</a>
                                         <div class="collapse show" id="submenu1">
                                             <ul class="flex-column nav">
-                                                <li class="nav-item"><a class="nav-link" href="">Orthodontics</a>
-                                                </li>
-                                                <li class="nav-item"><a class="nav-link active" href="">White
-                                                        Fillings</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="">Porcelain
-                                                        Veneers</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="">Teeth
-                                                        Whitening</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="">Inlays &amp;
-                                                        Onlays</a></li>
+                                                @foreach ($horarios as $horario)
+                                                    @if ($horario->Doctor == $doctor->Id)
+                                                        <li class="nav-item nav-link"
+                                                            onclick="modal_reserva_cita({{ $horario->Id }})">
+                                                            {{ date('g:i A', strtotime($horario->Hora)) }}
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+
                                             </ul>
                                         </div>
                                     </li>
@@ -105,15 +114,11 @@
                         </div>
                     </div>
                 </div>
+            @endforeach
+        </div>
 
 
-        @endforeach
     </div>
-    </div>
-
-
-
-
 
 
 
@@ -202,8 +207,43 @@
         <i class="icon icon-up-arrow"></i>
     </div>
 
+
+    <div class="modal fade" id="modal_reserva_cita" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ url('citas_reserva') }}" method="POST">
+                    {{ Form::token() }}
+                    <div class="modal-header">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <h5 class="modal-title" id="exampleModalLabel">Reservar cita</h5>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="horario" name="Horario">
+                    <input type="text" id="fecha" name="Fecha">
+
+                    <div class="modal-body">
+                        <div class="box-body">
+
+                            ¿Desea reservar la cita?
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
+                            data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    @include('sweet::alert')
     <!-- Vendors -->
-    <script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('dentco-html/vendor/cookie/jquery.cookie.js') }}"></script>
     <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/moment.js') }}"></script>
@@ -221,5 +261,24 @@
 
 
 </body>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    });
+
+    function modal_reserva_cita(id) {
+        document.getElementById('horario').value = id;
+        document.getElementById('fecha').value = document.getElementById('calendario').value;
+        $('#modal_reserva_cita').modal('show');
+
+    }
+
+    function cerrar_modal()
+    {
+        $('#modal_reserva_cita').modal('hide');
+    }
+</script>
 
 </html>
