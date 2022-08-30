@@ -84,7 +84,7 @@
                                                 class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="{{ url('catalogo/especialidad/') }}">Especialidad</a></li>
-                                            <li><a href="{{ url('catalogo/unidad/') }}">Unidades</a></li>
+                                            <li><a href="{{ url('catalogo/doctor/') }}">Doctor</a></li>
                                             @can('read empleados')
                                                 <li><a href="{{ url('empleado/prestacion') }}">Prestación</a></li>
                                             @endcan

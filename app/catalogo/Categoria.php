@@ -21,8 +21,8 @@ class Categoria extends Model
     protected $guarded = [];
 
 
-    public function espacialidades()
+    public function especialidades()
     {
-        return $this->hasMany('App\catalogo\Especialidad', 'Categoria');
+        return $this->hasMany('App\catalogo\Especialidad', 'Especialidad');
     }
 }
