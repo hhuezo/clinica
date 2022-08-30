@@ -85,6 +85,7 @@
                                         <ul class="nav child_menu">
                                             <li><a href="{{ url('catalogo/especialidad/') }}">Especialidad</a></li>
                                             <li><a href="{{ url('catalogo/doctor/') }}">Doctor</a></li>
+                                            <li><a href="{{ url('catalogo/horario/') }}">Horario</a></li>
                                             @can('read empleados')
                                                 <li><a href="{{ url('empleado/prestacion') }}">Prestación</a></li>
                                             @endcan
