@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('administracion');
+        if (auth()->user()->can('reserva citas')) {
+            return view('welcome');
+        }
+        else{
+            return view('administracion');
+        }
     }
 }

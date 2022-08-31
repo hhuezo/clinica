@@ -30,7 +30,15 @@
 
 			</div>
             <div class="col-auto ml-auto d-flex align-items-center">
+                @if (!auth()->user())
                 <a href="{{url('login')}}" class="hovicon">Ingresar</a>
+                @else
+
+
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Salir') }} <i style="padding-left: 81%;" class="fa fa-sign-out"></i>
+                </a>
+                @endif
             </div>
 		</div>
 		<div class="header-content">
@@ -282,3 +290,6 @@
 		</div>
         <?php  } ?>
 		<!--//section-->
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
