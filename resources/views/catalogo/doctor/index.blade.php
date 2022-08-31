@@ -27,6 +27,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Nombre</th>
                         <th>Especialidad</th>
                         <th>Titulo</th>
                         <th>Foto</th>

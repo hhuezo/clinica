@@ -94,7 +94,7 @@
                                 <ul class="services-nav flex-column flex-nowrap">
                                     <li class="nav-item">
                                         <a class="nav-link" href="#submenu1" data-toggle="collapse"
-                                            data-target="#submenu1">Horarios</a>
+                                            data-target="#submenu1">Horario</a>
                                         <div class="collapse show" id="submenu1">
                                             <ul class="flex-column nav">
                                                 @foreach ($horarios as $horario)

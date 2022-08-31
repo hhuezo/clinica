@@ -7,6 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\catalogo\DoctorFormRequest;
 use Illuminate\Support\Facades\Redirect;
+
+use App\catalogo\Horario;
+use App\catalogo\PerfilProfesional;
+use App\Cita;
+
+use Carbon\Carbon;
+
+
 class DoctorController extends Controller
 {
     public function __construct()
@@ -60,8 +68,34 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::with('especialidad')->where('Id', '=', $id)->first();
         $especialidad = Especialidad::get();
+        $date = Carbon::now();
 
-        return view('catalogo.doctor.edit', ['doctor' => Doctor::findOrFail($id),'especialidad' => $especialidad,]);
+        $array_doctor = array();
+
+        $doctor = Doctor::with('especialidad')->where('Id', '=', $id)->get();
+
+        $date = Carbon::now();
+
+        foreach ($doctor as $doc) {
+            array_push($array_doctor, $doc->Id);
+        }
+
+        $array_horarios = array();
+        $citas = Cita::where('Fecha', '=', $date->format('Y-m-d'))->where('Activo', '=', 1)->get();
+
+        foreach ($citas as  $cita) {
+            array_push($array_horarios, $cita->Horario);
+        }
+        //dd($array_horarios );
+
+        $horarios = Horario::whereIn('Doctor', $array_doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+            ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
+            $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
+
+//  dd($perfiles_profesionales);
+
+        return view('catalogo.doctor.edit', ['doctor' => Doctor::findOrFail($id),'especialidad' => $especialidad,'horarios' => $horarios,'perfiles_profesionales' => $perfiles_profesionales
+        ]);
 
     }
 

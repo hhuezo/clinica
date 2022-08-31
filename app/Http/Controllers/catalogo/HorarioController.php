@@ -59,21 +59,22 @@ class HorarioController extends Controller
 
     }
 
-    public function update(EspecialidadFormRequest $request, $id)
+    public function update(HorarioFormRequest $request, $id)
     {
-        $especialidad = Especialidad::findOrFail($id);
-        $especialidad->Nombre = $request->get('Nombre');
-        $especialidad->Categoria = $request->get('Categoria');
-        $especialidad->update();
+        $horario = Horario::findOrFail($id);
+        $horario->Dia = $request->get('Dia');
+        $horario->Hora = $request->get('Hora');
+        $horario->Doctor = $request->get('Doctor');
+        $horario->update();
         alert()->info('El registro ha sido modificado correctamente');
-        return redirect('catalogo/especialidad/' . $id . '/edit');
+        return redirect('catalogo/horario/' . $id . '/edit');
     }
     public function destroy($id)
     {
-        $especialidad = Especialidad::findOrFail($id);
-        $especialidad->Activo = '0';
-        $especialidad->update();
+        $horario = Horario::findOrFail($id);
+        $horario->Activo = '0';
+        $horario->update();
         alert()->error('El registro ha sido eliminado correctamente');
-        return Redirect::to('catalogo/especialidad');
+        return Redirect::to('catalogo/horario');
     }
 }
