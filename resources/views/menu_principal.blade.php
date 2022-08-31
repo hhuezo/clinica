@@ -56,6 +56,7 @@
 												<li><a class="dropdown-item" href="{{url('consultas')}}">Consultas Médicas</a></li>
 												<li><a class="dropdown-item" href="{{url('consultas_domicilio')}}">Consultas a Domicilio</a></li>
 												<li><a class="dropdown-item" href="{{url('jornadas')}}">Jornadas médicas empresariales</a></li>
+                                                <li><a class="dropdown-item" href="{{url('citas')}}">Citas</a></li>
 											</ul>
 										</li>
 										<li class="nav-item">
