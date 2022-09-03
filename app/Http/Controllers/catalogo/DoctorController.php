@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\catalogo\DoctorFormRequest;
 use App\Http\Requests\catalogo\HorarioFormRequest;
 use Illuminate\Support\Facades\Redirect;
-
 use App\catalogo\Horario;
 use App\catalogo\PerfilProfesional;
 use App\Cita;
@@ -97,25 +96,14 @@ class DoctorController extends Controller
 
         $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
 
-
-
-
         $hoaios_actuales =  $doctor->horarios;
 
         $horario = Horario::where('Activo', '=', 1)->get();
 
-
-
-
-
-
-
-
-         //dd($horario);
+        //dd($horario);
 
         return view('catalogo.doctor.edit', [
-            'doctor' => Doctor::findOrFail($id), 'especialidad' => $especialidad, 'horario' => $horario, 'perfiles_profesionales' => $perfiles_profesionales, 'dias' => $dias
-            ,'hoaios_actuales' => $hoaios_actuales
+            'doctor' => Doctor::findOrFail($id), 'especialidad' => $especialidad, 'horario' => $horario, 'perfiles_profesionales' => $perfiles_profesionales, 'dias' => $dias, 'hoaios_actuales' => $hoaios_actuales
         ]);
     }
 
@@ -129,26 +117,36 @@ class DoctorController extends Controller
         alert()->info('El registro ha sido modificado correctamente');
         return redirect('catalogo/doctor/' . $id . '/edit');
     }
-    public function destroy($id)
-    {
-        $doctor = Doctor::findOrFail($id);
-        $doctor->Activo = '0';
-        $doctor->update();
-        alert()->error('El registro ha sido eliminado correctamente');
-        return Redirect::to('catalogo/doctor');
-    }
 
-    public function Horario(HorarioFormRequest $request)
+
+    public function Horario(DoctorFormRequest $request)
     {
         $horario = new Horario();
         $horario->Dia = $request->get('Dia');
         $horario->Hora = $request->get('Hora');
-        $horario->Doctor = $request->get('Doctor');
+        $horario->Doctor = $request->get('Id');
         $horario->Activo = '1';
         $horario->save();
         alert()->success('El registro ha sido agregado correctamente');
-        return Redirect::to('catalogo/doctor/create');
+        return redirect('catalogo/doctor/' . $request->get('Id') . '/edit');
     }
+
+    public function Perfil(DoctorFormRequest $request)
+    {
+        $perfil = new PerfilProfesional();
+        $perfil->Descripcion = $request->get('Descripcion');
+        $perfil->Doctor = $request->get('Id');
+
+        $perfil->save();
+        alert()->success('El registro ha sido agregado correctamente');
+        return redirect('catalogo/doctor/' . $request->get('Id') . '/edit');
+    }
+
+
+
+
+
+
 
 
 

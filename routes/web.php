@@ -39,3 +39,10 @@ Route::resource('catalogo/horario', 'catalogo\HorarioController');
 Route::post('catalogo/horario', 'catalogo\HorarioController@addCentro');
 
 Route::post('catalogo/doctor/horario', 'catalogo\DoctorController@Horario');
+Route::post('catalogo/doctor/perfil', 'catalogo\DoctorController@Perfil');
+
+Route::post('catalogo/deleteCentro', 'catalogo\DoctorController@deleteCentro');
+
+
+
+
