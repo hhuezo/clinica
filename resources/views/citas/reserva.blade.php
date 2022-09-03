@@ -55,7 +55,7 @@
                     </div>
                     <div class="filters-row-right d-flex align-items-center">
                         <span>¿Cuándo deseas tu cita? &nbsp; &nbsp; </span>
-                        <input type="text" id="especialidad" value="{{$especialidad->Id}}">
+                        <input type="hidden" id="especialidad" value="{{$especialidad->Id}}">
                         <input type="date" id="calendario" value="{{ date('Y-m-d') }}">
                     </div>
                 </div>
@@ -224,8 +224,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <input type="text" id="horario" name="Horario">
-                    <input type="text" id="fecha" name="Fecha">
+                    <input type="hidden" id="horario" name="Horario">
+                    <input type="hidden" id="fecha" name="Fecha">
 
                     <div class="modal-body">
                         <div class="box-body">
