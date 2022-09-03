@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\catalogo;
+
 use App\catalogo\Doctor;
 use App\catalogo\Especialidad;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\catalogo\DoctorFormRequest;
+use App\Http\Requests\catalogo\HorarioFormRequest;
 use Illuminate\Support\Facades\Redirect;
 
 use App\catalogo\Horario;
@@ -37,7 +39,7 @@ class DoctorController extends Controller
     {
         $especialidad = Especialidad::get();
 
-       // dd($categoria);
+        // dd($categoria);
         return view("catalogo.doctor.create", ["especialidad" => $especialidad]);
     }
 
@@ -54,7 +56,6 @@ class DoctorController extends Controller
             $path = public_path() . '/fotos';
             $Foto->move($path, $NombreFoto);
             $doctor->Foto = $NombreFoto;
-
         }
         $doctor->Titulo = $request->get('Titulo');
         $doctor->Especialidad = $request->get('Especialidad');
@@ -64,39 +65,58 @@ class DoctorController extends Controller
         return Redirect::to('catalogo/doctor/create');
     }
 
+    public function show($id)
+    {
+        return view('catalogo.doctor.show', ['doctor' => Doctor::findOrFail($id)]);
+    }
+
     public function edit($id)
     {
-        $doctor = Doctor::with('especialidad')->where('Id', '=', $id)->first();
+        $doctor = Doctor::findOrFail($id);
+
         $especialidad = Especialidad::get();
         $date = Carbon::now();
 
         $array_doctor = array();
 
-        $doctor = Doctor::with('especialidad')->where('Id', '=', $id)->get();
+
 
         $date = Carbon::now();
 
-        foreach ($doctor as $doc) {
-            array_push($array_doctor, $doc->Id);
-        }
+
 
         $array_horarios = array();
         $citas = Cita::where('Fecha', '=', $date->format('Y-m-d'))->where('Activo', '=', 1)->get();
 
-        foreach ($citas as  $cita) {
-            array_push($array_horarios, $cita->Horario);
-        }
+
         //dd($array_horarios );
+        $dias = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");
 
-        $horarios = Horario::whereIn('Doctor', $array_doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
-            ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
-            $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
+        $horario = Horario::with('doctores')->where('Id', '=', $id)->first();
 
-//  dd($perfiles_profesionales);
 
-        return view('catalogo.doctor.edit', ['doctor' => Doctor::findOrFail($id),'especialidad' => $especialidad,'horarios' => $horarios,'perfiles_profesionales' => $perfiles_profesionales
+        $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
+
+
+
+
+        $hoaios_actuales =  $doctor->horarios;
+
+        $horario = Horario::where('Activo', '=', 1)->get();
+
+
+
+
+
+
+
+
+         //dd($horario);
+
+        return view('catalogo.doctor.edit', [
+            'doctor' => Doctor::findOrFail($id), 'especialidad' => $especialidad, 'horario' => $horario, 'perfiles_profesionales' => $perfiles_profesionales, 'dias' => $dias
+            ,'hoaios_actuales' => $hoaios_actuales
         ]);
-
     }
 
     public function update(DoctorFormRequest $request, $id)
@@ -117,4 +137,20 @@ class DoctorController extends Controller
         alert()->error('El registro ha sido eliminado correctamente');
         return Redirect::to('catalogo/doctor');
     }
+
+    public function Horario(HorarioFormRequest $request)
+    {
+        $horario = new Horario();
+        $horario->Dia = $request->get('Dia');
+        $horario->Hora = $request->get('Hora');
+        $horario->Doctor = $request->get('Doctor');
+        $horario->Activo = '1';
+        $horario->save();
+        alert()->success('El registro ha sido agregado correctamente');
+        return Redirect::to('catalogo/doctor/create');
+    }
+
+
+
+
 }

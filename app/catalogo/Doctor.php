@@ -28,6 +28,9 @@ class Doctor extends Model
         return $this->belongsTo('App\catalogo\Especialidad', 'Especialidad', 'Id');
     }
 
-
+    public function horarios()
+    {
+        return $this->hasMany('App\catalogo\Horario','Doctor');
+    }
 
 }
