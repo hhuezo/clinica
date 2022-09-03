@@ -114,6 +114,7 @@
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
+                        <th>Dia</th>
                             <th>Horarios</th>
                             <th><i class="fa fa-trash fa-lg"></i></th>
                         </tr>
