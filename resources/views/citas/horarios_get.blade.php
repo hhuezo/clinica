@@ -1,3 +1,4 @@
+<script src="{{ asset('vendors/sweetalert/sweetalert.min.js') }}"></script>
 @foreach ($doctores as $doctor)
     <div class="container mt-6">
         <div class="row">
@@ -46,3 +47,4 @@
         </div>
     </div>
 @endforeach
+@include('sweet::alert')

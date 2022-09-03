@@ -30,9 +30,31 @@ class RolesAndPermissions extends Seeder
         Permission::create( ['name' => 'delete permissions'] );
 
         $role = Role::create( ['name' => 'administrador'] );
-        $role->givePermissionTo( Permission::all() );*/
+        $role->givePermissionTo( Permission::all() );
 
         $user = User::findOrFail(1);
         $user->assignRole('Administrador');
+
+        $role = Role::findOrFail(1);
+        $role->givePermissionTo( Permission::all() );
+
+        Permission::create( ['name' => 'catalogos'] );
+        Permission::create( ['name' => 'administracion usuarios'] );
+        Permission::create( ['name' => 'citas doctor'] );
+        Permission::create( ['name' => 'reserva citas'] );
+
+        $role = Role::create( ['name' => 'admin'] );
+        $role->givePermissionTo( Permission::all() );
+
+
+        $role = Role::create( ['name' => 'doctor'] );
+
+        $role->givePermissionTo( 'citas doctor',);
+
+        $role = Role::create( ['name' => 'paciente'] );
+        $role->givePermissionTo( 'reserva citas',);*/
+
+        $user = User::findOrFail(2);
+        $user->assignRole('paciente');
     }
 }
