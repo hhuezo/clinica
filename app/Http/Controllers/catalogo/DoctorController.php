@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\catalogo\DoctorFormRequest;
 use App\Http\Requests\catalogo\HorarioFormRequest;
 use Illuminate\Support\Facades\Redirect;
-
 use App\catalogo\Horario;
 use App\catalogo\PerfilProfesional;
 use App\Cita;
@@ -73,14 +72,12 @@ class DoctorController extends Controller
     public function edit($id)
     {
         $doctor = Doctor::findOrFail($id);
-
         $especialidad = Especialidad::get();
+
+
+
         $date = Carbon::now();
-
         $array_doctor = array();
-
-
-
         $date = Carbon::now();
 
 
@@ -92,30 +89,14 @@ class DoctorController extends Controller
         //dd($array_horarios );
         $dias = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");
 
-        $horario = Horario::with('doctores')->where('Id', '=', $id)->first();
+        $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->where('Doctor', '=', $id)->get();
 
+        $horarios =  Horario::where('Doctor','=',$id)->where('Activo', '=', 1)->orderBy('Dia')->orderBy('Hora')->get();
 
-        $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
-
-
-
-
-        $hoaios_actuales =  $doctor->horarios;
-
-        $horario = Horario::where('Activo', '=', 1)->get();
-
-
-
-
-
-
-
-
-         //dd($horario);
 
         return view('catalogo.doctor.edit', [
-            'doctor' => Doctor::findOrFail($id), 'especialidad' => $especialidad, 'horario' => $horario, 'perfiles_profesionales' => $perfiles_profesionales, 'dias' => $dias
-            ,'hoaios_actuales' => $hoaios_actuales
+            'doctor' => Doctor::findOrFail($id), 'especialidad' => $especialidad, 'horarios' => $horarios,
+            'perfiles_profesionales' => $perfiles_profesionales, 'dias' => $dias
         ]);
     }
 
@@ -129,28 +110,64 @@ class DoctorController extends Controller
         alert()->info('El registro ha sido modificado correctamente');
         return redirect('catalogo/doctor/' . $id . '/edit');
     }
-    public function destroy($id)
-    {
-        $doctor = Doctor::findOrFail($id);
-        $doctor->Activo = '0';
-        $doctor->update();
-        alert()->error('El registro ha sido eliminado correctamente');
-        return Redirect::to('catalogo/doctor');
-    }
 
-    public function Horario(HorarioFormRequest $request)
+
+    public function agregar_horario(DoctorFormRequest $request)
     {
         $horario = new Horario();
         $horario->Dia = $request->get('Dia');
         $horario->Hora = $request->get('Hora');
-        $horario->Doctor = $request->get('Doctor');
+        $horario->Doctor = $request->get('Id');
         $horario->Activo = '1';
         $horario->save();
         alert()->success('El registro ha sido agregado correctamente');
-        return Redirect::to('catalogo/doctor/create');
+        return redirect('catalogo/doctor/' . $request->get('Id') . '/edit');
+    }
+
+
+
+    public function eliminar_horario(Request $request)
+    {
+        $horario = Horario::findOrFail($request->get('Id'));
+        $horario->Activo = 0;
+        $horario->update();
+        alert()->error('El registro ha sido eliminado correctamente');
+        return redirect('catalogo/doctor/' . $horario->Doctor . '/edit');
+    }
+
+
+    public function agregar_perfil(Request $request)
+    {
+        $perfil = new PerfilProfesional();
+        $perfil->Descripcion = $request->get('Descripcion');
+        $perfil->Doctor = $request->get('Id');
+        $perfil->Activo = '1';
+        $perfil->save();
+        alert()->success('El registro ha sido agregado correctamente');
+        return redirect('catalogo/doctor/' . $request->get('Id') . '/edit');
+    }
+
+    public function eliminar_perfil(Request $request)
+    {
+        $perfil = PerfilProfesional::findOrFail($request->get('Id'));
+        $perfil->Activo = 0;
+        $perfil->update();
+        alert()->error('El registro ha sido eliminado correctamente');
+        return redirect('catalogo/doctor/' . $perfil->Doctor . '/edit');
     }
 
 
 
 
+    public function destroy($id, DoctorFormRequest $request)
+    {
+        $perfil = PerfilProfesional::findOrFail($id);
+        $perfil->delete();
+        alert()->error('El registro ha sido eliminado correctamente');
+        return redirect()->action([DoctorController::class, 'edit'], ["Id" => $request->get('Doctor')]);
+
+
+
+
+    }
 }

@@ -46,6 +46,7 @@
                     </div>
                 </div>
 
+
                 <div class="form-group row">
                     <label class="control-label col-md-3" align="right">Especialidad</label>
                     <div class="col-md-6">
@@ -66,140 +67,168 @@
                     <button class="btn btn-primary" type="submit">Guardar</button>
                     <a href="{{ url('catalogo/doctor') }}"><button type="button"
                             class="btn btn-danger">Cancelar</button></a>
-                    <td align="center">
-
-                        <button type="button" class="btn btn-success"
-                            onclick="updt(<?php echo $obj->Id; ?>,'<?php echo $obj->Dia; ?>','<?php echo $obj->Hora; ?>'
-                           )">Agrerar
-                            Horario</button></a>
-
-                    </td>
-
-
 
                 </div>
-
-
 
                 {!! Form::close() !!}
 
-            </div>
-            <br>
-            <br>
-            <div align="right " class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-horizontal form-label-left">
+                <!-- foto -->
+                <div class="form-group row">
+                    <label class="control-label col-md-3" align="right">&nbsp;</label>
+                    <div class="col-md-6">
+                        <div class="image view view-first">
+                            <img style="max-height: 200px; display: block;"
+                                src="{{ asset('dentco-html/images/' . $doctor->Foto) }}" alt="image">
+                            <br>
+                            <input type="file" name="Foto"> <input type="submit">
 
-                <div class="col-md-6">
-                    <div class="doctor-page-photo text-center">
-                        <img src="{{ asset('dentco-html/images/' . $doctor->Foto) }}"
-                            style="max-height:400px;max-width:500px;height:auto;width:auto;" class="img-fluid"
-                            alt="">
-                        <div class="mt-3 mt-md-5"></div>
-                        <ul class="marker-list-md">
-                            @foreach ($perfiles_profesionales as $perfil)
-                                @if ($perfil->Doctor == $doctor->Id)
-                                    <li><i>{{ $perfil->Descripcion }}</i></li>
-                                @endif
-                            @endforeach
-
-
-                        </ul>
-
-
-
+                        </div>
                     </div>
                 </div>
 
-
+                <!-- fin foto -->
 
 
             </div>
+            <br>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-horizontal form-label-left">&nbsp;
 
 
-            <div align="right " class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-horizontal form-label-left">
-                <div class="form-group">
-                    <table class="table table-hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Dia</th>
-                                <th>Horarios</th>
-                                <th><i class="fa fa-trash fa-lg"></i></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($hoaios_actuales as $obj)
-                                <tr>
-                                    <td align="center">{{ $dias[$obj->Dia] }}</td>
-                                    <td align="center">{{ $obj->Hora }}</td>
-                                    <td>
-                                        <i class="fa fa-trash fa-lg" onclick="eliminarTecnico(<?php echo $obj->Id; ?>)"></i>
-                                    </td>
-                                </tr>
-                            @endforeach
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            @include('sweet::alert')
-
-            <div class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true" data-tipo="1">
+                <div class="modal fade" id="modal_eliminar_perfil" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <form action="{{ url('catalogo/doctor/horario') }}" method="POST">
+                        <form action="{{ url('catalogo/doctor/eliminar_perfil') }}" method="POST">
                             <div class="modal-header">
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modicar Cantidad Solicitada</h5>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <h5 class="modal-title" id="exampleModalLabel">Eliminar perfil</h5>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <input type="text" value="{{ $doctor->Id }}" id="Id" name="Id">
+                            <input type="hidden" id="IdPerfil" name="Id">
 
                             <div class="modal-body">
                                 <div class="box-body">
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    Desea eliminar el registro?
+                                </div>
 
+                                <div class="clearfix"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                </div>
+
+                                {{ Form::token() }}
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-horizontal form-label-left">
+                <div class="x_title">
+                    <h2>Horarios </h2>
+
+                    <ul class="nav navbar-right panel_toolbox">
+                        <button onclick="modal_agregar_horario()" class="btn btn-info float-right"> <i
+                                class="fa fa-plus"></i> Agregar</button>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <table id="datatable1" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Hora</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        @foreach ($horarios as $obj)
+                            <tr>
+                                <td align="center">{{ $dias[$obj->Dia] }}</td>
+                                <td align="center">{{ $obj->Hora }}</td>
+                                <td>
+
+                                    <i class="fa fa-trash fa-lg" onclick="modal_eliminar_horario(<?php echo $obj->Id; ?>)"></i>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-horizontal form-label-left">
+                <div class="x_title">
+                    <h2>Perfil profesional </h2>
+
+                    <ul class="nav navbar-right panel_toolbox">
+                        <button onclick="modal_agregar_perfil()" class="btn btn-info float-right"> <i
+                                class="fa fa-plus"></i> Agregar</button>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+
+                <table id="datatable2" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($perfiles_profesionales as $obj)
+                            <tr>
+                                <td align="center">{{ $obj->Descripcion }}</td>
+                                <td>
+
+                                    <i class="fa fa-trash fa-lg" onclick="modal_eliminar_perfil(<?php echo $obj->Id; ?>)"></i>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+            <div class="modal fade" id="modal_agregar_perfil" tabindex="-2" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="7">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="{{ url('catalogo/doctor/agregar_perfil') }}" method="POST">
+                            <div class="modal-header">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <h5 class="modal-title" id="exampleModalLabel">Agregar perfil</h5>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <input type="hidden" value="{{ $doctor->Id }}" name="Id">
+
+                            <div class="modal-body">
+                                <div class="box-body">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-
-                                            <label class="control-label col-md-5" align="right">Dia</label>
-                                            <div class="col-md-8 col-sm-8 col-xs-12">
-                                                <select id="Dia" name="Dia" class="form-control  ">
-                                                    <option value="0" <?php if ($dias == 0) {
-                                                        echo 'selected';
-                                                    } ?>>Domingo</option>
-                                                    <option value="1" <?php if ($dias == 1) {
-                                                        echo 'selected';
-                                                    } ?>>Lunes</option>
-                                                    <option value="2" <?php if ($dias == 2) {
-                                                        echo 'selected';
-                                                    } ?>>Martes</option>
-                                                    <option value="3" <?php if ($dias == 3) {
-                                                        echo 'selected';
-                                                    } ?>>Miercoles</option>
-                                                    <option value="4" <?php if ($dias == 4) {
-                                                        echo 'selected';
-                                                    } ?>>Jueves</option>
-                                                    <option value="5" <?php if ($dias == 5) {
-                                                        echo 'selected';
-                                                    } ?>>Viernes</option>
-                                                    <option value="6" <?php if ($dias == 6) {
-                                                        echo 'selected';
-                                                    } ?>>Sabado</option>
-
-                                                </select>
+                                            <label class="control-label col-md-3">Descripción</label>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="text" name="Descripcion" required class="form-control">
                                             </div>
 
-                                        </div>
-                                        <br>
-
-                                        <label class="col-md-5 control-label">Hora</label>
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-
-
-                                            <input type="text" name="Hora" id="Hora" required
-                                                data-inputmask="'mask': ['99:99']" class="form-control">
                                         </div>
 
                                         <div class="clearfix"></div>
@@ -208,11 +237,6 @@
                                                 data-dismiss="modal">Cancelar</button>
                                             <button type="submit" class="btn btn-primary">Aceptar</button>
                                         </div>
-
-
-
-
-
 
                                         {{ Form::token() }}
 
@@ -231,32 +255,143 @@
 
 
 
+        </div>
 
 
 
 
-            <!-- jQuery -->
-            <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+        @include('sweet::alert')
 
 
 
-            <script type="text/javascript">
-                function updt(id, Dia, Doctor, Hora) {
-                    // alert(Nombre);
-                    //document.getElementById('Id').value = Doctor;
-                    document.getElementById('Hora').value = Hora;
-                    document.getElementById('Dia').value = Dia;
 
+        <div class="modal fade" id="modal_eliminar_horario" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="{{ url('catalogo/doctor/eliminar_horario') }}" method="POST">
+                        <div class="modal-header">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h5 class="modal-title" id="exampleModalLabel">Eliminar Horario</h5>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <input type="hidden" id="IdHorario" name="Id">
 
-                    $('#modal_update').modal('show');
-                }
-            </script>
+                        <div class="modal-body">
+                            <div class="box-body">
+                                Desea eliminar el registro?
+                            </div>
 
+                            <div class="clearfix"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                            </div>
 
+                            {{ Form::token() }}
+
+                    </form>
+                </div>
+            </div>
         </div>
 
 
 
 
 
-    @endsection
+
+
+    </div>
+
+
+    <div class="modal fade" id="modal_agregar_horario" tabindex="-2" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ url('catalogo/doctor/agregar_horario') }}" method="POST">
+                    <div class="modal-header">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Horario</h5>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <input type="hidden" value="{{ $doctor->Id }}" name="Id">
+
+                    <div class="modal-body">
+                        <div class="box-body">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Dia</label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <select id="Dia" name="Dia" value="0" class="form-control ">
+
+                                            @for ($i = 0; $i < count($dias); $i++)
+                                                <option value="{{ $i }}">{{ $dias[$i] }}</option>
+                                            @endfor
+
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <label class="control-label col-md-3">Hora</label>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input type="time" name="Hora" id="Hora" required class="form-control">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                </div>
+
+                                {{ Form::token() }}
+
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+
+
+    <script type="text/javascript">
+        function modal_agregar_horario() {
+            $('#modal_agregar_horario').modal('show');
+        }
+
+        function modal_eliminar_horario(id) {
+            document.getElementById('IdHorario').value = id;
+
+            $('#modal_eliminar_horario').modal('show');
+        }
+
+        function modal_agregar_perfil() {
+            $('#modal_agregar_perfil').modal('show');
+        }
+
+        function modal_eliminar_perfil(id) {
+            document.getElementById('IdPerfil').value = id;
+
+            $('#modal_eliminar_perfil').modal('show');
+        }
+    </script>
+
+
+    </div>
+
+
+
+
+
+@endsection
