@@ -49,7 +49,7 @@
 
                         </td>
                     </tr>
-                    @include('catalogo.doctor.modal')
+
                     @endforeach
                 </tbody>
             </table>
