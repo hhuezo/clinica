@@ -146,9 +146,15 @@ class DoctorController extends Controller
 
 
 
+    public function destroy($id, DoctorFormRequest $request)
+    {
+        $perfil = PerfilProfesional::findOrFail($id);
+        $perfil->delete();
+        alert()->error('El registro ha sido eliminado correctamente');
+        return redirect()->action([DoctorController::class, 'edit'], ["Id" => $request->get('Doctor')]);
 
 
 
 
-
+    }
 }

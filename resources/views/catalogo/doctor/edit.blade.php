@@ -107,15 +107,53 @@
                         <td align="center">{{ $perfil->Descripcion }}</td>
 
                         <td>
-                            <i class="fa fa-trash fa-lg" onclick="destroy(<?php echo $obj->Id ?>)"></i>
+
+                            <a href="" data-target="#modal-delete-{{$perfil->Id}}" data-toggle="modal"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endif
+                    @include('catalogo.doctor.modal')
                     @endforeach
 
 
                 </tbody>
             </table>
+
+            <div class="modal fade" id="modal_borrar_centro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="../../deleteCentro" method="POST">
+                            <div class="modal-header">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <input type="hidden" id="CentroModal" name="CentroModal">
+                            <input type="hidden" id="UsuarioModalCentro" value="{{$doctor->id}}" name="UsuarioModalCentro">
+                            <div class="modal-body">
+                                <div class="box-body">
+                                    {{Form::token()}}
+                                    ¿Desea eliminar el registro?
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
         </div>
 
         <div align="right " class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-horizontal form-label-left">
@@ -146,48 +184,58 @@
         </div>
         @include('sweet::alert')
 
-        <!-- Modal eliminar centro -->
+
 
         <div class="modal fade" id="modal_perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <form action="{{ url('catalogo/doctor/perfil') }}" method="POST">
-                            <div class="modal-header">
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                    <h5 class="modal-title" id="exampleModalLabel">Agregar Perfil</h5>
-                                </div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="{{ url('catalogo/doctor/perfil') }}" method="POST">
+                        <div class="modal-header">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Perfil</h5>
                             </div>
-                            <input type="hidden" value="{{$doctor->Id}}" id="Id" name="Id">
-                            <div class="modal-body">
-                                <div class="box-body">
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <input type="hidden" value="{{$doctor->Id}}" id="Id" name="Id">
+                        <div class="modal-body">
+                            <div class="box-body">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 
-                                        <br>
+                                    <br>
 
-                                        <label class="col-md-5 control-label">Perfil</label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label class="col-md-5 control-label">Perfil</label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
 
-                                        <textarea class="col-md-12 "name="Descripcion"  id="Descripcion" class="form-control" ></textarea>
-                                            </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Aceptar</button>
-                                        </div>
-
-                                        {{ Form::token() }}
-
+                                        <textarea class="col-md-12 " name="Descripcion" id="Descripcion" class="form-control"></textarea>
                                     </div>
-                                </div>
 
-                        </form>
-                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                                    </div>
+
+                                    {{ Form::token() }}
+
+                                </div>
+                            </div>
+
+                    </form>
                 </div>
             </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
     </div>
     <div class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
         <div class="modal-dialog" role="document">
@@ -209,8 +257,8 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Dia</label>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <option  >SELECCIONE</option>
-                                        <select id="Dia" name="Dia" value="0"  class="form-control ">
+                                        <option>SELECCIONE</option>
+                                        <select id="Dia" name="Dia" value="0" class="form-control ">
 
                                             <option value="0" <?php if ($dias == 0) {
                                                                     echo 'selected';
@@ -241,7 +289,7 @@
                                 <br>
                                 <label class="col-md-6 col-sm-6 col-xs-6 control-label">Hora</label>
                                 <div class="col-md-8 col-sm-8 col-xs-8">
-                                    <input type="time" name="Hora" id="Hora"  class="form-control">
+                                    <input type="time" name="Hora" id="Hora" class="form-control">
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="modal-footer">
@@ -263,15 +311,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
     <!-- jQuery -->
     <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
 
@@ -282,21 +321,25 @@
 
             document.getElementById('Hora').value = Hora;
             document.getElementById('Dia').value = Dia;
-
-
             $('#modal_update').modal('show');
         }
 
         function Perfil(Id, Descripcion) {
 
             document.getElementById('Descripcion').value = Descripcion;
-
             $('#modal_perfil').modal('show');
         }
 
 
 
+        function eliminarCentro(Centro) {
 
+            document.getElementById('CentroModal').value = Centro;
+
+            $('#modal_borrar_centro').modal('show');
+
+
+        }
     </script>
 
 
