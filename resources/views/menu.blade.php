@@ -41,7 +41,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Bienvenid@,</span>
-                            <h2>Usuario</h2>
+                            <h2>{{ auth()->user()->email }}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -86,80 +86,10 @@
                                             <li><a href="{{ url('catalogo/especialidad/') }}">Especialidad</a></li>
                                             <li><a href="{{ url('catalogo/doctor/') }}">Doctor</a></li>
                                             <li><a href="{{ url('catalogo/horario/') }}">Horario</a></li>
-                                            @can('read empleados')
-                                                <li><a href="{{ url('empleado/prestacion') }}">Prestación</a></li>
-                                            @endcan
-                                            <li><a>Catalogos<span class="fa fa-chevron-down"></span></a>
-                                                <ul class="nav child_menu">
-                                                    @can('read cargo_funcional')
-                                                        <li><a href="{{ url('catalogo/cargo_funcional/') }}">Cargo funcional
-                                                                mp</a></li>
-                                                    @endcan
-                                                    @can('read cargo_funcional')
-                                                        <li><a href="{{ url('catalogo/cargo_nominal_hacienda/') }}">Cargo
-                                                                nominal hacienda</a></li>
-                                                    @endcan
-                                                    @can('read nivel_academico')
-                                                        <li><a href="{{ url('catalogo/nivel_academico/') }}">Nivel
-                                                                academico</a></li>
-                                                    @endcan
-                                                    @can('catalogos empleados')
-                                                        <li><a href="{{ url('catalogo/banco/') }}">Banco</a></li>
-                                                        @can('read motivo_retiro')
-                                                            <li><a href="{{ url('catalogo/motivo_retiro/') }}">Motivo de
-                                                                    retiro</a>
-                                                            </li>
-                                                        @endcan
-                                                        @can('read oficina')
-                                                            <li><a href="{{ url('catalogo/oficina/') }}">Oficina</a></li>
-                                                        @endcan
 
-                                                        @can('read prevision')
-                                                            <li><a href="{{ url('catalogo/prevision/') }}">Prevision</a></li>
-                                                        @endcan
 
-                                                        @can('read profesion')
-                                                            <li><a href="{{ url('catalogo/profesion/') }}">Profesion</a></li>
-                                                        @endcan
-
-                                                        @can('read tipo_oficina')
-                                                            <li><a href="{{ url('catalogo/tipo_oficina/') }}">Tipo oficina</a>
-                                                            </li>
-                                                        @endcan
-
-                                                        @can('read tipo_plaza')
-                                                            <li><a href="{{ url('catalogo/tipo_plaza/') }}">Tipo plaza</a></li>
-                                                        @endcan
-
-                                                        @can('read tipo_plaza')
-                                                            <li><a href="{{ url('catalogo/sede/') }}">Sedes</a></li>
-                                                        @endcan
-                                                    @endcan
-
-                                                </ul>
-                                            </li>
-                                            <li><a>Reportes<span class="fa fa-chevron-down"></span></a>
-                                                <ul class="nav child_menu">
-                                                    <li><a href="{{ url('reportes/reporte_general') }}"> Maestro de
-                                                            personal</a></li>
-                                                    <li><a href="{{ url('reportes/reporte_prestacion') }}">Reporte de
-                                                            Prestaciones</a></li>
-                                                    <li><a href="{{ url('reportes/reporte_contratos') }}">Imprimir
-                                                            Contratos</a></li>
-                                                    <li><a href="{{ url('reporte/ficha_empleado') }}">Ficha Empleado</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
                                         </ul>
                                 </li>@endcan
-
-
-
-
-
-
-
-
 
 
                             </ul>
@@ -171,8 +101,8 @@
                 </div>
             </div>
 
-            <!-- top navigation -->
-            <div class="top_nav">
+              <!-- top navigation -->
+              <div class="top_nav">
                 <div class="nav_menu">
                     <nav>
                         <div class="nav toggle">
@@ -181,15 +111,25 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <img src="{{ asset('img/usuario.jpg') }}" alt="">Usuario
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('img/usuario.jpg') }}" alt="">{{ auth()->user()->email }}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
 
+
+
+                                    <li> <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Salir') }} <i style="padding-left: 81%;" class="fa fa-sign-out"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
 
-
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </ul>
                     </nav>
                 </div>
