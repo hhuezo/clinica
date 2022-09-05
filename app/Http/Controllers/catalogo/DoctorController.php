@@ -47,13 +47,13 @@ class DoctorController extends Controller
         $doctor = new Doctor();
         $doctor->Nombre = $request->get('Nombre');
 
-
-        if ($request->file('Foto')) {
-            $doctor = Doctor::findOrFail($request->get('Doctor'));
+        if ($request->hasFile('Foto')) {
             $Foto = $request->file('Foto');
-            $NombreFoto =   uniqid() . ' ' . $Foto->getClientOriginalName();
-            $path = public_path() . '/fotos';
-            $Foto->move($path, $NombreFoto);
+            $NombreFoto =   $Foto->getClientOriginalName();
+          //  $path = public_path() . '/fotos';
+            $path = public_path("dentco-html/images/");
+          //  $Foto->copy($path, $NombreFoto);
+            copy($Foto->getRealPath(),$path . $NombreFoto);
             $doctor->Foto = $NombreFoto;
         }
         $doctor->Titulo = $request->get('Titulo');
@@ -61,7 +61,7 @@ class DoctorController extends Controller
         $doctor->Activo = '1';
         $doctor->save();
         alert()->success('El registro ha sido agregado correctamente');
-        return Redirect::to('catalogo/doctor/create');
+        return redirect('catalogo/doctor/' . $doctor->Id. '/edit');
     }
 
     public function show($id)
@@ -156,18 +156,32 @@ class DoctorController extends Controller
         return redirect('catalogo/doctor/' . $perfil->Doctor . '/edit');
     }
 
+    public function actualizar_foto(Request $request){
+        $doctor = Doctor::findOrFail($request->get('doctor'));
+        if ($request->hasFile('Foto')) {
+            $Foto = $request->file('Foto');
+            $NombreFoto =   $Foto->getClientOriginalName();
+          //  $path = public_path() . '/fotos';
+            $path = public_path("dentco-html/images/");
+          //  $Foto->copy($path, $NombreFoto);
+            copy($Foto->getRealPath(),$path . $NombreFoto);
+            $doctor->Foto = $NombreFoto;
+        }
+        $doctor->update();
+        alert()->success('La fotografia ha sido actualizada correctamente');
+        return redirect('catalogo/doctor/' . $request->get('doctor'). '/edit');
+    }
+
 
 
 
     public function destroy($id, DoctorFormRequest $request)
     {
-        $perfil = PerfilProfesional::findOrFail($id);
-        $perfil->delete();
+        $doctor = Doctor::findOrFail($id);
+        $doctor->Activo = 0;
+        $doctor->update();
         alert()->error('El registro ha sido eliminado correctamente');
-        return redirect()->action([DoctorController::class, 'edit'], ["Id" => $request->get('Doctor')]);
-
-
-
+        return Redirect::to('catalogo/doctor');
 
     }
 }

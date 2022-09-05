@@ -26,7 +26,7 @@
             <div class="x_content">
                 <br />
 
-                {!!Form::open(array('url'=>'catalogo/doctor','method'=>'POST','autocomplete'=>'off'))!!}
+                {!!Form::open(array('url'=>'catalogo/doctor','method'=>'POST','autocomplete'=>'off','enctype' => 'multipart/form-data'))!!}
                 {{Form::token()}}
 
                 <div class="form-group">
@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Foto</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="file" name="Foto">
+                        <input type="file" name="Foto" accept="image/*">
                     </div>
                 </div>
 

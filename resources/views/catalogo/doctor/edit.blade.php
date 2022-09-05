@@ -73,14 +73,32 @@
                 {!! Form::close() !!}
 
                 <!-- foto -->
-                <div class="form-group row">
+                <div class="form-group row" >
                     <label class="control-label col-md-3" align="right">&nbsp;</label>
-                    <div class="col-md-6">
-                        <div class="image view view-first">
-                            <img style="max-height: 200px; display: block;"
+                    <div class="col-md-6" style=" text-align: center;">
+                        <div class="image view view-first" >
+                            <img style="max-height: 200px; display: block; padding-left: 42%;"
                                 src="{{ asset('dentco-html/images/' . $doctor->Foto) }}" alt="image">
                             <br>
-                            <input type="file" name="Foto"> <input type="submit">
+                            
+                            <form method="POST" action="{{url('doctor/foto/actualizar')}}" enctype="multipart/form-data">
+                            {{ Form::token() }}
+                            <!-- <label class="col-md-12" align="center">Actualizar Fotografia</label> -->
+                                <div class="col-md-6" style="padding-left: 35%;">
+                                    <input type="hidden" value="{{$doctor->Id}}" name="doctor">
+                                    <input type="file" name="Foto" accept="image/*"> 
+                                <br>
+                                
+                       
+                                <button type="submit" class="btn btn-primary" ><i class="fa fa-refresh"></i>
+                                Actualizar Fotografia
+                                </button>
+                                </div>
+                                
+                            </form>
+                            <br>
+                            <br>
+                            
 
                         </div>
                     </div>
