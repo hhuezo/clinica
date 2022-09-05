@@ -42,6 +42,7 @@ Route::post('catalogo/doctor/agregar_horario', 'catalogo\DoctorController@agrega
 Route::post('catalogo/doctor/eliminar_horario', 'catalogo\DoctorController@eliminar_horario');
 Route::post('catalogo/doctor/agregar_perfil', 'catalogo\DoctorController@agregar_perfil');
 Route::post('catalogo/doctor/eliminar_perfil', 'catalogo\DoctorController@eliminar_perfil');
+Route::post('doctor/foto/actualizar','catalogo\DoctorController@actualizar_foto');
 
 
 
