@@ -28,7 +28,6 @@
     <!-- Google map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
 </head>
-</head>
 
 <body class="shop-page">
 
