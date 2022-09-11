@@ -36,15 +36,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Usuario</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" name="user_name" class="form-control">
-                    </div>
-                    <label class="col-sm-3 control-label">&nbsp;</label>
-                </div>
-
-
-                <div class="form-group">
                     <label class="col-sm-3 control-label">Clave</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input type="text" name="password" class="form-control">
