@@ -36,3 +36,16 @@ Route::get('/acerca', 'ClinicaController@acerca');
 Route::resource('catalogo/especialidad', 'catalogo\EspecialidadController');
 Route::resource('catalogo/doctor', 'catalogo\DoctorController');
 Route::resource('catalogo/horario', 'catalogo\HorarioController');
+Route::post('catalogo/horario', 'catalogo\HorarioController@addCentro');
+
+Route::post('catalogo/doctor/agregar_horario', 'catalogo\DoctorController@agregar_horario');
+Route::post('catalogo/doctor/eliminar_horario', 'catalogo\DoctorController@eliminar_horario');
+Route::post('catalogo/doctor/agregar_perfil', 'catalogo\DoctorController@agregar_perfil');
+Route::post('catalogo/doctor/eliminar_perfil', 'catalogo\DoctorController@eliminar_perfil');
+Route::post('doctor/foto/actualizar','catalogo\DoctorController@actualizar_foto');
+
+
+
+
+
+

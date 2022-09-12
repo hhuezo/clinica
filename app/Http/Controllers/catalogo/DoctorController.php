@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\catalogo;
+
 use App\catalogo\Doctor;
 use App\catalogo\Especialidad;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\catalogo\DoctorFormRequest;
+use App\Http\Requests\catalogo\HorarioFormRequest;
 use Illuminate\Support\Facades\Redirect;
-
 use App\catalogo\Horario;
 use App\catalogo\PerfilProfesional;
 use App\Cita;
@@ -37,7 +38,7 @@ class DoctorController extends Controller
     {
         $especialidad = Especialidad::get();
 
-       // dd($categoria);
+        // dd($categoria);
         return view("catalogo.doctor.create", ["especialidad" => $especialidad]);
     }
 
@@ -46,57 +47,57 @@ class DoctorController extends Controller
         $doctor = new Doctor();
         $doctor->Nombre = $request->get('Nombre');
 
-
-        if ($request->file('Foto')) {
-            $doctor = Doctor::findOrFail($request->get('Doctor'));
+        if ($request->hasFile('Foto')) {
             $Foto = $request->file('Foto');
-            $NombreFoto =   uniqid() . ' ' . $Foto->getClientOriginalName();
-            $path = public_path() . '/fotos';
-            $Foto->move($path, $NombreFoto);
+            $NombreFoto =   $Foto->getClientOriginalName();
+          //  $path = public_path() . '/fotos';
+            $path = public_path("dentco-html/images/");
+          //  $Foto->copy($path, $NombreFoto);
+            copy($Foto->getRealPath(),$path . $NombreFoto);
             $doctor->Foto = $NombreFoto;
-
         }
         $doctor->Titulo = $request->get('Titulo');
         $doctor->Especialidad = $request->get('Especialidad');
         $doctor->Activo = '1';
         $doctor->save();
         alert()->success('El registro ha sido agregado correctamente');
-        return Redirect::to('catalogo/doctor/create');
+        return redirect('catalogo/doctor/' . $doctor->Id. '/edit');
+    }
+
+    public function show($id)
+    {
+        return view('catalogo.doctor.show', ['doctor' => Doctor::findOrFail($id)]);
     }
 
     public function edit($id)
     {
-        $doctor = Doctor::with('especialidad')->where('Id', '=', $id)->first();
+        $doctor = Doctor::findOrFail($id);
         $especialidad = Especialidad::get();
-        $date = Carbon::now();
 
+
+
+        $date = Carbon::now();
         $array_doctor = array();
-
-        $doctor = Doctor::with('especialidad')->where('Id', '=', $id)->get();
-
         $date = Carbon::now();
 
-        foreach ($doctor as $doc) {
-            array_push($array_doctor, $doc->Id);
-        }
+
 
         $array_horarios = array();
         $citas = Cita::where('Fecha', '=', $date->format('Y-m-d'))->where('Activo', '=', 1)->get();
 
-        foreach ($citas as  $cita) {
-            array_push($array_horarios, $cita->Horario);
-        }
+
         //dd($array_horarios );
+        $dias = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");
 
-        $horarios = Horario::whereIn('Doctor', $array_doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
-            ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
-            $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
+        $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->where('Doctor', '=', $id)->get();
 
-//  dd($perfiles_profesionales);
+        $horarios =  Horario::where('Doctor','=',$id)->where('Activo', '=', 1)->orderBy('Dia')->orderBy('Hora')->get();
 
-        return view('catalogo.doctor.edit', ['doctor' => Doctor::findOrFail($id),'especialidad' => $especialidad,'horarios' => $horarios,'perfiles_profesionales' => $perfiles_profesionales
+
+        return view('catalogo.doctor.edit', [
+            'doctor' => Doctor::findOrFail($id), 'especialidad' => $especialidad, 'horarios' => $horarios,
+            'perfiles_profesionales' => $perfiles_profesionales, 'dias' => $dias
         ]);
-
     }
 
     public function update(DoctorFormRequest $request, $id)
@@ -109,12 +110,78 @@ class DoctorController extends Controller
         alert()->info('El registro ha sido modificado correctamente');
         return redirect('catalogo/doctor/' . $id . '/edit');
     }
-    public function destroy($id)
+
+
+    public function agregar_horario(DoctorFormRequest $request)
+    {
+        $horario = new Horario();
+        $horario->Dia = $request->get('Dia');
+        $horario->Hora = $request->get('Hora');
+        $horario->Doctor = $request->get('Id');
+        $horario->Activo = '1';
+        $horario->save();
+        alert()->success('El registro ha sido agregado correctamente');
+        return redirect('catalogo/doctor/' . $request->get('Id') . '/edit');
+    }
+
+
+
+    public function eliminar_horario(Request $request)
+    {
+        $horario = Horario::findOrFail($request->get('Id'));
+        $horario->Activo = 0;
+        $horario->update();
+        alert()->error('El registro ha sido eliminado correctamente');
+        return redirect('catalogo/doctor/' . $horario->Doctor . '/edit');
+    }
+
+
+    public function agregar_perfil(Request $request)
+    {
+        $perfil = new PerfilProfesional();
+        $perfil->Descripcion = $request->get('Descripcion');
+        $perfil->Doctor = $request->get('Id');
+        $perfil->Activo = '1';
+        $perfil->save();
+        alert()->success('El registro ha sido agregado correctamente');
+        return redirect('catalogo/doctor/' . $request->get('Id') . '/edit');
+    }
+
+    public function eliminar_perfil(Request $request)
+    {
+        $perfil = PerfilProfesional::findOrFail($request->get('Id'));
+        $perfil->Activo = 0;
+        $perfil->update();
+        alert()->error('El registro ha sido eliminado correctamente');
+        return redirect('catalogo/doctor/' . $perfil->Doctor . '/edit');
+    }
+
+    public function actualizar_foto(Request $request){
+        $doctor = Doctor::findOrFail($request->get('doctor'));
+        if ($request->hasFile('Foto')) {
+            $Foto = $request->file('Foto');
+            $NombreFoto =   $Foto->getClientOriginalName();
+          //  $path = public_path() . '/fotos';
+            $path = public_path("dentco-html/images/");
+          //  $Foto->copy($path, $NombreFoto);
+            copy($Foto->getRealPath(),$path . $NombreFoto);
+            $doctor->Foto = $NombreFoto;
+        }
+        $doctor->update();
+        alert()->success('La fotografia ha sido actualizada correctamente');
+        return redirect('catalogo/doctor/' . $request->get('doctor'). '/edit');
+    }
+
+
+
+
+    public function destroy($id, DoctorFormRequest $request)
     {
         $doctor = Doctor::findOrFail($id);
-        $doctor->Activo = '0';
+        $doctor->Activo = 0;
         $doctor->update();
         alert()->error('El registro ha sido eliminado correctamente');
         return Redirect::to('catalogo/doctor');
+
     }
 }
