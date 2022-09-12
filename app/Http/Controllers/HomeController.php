@@ -23,7 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->can('reserva citas')) {
+       // dd("holi"); 
+        if(auth()->user()->hasRole('administracion')){
+            return view('administracion');
+        }
+        else if (auth()->user()->can('reserva citas')) {
             return view('welcome');
         }
         else{

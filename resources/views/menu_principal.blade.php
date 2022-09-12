@@ -56,7 +56,7 @@
 								<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
 									<ul class="navbar-nav">
 										<li class="nav-item">
-											<a class="nav-link" href="index.html">Inicio</a>
+											<a class="nav-link" href="{{ url('/') }}">Inicio</a>
 										</li>
 										<li class="nav-item">
 											<a href="{{url('servicios')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Servicios</a>
@@ -208,7 +208,7 @@
 								</div>
 								<div class="selectWrapper input-group mt-1">
 									<span>
-									&bnsp;
+									&nbsp;
 								</span>
 									<select name="requestservice" class="form-control">
 												<option selected="selected" disabled="disabled">Seleccione un servicio</option>
