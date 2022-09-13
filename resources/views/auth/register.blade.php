@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-group row">
 
-                            <input id="peso" type="text" class="form-control" name="peso" placeholder="Peso *" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
+                            <input id="peso" type="text" class="form-control" name="peso" placeholder="Peso * lbs" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
 
                             @error('telefono')
                             <span class="invalid-feedback" role="alert">
