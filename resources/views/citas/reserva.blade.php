@@ -88,22 +88,7 @@
                             </ul>
                             </table>
                         </div>
-                        <div class="col-lg-8 mt-4 mt-lg-0">
-                            @guest
-                            <div class="col-md">
-                                <ul class="services-nav flex-column flex-nowrap">
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="collapse"
-                                            data-target="#submenu1">Debe iniciar sesion para reservar </a>
-                                    </li>
-                                    <br>
-                                    <li class="nav-item" style="padding-left:40% ;">
-                                        <a href="{{url('login')}}" class="btn btn-hover-fill"><span>Ingresar</span></a>
-                                    </li>
-                                    <br>
-                                </ul>
-                            </div>
-                            @else
+                        <div class="col-lg-8 mt-4 mt-lg-0">  
                             <div class="col-md">
                                 <ul class="services-nav flex-column flex-nowrap">
                                     <li class="nav-item">
@@ -127,7 +112,6 @@
                                 </ul>
 
                             </div>
-                            @endguest
                         </div>
                     </div>
                 </div>
@@ -241,7 +225,30 @@
                     </div>
                     <input type="hidden" id="horario" name="Horario">
                     <input type="hidden" id="fecha" name="Fecha">
+                    @guest
+                    <div class="modal-body">
+                        <div class="box-body">
 
+                        <ul class="services-nav flex-column flex-nowrap">
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="collapse"
+                                            data-target="#submenu1">Debe iniciar sesion para reservar </a>
+                                    </li>
+                                    
+                                    <div class="modal-footer">
+                                    <br>
+                                    <li class="nav-item" style="padding-left:40% ;">
+                                        <a href="{{url('login')}}" class="btn btn-hover-fill"><span>Ingresar</span></a>
+                                        <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
+                            data-dismiss="modal">Cancelar</button>
+                                    </li>
+                                    <br>
+                                    </div>
+                                    
+                                </ul>
+                        </div>
+                    </div>
+                    @else
                     <div class="modal-body">
                         <div class="box-body">
 
@@ -254,7 +261,7 @@
                             data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Aceptar</button>
                     </div>
-
+                    @endguest   
             </div>
         </div>
     </div>
