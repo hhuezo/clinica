@@ -67,7 +67,7 @@
                 @foreach ($especialidades as $especialidad)
                     @if($especialidad->Categoria == $categoria->Id)
                     <a href="{{URL::action('CitasController@edit',$especialidad->Id)}}" class="on-default edit-row">
-                    <form method="POST" action="{{ url('citas_reserva') }}">
+
                     <div class="prd mb-2  mb-md-3 mb-lg-4">
                         <div class="prd-img">
                           <img src="{{ asset('img/logo_categoria.png') }}"
@@ -80,7 +80,7 @@
                                     class="iicon-terapevt"></i></button>
                         </div>
                     </div>
-                    </form>
+
                     </a>
                     @endif
                 @endforeach
