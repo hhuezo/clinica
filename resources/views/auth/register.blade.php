@@ -82,7 +82,7 @@
                         </div>
                         <div class="form-group row">
 
-                            <input id="talla" type="number" step="0.01" class="form-control" name="talla" placeholder="Talla *" value="{{ old('telefono') }}" required autocomplete="talla"  autofocus>
+                            <input id="talla" type="number" step="0.01" class="form-control" name="talla" placeholder="Estatura * mts" value="{{ old('telefono') }}" required autocomplete="talla"  autofocus>
 
                             @error('talla')
                             <span class="invalid-feedback" role="alert">
