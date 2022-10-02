@@ -21,6 +21,7 @@
     <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
 
     <script src="{{ asset('vendors/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 </head>

@@ -116,6 +116,8 @@
 
 
                         <br>
+                        <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+      <br/>
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-hover-fill"><i class="icon-right-arrow"></i><span>Registrar</span><i class="icon-right-arrow"></i></button>
                         </div>
