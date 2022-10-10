@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\seguridad;
 
+use App\catalogo\Doctor;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
@@ -51,6 +52,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles_actuales = $user->userRoles;
         $array_roles_actuales = array();
+        $doctor = $user->userDoctores;
+        $doctores = Doctor::where('Activo','=',1)->get();
         if($roles_actuales != []){
                 foreach($roles_actuales as $obj)
             {
@@ -70,7 +73,7 @@ class UserController extends Controller
 
 
         return view('seguridad.user.edit', [
-            'usuario' =>$user , 'roles' => $roles, 'roles_actuales' => $roles_actuales]);
+            'usuario' =>$user , 'roles' => $roles, 'roles_actuales' => $roles_actuales, 'doctor' => $doctor, 'doctores' => $doctores]);
         
     }
     public function update(Request $request, $id)

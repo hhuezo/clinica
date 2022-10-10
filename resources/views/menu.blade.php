@@ -21,6 +21,7 @@
     <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
 
     <script src="{{ asset('vendors/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 </head>
@@ -86,10 +87,21 @@
                                             <li><a href="{{ url('catalogo/especialidad/') }}">Especialidad</a></li>
                                             <li><a href="{{ url('catalogo/doctor/') }}">Doctor</a></li>
                                             <li><a href="{{ url('catalogo/horario/') }}">Horario</a></li>
+                                            <li><a href="{{ url('listado_citas') }}">Citas</a></li>
 
 
                                         </ul>
-                                </li>@endcan
+                                </li>
+                                @endcan
+
+                                @can('administrar citas')
+                                <li><a href="{{ url('listado_citas') }}">Citas</a></li>
+                                @endcan
+
+                                @can('citas doctor')
+                                <li><a href="{{ url('listado_citas') }}">Citas</a></li>
+                                <li><a href="{{ url('suspender_citas') }}"> Suspender Citas</a></li>
+                                @endcan
 
 
                             </ul>

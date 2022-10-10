@@ -8,6 +8,7 @@ use App\catalogo\Especialidad;
 use App\catalogo\Horario;
 use App\catalogo\PerfilProfesional;
 use App\Cita;
+use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -42,6 +43,8 @@ class CitasController extends Controller
     {
         //
     }
+
+    
 
     public function edit($id)
     {
@@ -91,6 +94,15 @@ class CitasController extends Controller
             'especialidad' => Especialidad::findOrFail($id), 'doctores' => $doctores, 'horarios' => $horarios,
             'perfiles_profesionales' => $perfiles_profesionales
         ]);
+    }
+
+    public function actualizar(Request $request){
+        $cita = Cita::findOrFail($request->get('cita'));
+        $cita->Hora = $request->$request->get('HoraActualizada');
+        $cita->update();
+
+        alert()->success('La cita ha sido actualizada correctamente');
+        return view('citas.listado');
     }
 
 
@@ -160,5 +172,73 @@ class CitasController extends Controller
             'especialidad' => Especialidad::findOrFail($request->get('Especialidad')), 'doctores' => $doctores, 'horarios' => $horarios,
             'perfiles_profesionales' => $perfiles_profesionales
         ]);
+    }
+
+    public function horario_get(Request $request)
+    {
+        $cita = Cita::findOrFail($request->get('Cita'));
+        $date = Carbon::parse($request->get('Fecha')); //fecha de la cita
+        $now = Carbon::now();
+
+        $array_horarios = array();
+        $citas = Cita::where('Fecha', '=', $date->format('Y-m-d'))->where('Activo', '=', 1)->get();
+
+
+        foreach ($citas as  $cita) {
+            array_push($array_horarios, $cita->Horario);
+        }
+
+
+        if ($date->format('Y-m-d') == $now->format('Y-m-d')) {
+            $horarios = Horario::where('Doctor','=',$cita->Doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+                ->whereNotIn('Id', $array_horarios)->where('Hora', '>', $now->format('H:i'))->orderBy('Hora')->get();
+        } else if ($date->format('Y-m-d') > $now->format('Y-m-d')) {
+            $horarios = Horario::where('Doctor','=',$cita->Doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+                ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
+        } else {
+
+            $horarios = Horario::where('Id', '=', 0)->get();
+        }
+
+        return $horarios;
+    }
+
+    public function listado_reservas()
+    {
+      //  $usuario = User::findOrFail(auth()->user()->id);
+        if (auth()->user()->hasRole('doctor')) {
+            return view('citas.listado_doctor');
+        } else {
+
+            $doctores = Doctor::where('Activo', '=', 1)->get();
+
+            return view('citas.listado', [
+                'doctores' => $doctores,
+            ]);
+        }
+    }
+
+    public function listado_reservas_doctor(Request $request)
+    {
+        $usuario = User::findOrFail(auth()->user()->id);
+        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+        $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+
+        return view('citas.tabla', ['reserva' => $reserva]);
+    }
+
+    public function verListadoReservas(Request $request)
+    {
+
+        $reserva = Cita::where('Doctor', '=', $request->get('Doctor'))->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+
+        return view('citas.tabla', ['reserva' => $reserva]);
+    }
+    public function reservas_citas_doctor(Request $request){    
+        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+        //dd($doctor);
+        $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+
+        return view('citas.tabla', ['reserva' => $reserva]);
     }
 }

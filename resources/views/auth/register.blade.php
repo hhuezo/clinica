@@ -71,9 +71,9 @@
                         </div>
                         <div class="form-group row">
 
-                            <input id="peso" type="text" class="form-control" name="peso" placeholder="Peso * lbs" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
+                            <input id="peso" type="number" step="0.01" class="form-control" name="peso" placeholder="Peso * lbs" value="{{ old('peso') }}" required autocomplete="peso" autofocus>
 
-                            @error('telefono')
+                            @error('peso')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -82,9 +82,9 @@
                         </div>
                         <div class="form-group row">
 
-                            <input id="talla" type="text" class="form-control" name="talla" placeholder="Talla *" value="{{ old('telefono') }}" required autocomplete="talla"  autofocus>
+                            <input id="talla" type="number" step="0.01" class="form-control" name="talla" placeholder="Estatura * mts" value="{{ old('telefono') }}" required autocomplete="talla"  autofocus>
 
-                            @error('telefono')
+                            @error('talla')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -115,7 +115,9 @@
                         <input name="rol" class="form-control" value="4" type="hidden">
 
 
-<br>
+                        <br>
+                        <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+      <br/>
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-hover-fill"><i class="icon-right-arrow"></i><span>Registrar</span><i class="icon-right-arrow"></i></button>
                         </div>

@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth']);  // se debe de colocar el ['auth','verify']
     }
 
     /**
@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-       // dd("holi"); 
+        
+        //dd("holi"); 
         if(auth()->user()->hasRole('administracion')){
             return view('administracion');
         }

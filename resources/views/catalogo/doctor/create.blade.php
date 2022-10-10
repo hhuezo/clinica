@@ -58,6 +58,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-3 control-label">Correo</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="Correo" class="form-control" autofocus="true" required="true" onblur="this.value = this.value.toUpperCase()">
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Foto</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="file" name="Foto" accept="image/*">

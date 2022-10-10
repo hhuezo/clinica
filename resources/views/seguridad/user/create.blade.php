@@ -47,19 +47,20 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Correo</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="email" name="email"  class="form-control" onblur="this.value = this.value.toLowerCase();">
+                        <input type="email" name="email" class="form-control" onblur="this.value = this.value.toLowerCase();">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
 
                 <div class="form-group">
-                <label class="col-sm-3 control-label">Rol</label>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select name="rol" class="form-control">
-                        @foreach ($roles as $obj)
-                        <option value="{{$obj->name}}" {{ old('rol') == $obj->id ? : '' }}>{{$obj->name}}</option>
-                        @endforeach
-                    </select>
+                    <label class="col-sm-3 control-label">Rol</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="rol" class="form-control">
+                            @foreach ($roles as $obj)
+                            <option value="{{$obj->name}}" {{ old('rol') == $obj->id ? : '' }}>{{$obj->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
             </div>
@@ -67,18 +68,18 @@
 
 
 
-                <div class="form-group" align="center">
-                    <button class="btn btn-success" type="submit">Guardar</button>
-                    <a href="{{url('seguridad/user/')}}"><button class="btn btn-primary" type="button">Cancelar</button></a>
-                </div>
-
-                {!!Form::close()!!}
-
-
+            <div class="form-group" align="center">
+                <button class="btn btn-success" type="submit">Guardar</button>
+                <a href="{{url('seguridad/user/')}}"><button class="btn btn-primary" type="button">Cancelar</button></a>
             </div>
+
+            {!!Form::close()!!}
+
 
         </div>
-        @include('sweet::alert')
+
     </div>
+    @include('sweet::alert')
+</div>
 </div>
 @endsection

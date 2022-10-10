@@ -63,6 +63,14 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Correo</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="email" name="Correo" class="form-control" value="{{ $doctor->Correo }}"
+                            required="true">
+                    </div>
+                </div>
+
                 <div class="form-group" align="center">
                     <button class="btn btn-primary" type="submit">Guardar</button>
                     <a href="{{ url('catalogo/doctor') }}"><button type="button"
