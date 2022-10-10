@@ -35,6 +35,8 @@ Route::post('activar/{id}','catalogo\DoctorController@activar');
 Route::get('desactivar_citas','catalogo\DoctorController@desactivar_citas');
 Route::get('activar_citas','catalogo\DoctorController@activar_citas');
 
+Route::resource('admin_citas', 'AdminCitasController');
+
 Route::resource('seguridad/user', 'seguridad\UserController');
 Route::post('seguridad/user/add_rol', 'seguridad\UserController@add_rol');
 Route::post('seguridad/user/delete_rol', 'seguridad\UserController@delete_rol');
