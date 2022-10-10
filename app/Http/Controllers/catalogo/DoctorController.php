@@ -58,6 +58,7 @@ class DoctorController extends Controller
         }
         $doctor->Titulo = $request->get('Titulo');
         $doctor->Especialidad = $request->get('Especialidad');
+        $doctor->Correo = $request->get('Correo');
         $doctor->Activo = '1';
         $doctor->save();
         alert()->success('El registro ha sido agregado correctamente');
@@ -106,6 +107,7 @@ class DoctorController extends Controller
         $doctor->Nombre = $request->get('Nombre');
         $doctor->Titulo = $request->get('Titulo');
         $doctor->Especialidad = $request->get('Especialidad');
+        $doctor->Correo = $request->get('Correo');
         $doctor->update();
         alert()->info('El registro ha sido modificado correctamente');
         return redirect('catalogo/doctor/' . $id . '/edit');

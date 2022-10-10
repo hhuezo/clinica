@@ -18,6 +18,7 @@ class Doctor extends Model
         'Foto',
         'Titulo',
         'Especialidad',
+        'Correo',
         'Activo'
     ];
 

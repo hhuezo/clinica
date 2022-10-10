@@ -22,6 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('citas_reserva', 'CitasController@citas_reserva');
 Route::get('horarios_get', 'CitasController@horarios_get');
+Route::get('horario_get', 'CitasController@horario_get');
+Route::get('listado_citas','CitasController@listado_reservas');
+Route::get('reservas_citas','CitasController@verListadoReservas');
+Route::get('reservas_citas_doctor','CitasController@reservas_citas_doctor');
+Route::post('actualizar_citas','CitasController@actualizar');
 Route::resource('citas', 'CitasController');
 
 Route::resource('seguridad/user', 'seguridad\UserController');

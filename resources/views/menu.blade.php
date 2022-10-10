@@ -87,10 +87,16 @@
                                             <li><a href="{{ url('catalogo/especialidad/') }}">Especialidad</a></li>
                                             <li><a href="{{ url('catalogo/doctor/') }}">Doctor</a></li>
                                             <li><a href="{{ url('catalogo/horario/') }}">Horario</a></li>
+                                            <li><a href="{{ url('listado_citas') }}">Citas</a></li>
 
 
                                         </ul>
-                                </li>@endcan
+                                </li>
+                                @endcan
+
+                                @can('administrar citas')
+                                <li><a href="{{ url('listado_citas') }}">Citas</a></li>
+                                @endcan
 
 
                             </ul>
