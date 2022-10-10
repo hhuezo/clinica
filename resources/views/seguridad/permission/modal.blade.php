@@ -1,4 +1,4 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$obj->id}}">
+<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$obj->Id}}">
 	{{Form::Open(array('action'=>array('seguridad\PermissionController@destroy',$obj->id),'method'=>'delete'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">

@@ -73,6 +73,7 @@
     
 
     </div>
+    
  
     @include('sweet::alert')
 

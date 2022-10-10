@@ -1,5 +1,6 @@
 <?php
 
+use App\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,11 @@ Route::get('reservas_citas','CitasController@verListadoReservas');
 Route::get('reservas_citas_doctor','CitasController@reservas_citas_doctor');
 Route::post('actualizar_citas','CitasController@actualizar');
 Route::resource('citas', 'CitasController');
+Route::get('suspender_citas','catalogo\DoctorController@suspender');
+Route::post('desactivar/{id}','catalogo\DoctorController@desactivar');
+Route::post('activar/{id}','catalogo\DoctorController@activar');
+Route::get('desactivar_citas','catalogo\DoctorController@desactivar_citas');
+Route::get('activar_citas','catalogo\DoctorController@activar_citas');
 
 Route::resource('seguridad/user', 'seguridad\UserController');
 Route::post('seguridad/user/add_rol', 'seguridad\UserController@add_rol');

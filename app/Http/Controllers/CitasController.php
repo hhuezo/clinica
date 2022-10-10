@@ -221,8 +221,8 @@ class CitasController extends Controller
     public function listado_reservas_doctor(Request $request)
     {
         $usuario = User::findOrFail(auth()->user()->id);
-        $doctor = Doctor::where('Correo','=',$usuario->email)->first();
-        $reserva = Cita::where('Doctor', '=', $doctor->Correo)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+        $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
 
         return view('citas.tabla', ['reserva' => $reserva]);
     }
@@ -231,6 +231,13 @@ class CitasController extends Controller
     {
 
         $reserva = Cita::where('Doctor', '=', $request->get('Doctor'))->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+
+        return view('citas.tabla', ['reserva' => $reserva]);
+    }
+    public function reservas_citas_doctor(Request $request){    
+        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+        //dd($doctor);
+        $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
 
         return view('citas.tabla', ['reserva' => $reserva]);
     }

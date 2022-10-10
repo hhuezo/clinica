@@ -14,7 +14,7 @@ use App\catalogo\PerfilProfesional;
 use App\Cita;
 
 use Carbon\Carbon;
-
+use Laravel\Ui\Presets\React;
 
 class DoctorController extends Controller
 {
@@ -186,4 +186,44 @@ class DoctorController extends Controller
         return Redirect::to('catalogo/doctor');
 
     }
+
+    public function suspender(){
+        $now = Carbon::now();
+        $citas = Cita::where('Doctor','=',auth()->user()->id)->where('Fecha','=', $now->format('Y-m-d'))->where('Hora','>',$now->format('H:i'))->get();
+        return view('catalogo.doctor.listado', compact('citas'));
+    }
+
+    public function desactivar($id){
+        $cita = Cita::findOrFail($id);
+        $horario = Horario::findOrFail($cita->Horario);
+        $horario->Activo = 0;
+        alert()->error('El registro ha sido actualizado correctamente');
+        return Redirect::to('suspender_citas');
+    }
+
+    public function activar($id){
+        $cita = Cita::findOrFail($id);
+        $horario = Horario::findOrFail($cita->Horario);
+        $horario->Activo = 1;
+        alert()->error('El registro ha sido actualizado correctamente');
+        return Redirect::to('suspender_citas');
+    }
+
+    public function desactivar_citas(Request $request){
+        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+        $horarios = Horario::where('Doctor','=', $doctor->Id)->whereBetween('Fecha',[$request->get('FechaInicio'), $request->get('FechaFinal')])
+        ->update(["Activo" => 0]);
+        alert()->error('El registro ha sido actualizado correctamente');
+        return Redirect::to('suspender_citas');
+    }
+
+    public function activar_citas(Request $request){
+        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+        $horarios = Horario::where('Doctor','=', $doctor->Id)->whereBetween('Fecha',[$request->get('FechaInicio'), $request->get('FechaFinal')])
+        ->update(["Activo" => 1]);
+        alert()->error('El registro ha sido actualizado correctamente');
+        return Redirect::to('suspender_citas');
+    }
+
+    
 }
