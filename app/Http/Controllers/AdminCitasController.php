@@ -19,7 +19,7 @@ class AdminCitasController extends Controller
     public function index(Request $request)
     {
         if ($request->get('FechaInicio') && $request->get('FechaFinal')) {
-            if (auth()->user()->can('citas doctor')) {
+            if (auth()->user()->hasRole('doctor')) {
                 $doctor = Doctor::where('Usuario', '=', auth()->user()->id)->first();
                 $citas = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->get();
             } else {

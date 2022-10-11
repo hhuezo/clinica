@@ -93,11 +93,6 @@
                                         </ul>
                                     </li>
                                 @endcan
-
-                                @can('administrar citas')
-                                    <li><a href="{{ url('listado_citas') }}">Citas</a></li>
-                                @endcan
-
                                 @can('citas doctor')
                                     <li><a href="{{ url('admin_citas') }}">Citas</a></li>
                                     <li><a href="{{ url('suspender_citas') }}"> Suspender Citas</a></li>
