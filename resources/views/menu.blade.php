@@ -91,16 +91,16 @@
 
 
                                         </ul>
-                                </li>
+                                    </li>
                                 @endcan
 
                                 @can('administrar citas')
-                                <li><a href="{{ url('listado_citas') }}">Citas</a></li>
+                                    <li><a href="{{ url('listado_citas') }}">Citas</a></li>
                                 @endcan
 
                                 @can('citas doctor')
-                                <li><a href="{{ url('listado_citas') }}">Citas</a></li>
-                                <li><a href="{{ url('suspender_citas') }}"> Suspender Citas</a></li>
+                                    <li><a href="{{ url('admin_citas') }}">Citas</a></li>
+                                    <li><a href="{{ url('suspender_citas') }}"> Suspender Citas</a></li>
                                 @endcan
 
 
@@ -113,8 +113,8 @@
                 </div>
             </div>
 
-              <!-- top navigation -->
-              <div class="top_nav">
+            <!-- top navigation -->
+            <div class="top_nav">
                 <div class="nav_menu">
                     <nav>
                         <div class="nav toggle">
@@ -123,23 +123,28 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('img/usuario.jpg') }}" alt="">{{ auth()->user()->email }}
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <img src="{{ asset('img/usuario.jpg') }}"
+                                        alt="">{{ auth()->user()->email }}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
 
 
 
-                                    <li> <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            {{ __('Salir') }} <i style="padding-left: 81%;" class="fa fa-sign-out"></i>
+                                            {{ __('Salir') }} <i style="padding-left: 81%;"
+                                                class="fa fa-sign-out"></i>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
                                 @csrf
                             </form>
                         </ul>
