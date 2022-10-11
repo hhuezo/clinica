@@ -44,31 +44,26 @@ class AdminCitasController extends Controller
         }
 
 
-        $horarios_doctor = Cita::where('Doctor','=',$cita->Doctor)->where('Fecha','=',$cita->Fecha)->where('Id','<>',$id)->get();
+        $horarios_doctor = Cita::where('Doctor', '=', $cita->Doctor)->where('Fecha', '=', $cita->Fecha)->where('Id', '<>', $id)->get();
 
         $array_horarios = array();
 
-        foreach( $horarios_doctor as $horario)
-        {
-            array_push($array_horarios,$horario->Hora);
+        foreach ($horarios_doctor as $horario) {
+            array_push($array_horarios, $horario->Hora);
         }
 
         $fecha = Carbon::parse($cita->Fecha);
-
-        $horarios = Horario::where('Doctor','=',$cita->Doctor)->where('Dia','=',$fecha->format('w'))->whereNotIn('Hora',[$array_horarios])->get();
-
+        if (!empty($array_horarios)) {
+            $horarios = Horario::where('Doctor', '=', $cita->Doctor)->where('Dia', '=', $fecha->format('w'))->whereNotIn('Hora', [$array_horarios])->get();
+        } else {
+            $horarios = Horario::where('Doctor', '=', $cita->Doctor)->where('Dia', '=', $fecha->format('w'))->get();
+        }
 
 
         return view('admin_citas.edit', ['cita' => $cita, 'doctores' => $doctores, 'horarios' => $horarios]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $cita = Cita::findOrFail($id);
@@ -82,12 +77,30 @@ class AdminCitasController extends Controller
         return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function get_horarios(Request $request)
+    {
+        $fecha = Carbon::parse($request->get('Fecha'));
+        $citas = Cita::where('Doctor', '=', $request->get('Doctor'))->where('Fecha', '=', $request->get('Fecha'))->where('Id', '<>', $request->get('Id'))->get();
+
+        $array_horarios = array();
+        foreach ($citas as $cita) {
+            array_push($array_horarios, $cita->Hora);
+        }
+
+        if (!empty($array_horarios)) {
+            $horarios = Horario::where('Doctor', '=', $request->get('Doctor'))->where('Dia', '=', $fecha->format('w'))->whereNotIn('Hora', [$array_horarios])->get();
+        } else {
+            $horarios = Horario::where('Doctor', '=', $request->get('Doctor'))->where('Dia', '=', $fecha->format('w'))->get();
+        }
+
+
+
+        return $horarios;
+    }
+
+
+
     public function destroy($id)
     {
         //

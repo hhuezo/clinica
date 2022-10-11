@@ -55,7 +55,7 @@
                     </div>
                     <div class="filters-row-right d-flex align-items-center">
                         <span>¿Cuándo deseas tu cita? &nbsp; &nbsp; </span>
-                        <input type="hidden" id="especialidad" value="{{$especialidad->Id}}">
+                        <input type="hidden" id="especialidad" value="{{ $especialidad->Id }}">
                         <input type="date" id="calendario" value="{{ date('Y-m-d') }}">
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                             </ul>
                             </table>
                         </div>
-                        <div class="col-lg-8 mt-4 mt-lg-0">  
+                        <div class="col-lg-8 mt-4 mt-lg-0">
                             <div class="col-md">
                                 <ul class="services-nav flex-column flex-nowrap">
                                     <li class="nav-item">
@@ -226,42 +226,43 @@
                     <input type="hidden" id="horario" name="Horario">
                     <input type="hidden" id="fecha" name="Fecha">
                     @guest
-                    <div class="modal-body">
-                        <div class="box-body">
+                        <div class="modal-body">
+                            <div class="box-body">
 
-                        <ul class="services-nav flex-column flex-nowrap">
+                                <ul class="services-nav flex-column flex-nowrap">
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="collapse"
-                                            data-target="#submenu1">Debe iniciar sesion para reservar </a>
+                                        <a class="nav-link" data-toggle="collapse" data-target="#submenu1">Debe iniciar
+                                            sesion para reservar </a>
                                     </li>
-                                    
-                                    <div class="modal-footer">
-                                    <br>
-                                    <li class="nav-item" style="padding-left:40% ;">
-                                        <a href="{{url('login')}}" class="btn btn-hover-fill"><span>Ingresar</span></a>
-                                        <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
-                            data-dismiss="modal">Cancelar</button>
-                                    </li>
-                                    <br>
-                                    </div>
-                                    
-                                </ul>
-                        </div>
-                    </div>
-                    @else
-                    <div class="modal-body">
-                        <div class="box-body">
 
-                            ¿Desea reservar la cita?
+                                    <div class="modal-footer">
+                                        <br>
+                                        <li class="nav-item" style="padding-left:40% ;">
+                                            <a href="{{ url('login') }}"
+                                                class="btn btn-hover-fill"><span>Ingresar</span></a>
+                                            <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
+                                                data-dismiss="modal">Cancelar</button>
+                                        </li>
+                                        <br>
+                                    </div>
+
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="modal-footer">
-                        <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
-                            data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Aceptar</button>
-                    </div>
-                    @endguest   
+                    @else
+                        <div class="modal-body">
+                            <div class="box-body">
+
+                                ¿Desea reservar la cita?
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
+                                data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                    @endguest
             </div>
         </div>
     </div>

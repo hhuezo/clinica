@@ -30,7 +30,7 @@
                 {{ Form::token() }}
                 <br />
 
-
+                <input type="hidden" id="Id" value="{{ $cita->Id }}">
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Doctor</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -49,7 +49,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Paciente</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" name="Paciente" value="{{$cita->paciente->name}}" class="form-control" readonly>
+                        <input type="text" name="Paciente" value="{{ $cita->paciente->name }}" class="form-control"
+                            readonly>
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -57,7 +58,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Fecha</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="date" name="Fecha" value="{{$cita->Fecha}}" class="form-control" required>
+                        <input type="date" name="Fecha" id="Fecha" value="{{ $cita->Fecha }}" class="form-control"
+                            required>
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -66,15 +68,13 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Horario</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control" name="Horario" id="Doctor">
+                        <select class="form-control" name="Horario" id="Horario">
                             @foreach ($horarios as $obj)
                                 @if ($cita->horario->Hora == $obj->Hora)
-                                <option value="{{ $obj->Id }}" selected>{{ $obj->Hora }}</option>
+                                    <option value="{{ $obj->Id }}" selected>{{ $obj->Hora }}</option>
                                 @else
-                                <option value="{{ $obj->Id }}">{{ $obj->Hora }}</option>
+                                    <option value="{{ $obj->Id }}">{{ $obj->Hora }}</option>
                                 @endif
-
-
                             @endforeach
                         </select>
                     </div>
@@ -92,4 +92,43 @@
             @include('sweet::alert')
         </div>
     </div>
+
+
+    <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#Fecha").change(function() {
+                get_horarios();
+            });
+            $("#Doctor").change(function() {
+                get_horarios();
+            });
+
+        });
+
+        function get_horarios()
+        {
+            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
+                var parametros = {
+                    "Doctor": document.getElementById('Doctor').value,
+                    "Fecha": document.getElementById('Fecha').value,
+                    "Id": document.getElementById('Id').value
+                };
+                $.ajax({
+                    type: "get",
+                    url: "{{ url('get_horarios') }}",
+                    data: parametros,
+                    success: function(data) {
+                        console.log(data);
+                        var _select = ''
+                        for (var i = 0; i < data.length; i++)
+                            _select += '<option value="' + data[i].Id + '"  >' + data[i]
+                            .Hora +
+                            '</option>';
+                        $("#Horario").html(_select);
+                    }
+                });
+        }
+    </script>
 @endsection
