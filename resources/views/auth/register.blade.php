@@ -41,7 +41,7 @@
                         <div class="form-group row">
 
 
-                        <input id="fecha_nacimiento" class="form-control"  type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento *">
+                        <input id="fecha_nacimiento" class="form-control"  type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento *" value="{{ old('fecha_nacimiento') }}">
                             @error('fecha_nacimiento')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -53,8 +53,8 @@
 
                             <select name="genero" id="genero" class="form-control">
                                 <option disabled selected>Genero *</option>
-                                <option value="1">Femenino</option>
-                                <option value="2">Masculino</option>
+                                <option value="1" {{ old('genero') == 1 ? 'selected' : '' }}>Femenino</option>
+                                <option value="2" {{ old('genero') == 2 ? 'selected' : '' }}>Masculino</option>
                                 <!-- <option value="3">No Determinado</option> -->
                             </select>
                         </div>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="form-group row">
 
-                            <input id="talla" type="number" step="0.01" class="form-control" name="talla" placeholder="Estatura * mts" value="{{ old('telefono') }}" required autocomplete="talla"  autofocus>
+                            <input id="talla" type="number" step="0.01" class="form-control" name="talla" placeholder="Estatura * mts" value="{{ old('talla') }}" required autocomplete="talla"  autofocus>
 
                             @error('talla')
                             <span class="invalid-feedback" role="alert">
@@ -116,7 +116,8 @@
 
 
                         <br>
-                        <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+                        
+                        <!-- <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div> -->
       <br/>
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-hover-fill"><i class="icon-right-arrow"></i><span>Registrar</span><i class="icon-right-arrow"></i></button>

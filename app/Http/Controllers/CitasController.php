@@ -44,7 +44,7 @@ class CitasController extends Controller
         //
     }
 
-    
+
 
     public function edit($id)
     {
@@ -96,7 +96,8 @@ class CitasController extends Controller
         ]);
     }
 
-    public function actualizar(Request $request){
+    public function actualizar(Request $request)
+    {
         $cita = Cita::findOrFail($request->get('cita'));
         $cita->Hora = $request->$request->get('HoraActualizada');
         $cita->update();
@@ -190,10 +191,10 @@ class CitasController extends Controller
 
 
         if ($date->format('Y-m-d') == $now->format('Y-m-d')) {
-            $horarios = Horario::where('Doctor','=',$cita->Doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+            $horarios = Horario::where('Doctor', '=', $cita->Doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
                 ->whereNotIn('Id', $array_horarios)->where('Hora', '>', $now->format('H:i'))->orderBy('Hora')->get();
         } else if ($date->format('Y-m-d') > $now->format('Y-m-d')) {
-            $horarios = Horario::where('Doctor','=',$cita->Doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+            $horarios = Horario::where('Doctor', '=', $cita->Doctor)->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
                 ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
         } else {
 
@@ -205,7 +206,7 @@ class CitasController extends Controller
 
     public function listado_reservas()
     {
-      //  $usuario = User::findOrFail(auth()->user()->id);
+        //  $usuario = User::findOrFail(auth()->user()->id);
         if (auth()->user()->hasRole('doctor')) {
             return view('citas.listado_doctor');
         } else {
@@ -221,7 +222,7 @@ class CitasController extends Controller
     public function listado_reservas_doctor(Request $request)
     {
         $usuario = User::findOrFail(auth()->user()->id);
-        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+        $doctor = Doctor::where('Usuario', '=', auth()->user()->id)->first();
         $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
 
         return view('citas.tabla', ['reserva' => $reserva]);
@@ -234,10 +235,17 @@ class CitasController extends Controller
 
         return view('citas.tabla', ['reserva' => $reserva]);
     }
-    public function reservas_citas_doctor(Request $request){    
-        $doctor = Doctor::where('Usuario','=',auth()->user()->id)->first();
+    public function reservas_citas_doctor(Request $request)
+    {
+        if (auth()->user()->hasRole('administrador') || auth()->user()->hasRole('Secretaria')) {
+            //$doctors = Doctor::where('Activo','=',1)->get();
+            $reserva = Cita::whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+        } else {
+            $doctor = Doctor::where('Usuario', '=', auth()->user()->id)->first();
+            $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+        }
         //dd($doctor);
-        $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+        
 
         return view('citas.tabla', ['reserva' => $reserva]);
     }

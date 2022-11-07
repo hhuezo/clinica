@@ -3,6 +3,7 @@
     <tr>
         <th>Fecha</th>
         <th>Hora</th>
+        <th>Doctor</th>
         <th>Paciente</th>
         <th>Opciones</th>
     </tr>
@@ -10,6 +11,7 @@
     <tr>
         <td>{{ date('d/m/Y', strtotime($obj->Fecha)) }} </td>
         <td>{{$obj->Hora}}</td>
+        <td>{{$obj->doctor->Nombre}}</td>
         <td>{{$obj->paciente->name }}</td>
         <td><i class="fa fa-pencil fa-lg" onclick="modal(<?php echo $obj->Id; ?>,'<?php echo $obj->Fecha; ?>','<?php echo $obj->Hora; ?>');"></i>
         &nbsp;

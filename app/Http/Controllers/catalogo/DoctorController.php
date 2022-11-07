@@ -189,7 +189,13 @@ class DoctorController extends Controller
 
     public function suspender(){
         $now = Carbon::now();
+        if(auth()->user()->hasRole('administrador') || auth()->user()->hasRole('Secretaria')){
         $citas = Cita::where('Doctor','=',auth()->user()->id)->where('Fecha','=', $now->format('Y-m-d'))->where('Hora','>',$now->format('H:i'))->get();
+        }else{
+            $citas = Cita::where('Doctor','=',auth()->user()->id)->where('Fecha','=', $now->format('Y-m-d'))->where('Hora','>',$now->format('H:i'))->get();
+        
+        }
+        
         return view('catalogo.doctor.listado', compact('citas'));
     }
 
