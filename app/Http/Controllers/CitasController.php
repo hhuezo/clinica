@@ -231,7 +231,7 @@ class CitasController extends Controller
     public function verListadoReservas(Request $request)
     {
 
-        $reserva = Cita::where('Doctor', '=', $request->get('Doctor'))->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
+        $reserva = Cita::where('Doctor', '=', $request->get('Doctor'))->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->get();
 
         return view('citas.tabla', ['reserva' => $reserva]);
     }
@@ -245,7 +245,7 @@ class CitasController extends Controller
             $reserva = Cita::where('Doctor', '=', $doctor->Id)->whereBetween('Fecha', [$request->get('FechaInicio'), $request->get('FechaFinal')])->where('Activo', '=', 1)->get();
         }
         //dd($doctor);
-        
+
 
         return view('citas.tabla', ['reserva' => $reserva]);
     }

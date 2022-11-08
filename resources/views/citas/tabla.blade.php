@@ -14,11 +14,13 @@
         <td>{{$obj->doctor->Nombre}}</td>
         <td>{{$obj->paciente->name }}</td>
         <td><i class="fa fa-pencil fa-lg" onclick="modal(<?php echo $obj->Id; ?>,'<?php echo $obj->Fecha; ?>','<?php echo $obj->Hora; ?>');"></i>
+
+
         &nbsp;
             @if($obj->Activo == 1)
-            <a href="" data-target="#modal-desactivar-{{$obj->Id}}" data-toggle="modal"><i class="fa fa-check-square-o"></i></a>
+            <i class="fa fa-check-square-o" onclick="desactivar(<?php echo $obj->Id; ?>)"></i>
             @else
-            <a href="" data-target="#modal-activar-{{$obj->Id}}" data-toggle="modal"><i class="fa icon-check-empty"></i></a>
+             <i class="fa fa-close" onclick="activar(<?php echo $obj->Id; ?>)"></i>
             @endif
         </td>
     </tr>
