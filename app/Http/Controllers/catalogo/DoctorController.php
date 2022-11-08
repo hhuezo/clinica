@@ -193,26 +193,28 @@ class DoctorController extends Controller
         $citas = Cita::where('Doctor','=',auth()->user()->id)->where('Fecha','=', $now->format('Y-m-d'))->where('Hora','>',$now->format('H:i'))->get();
         }else{
             $citas = Cita::where('Doctor','=',auth()->user()->id)->where('Fecha','=', $now->format('Y-m-d'))->where('Hora','>',$now->format('H:i'))->get();
-        
+
         }
-        
+
         return view('catalogo.doctor.listado', compact('citas'));
     }
 
-    public function desactivar($id){
-        $cita = Cita::findOrFail($id);
-        $horario = Horario::findOrFail($cita->Horario);
-        $horario->Activo = 0;
-        alert()->error('El registro ha sido actualizado correctamente');
-        return Redirect::to('suspender_citas');
+    public function desactivar(Request $request)
+    {
+        $cita = Cita::findOrFail($request->get('id'));
+        $cita->Activo = 0;
+        $cita->update();
+        alert()->error('La cita ha sido desactivada correctamente');
+        return back();
     }
 
-    public function activar($id){
-        $cita = Cita::findOrFail($id);
-        $horario = Horario::findOrFail($cita->Horario);
-        $horario->Activo = 1;
-        alert()->error('El registro ha sido actualizado correctamente');
-        return Redirect::to('suspender_citas');
+    public function activar(Request $request)
+    {
+        $cita = Cita::findOrFail($request->get('id'));
+        $cita->Activo = 1;
+        $cita->update();
+        alert()->success('El registro ha sido actualizado correctamente');
+        return back();
     }
 
     public function desactivar_citas(Request $request){
@@ -231,5 +233,5 @@ class DoctorController extends Controller
         return Redirect::to('suspender_citas');
     }
 
-    
+
 }
