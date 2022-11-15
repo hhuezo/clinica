@@ -262,7 +262,7 @@
                                             data-animation-delay="1s">Unidad Médica NR
                                             <br><b>Servicios médicos de calidad</b>
                                         </div>
-                                        <div class="slide-btn"><a href="services.html" class="btn btn-white"
+                                        <div class="slide-btn"><a href="{{url('servicios')}}" class="btn btn-white"
                                                 data-animation="fadeInUp" data-animation-delay="2s"><i
                                                     class="icon-right-arrow"></i><span>Saber Más</span><i
                                                     class="icon-right-arrow"></i></a></div>
@@ -281,7 +281,7 @@
                                             data-animation-delay="1s">Atención
                                             <br><b>para toda la familia</b>
                                         </div>
-                                        <div class="slide-btn"><a href="services.html" class="btn btn-white"
+                                        <div class="slide-btn"><a href="{{url('servicios')}}" class="btn btn-white"
                                                 data-animation="fadeInUp" data-animation-delay="2s"><i
                                                     class="icon-right-arrow"></i><span>Saber Más</span><i
                                                     class="icon-right-arrow"></i></a></div>
@@ -380,7 +380,7 @@
                                     <div class="service-box-icon"><i class="bi bi-clipboard2-pulse"></i></div>
                                     <div class="service-box-icon-bg"><i class="bi bi-clipboard2-pulse"></i></div>
                                     <h3 class="service-box-title">CONSULTAS MÉDICAS: PRESENCIALES</h3>
-                                    <div class="btn-wrap"><a href="servicios.html" class="btn"><i
+                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
                                                 class="icon-right-arrow"></i><span>Saber Más</span><i
                                                 class="icon-right-arrow"></i></a></div>
                                 </div>
@@ -390,7 +390,7 @@
                                     <div class="service-box-icon"><i class="bi bi-pc-display-horizontal"></i></div>
                                     <div class="service-box-icon-bg"><i class="bi bi-pc-display-horizontal"></i></div>
                                     <h3 class="service-box-title">CONSULTAS MÉDICAS: TELECONSULTA</h3>
-                                    <div class="btn-wrap"><a href="servicios.html" class="btn"><i
+                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
                                                 class="icon-right-arrow"></i><span>Saber Más</span><i
                                                 class="icon-right-arrow"></i></a></div>
                                 </div>
@@ -402,7 +402,7 @@
                                     <h3 class="service-box-title">TAIES (Tele-Asesoría Internacional Especializada) y
                                         Jornadas Médicas
                                     </h3>
-                                    <div class="btn-wrap"><a href="servicios.html" class="btn"><i
+                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
                                                 class="icon-right-arrow"></i><span>Saber Más</span><i
                                                 class="icon-right-arrow"></i></a></div>
                                 </div>
@@ -415,7 +415,7 @@
                             <div class="service-box-caption text-center w-50 ml-auto">
                                 <h3 class="service-box-title">Servicios</h3>
 
-                                <div class="btn-wrap"><a href="servicios.html" class="btn"><i
+                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
                                             class="icon-right-arrow"></i><span>Saber Más</span><i
                                             class="icon-right-arrow"></i></a></div>
                             </div>
@@ -430,7 +430,7 @@
                                 <div class="service-box-icon"><i class="bi bi-clipboard2-pulse"></i></div>
                                 <div class="service-box-icon-bg"><i class="bi bi-clipboard2-pulse"></i></div>
                                 <h3 class="service-box-title">CONSULTAS MÉDICAS: PRESENCIALES</h3>
-                                <div class="btn-wrap"><a href="servicios.html" class="btn"><i
+                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
                                             class="icon-right-arrow"></i><span>Know more</span><i
                                             class="icon-right-arrow"></i></a></div>
                             </div>
@@ -440,7 +440,7 @@
                                 <div class="service-box-icon"><i class="bi bi-journal-medical"></i></div>
                                 <div class="service-box-icon-bg"><i class="bi bi-journal-medical"></i></div>
                                 <h3 class="service-box-title">CONSULTAS MÉDICAS: TELECONSULTA</h3>
-                                <div class="btn-wrap"><a href="servicios.html" class="btn"><i
+                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
                                             class="icon-right-arrow"></i><span>Know more</span><i
                                             class="icon-right-arrow"></i></a></div>
                             </div>
