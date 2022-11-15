@@ -51,8 +51,8 @@
                         <div class="form-group row">
 
 
-                            <select name="genero" id="genero" class="form-control">
-                                <option disabled selected>Genero *</option>
+                            <select name="genero" id="genero" class="form-control" required>
+                                <option disabled selected value="">Genero *</option>
                                 <option value="1" {{ old('genero') == 1 ? 'selected' : '' }}>Femenino</option>
                                 <option value="2" {{ old('genero') == 2 ? 'selected' : '' }}>Masculino</option>
                                 <!-- <option value="3">No Determinado</option> -->
