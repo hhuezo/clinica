@@ -24,6 +24,17 @@
 
             <div class="x_content">
                 <br />
+                <div class="form-group">
+                        <label class="col-sm-3 control-label">Doctor</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="Doctor" id="Doctor" class="form-control">
+                                <option value="">Seleccione...</option>
+                                @foreach ($doctores as $obj)
+                                    <option value="{{ $obj->Id }}">{{ $obj->Nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Fecha Inicio</label>

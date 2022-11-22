@@ -207,16 +207,14 @@ class CitasController extends Controller
     public function listado_reservas()
     {
         //  $usuario = User::findOrFail(auth()->user()->id);
-        if (auth()->user()->hasRole('doctor')) {
-            return view('citas.listado_doctor');
-        } else {
+   
 
             $doctores = Doctor::where('Activo', '=', 1)->get();
 
             return view('citas.listado', [
                 'doctores' => $doctores,
             ]);
-        }
+        
     }
 
     public function listado_reservas_doctor(Request $request)
