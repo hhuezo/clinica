@@ -7,6 +7,7 @@ use App\catalogo\Doctor;
 use App\catalogo\Especialidad;
 use App\catalogo\Horario;
 use App\catalogo\PerfilProfesional;
+use App\catalogo\Pregunta;
 use App\Cita;
 use App\User;
 use Illuminate\Http\Request;
@@ -89,10 +90,11 @@ class CitasController extends Controller
             ->whereNotIn('Id', $array_horarios)->where('Hora', '>', $date->format('H:i'))->orderBy('Hora')->get();
 
         $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
+        $preguntas = Pregunta::where('Activo','=',1)->get();
 
         return view('citas.reserva', [
             'especialidad' => Especialidad::findOrFail($id), 'doctores' => $doctores, 'horarios' => $horarios,
-            'perfiles_profesionales' => $perfiles_profesionales
+            'perfiles_profesionales' => $perfiles_profesionales, 'preguntas' => $preguntas
         ]);
     }
 

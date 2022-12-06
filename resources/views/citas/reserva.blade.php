@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description"
-        content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
+    <meta name="description" content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
     <meta name="author" content="websmirno.site">
     <meta name="format-detection" content="telephone=no">
     <title>Consultas Médicas</title>
@@ -14,10 +13,10 @@
     <link href="{{ asset('dentco-html/vendor/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('dentco-html/vendor/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dentco-html/icons/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}"
-        rel="stylesheet">
+    <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!--Favicon-->
     <link rel="icon" href="{{ asset('dentco-html/images/LOGO.png') }}" type="image/x-icon">
     <link href='https://css.gg/awards.css' rel='stylesheet'>
@@ -27,6 +26,7 @@
 
 </head>
 <script src="{{ asset('vendors/sweetalert/sweetalert.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <body class="shop-page">
 
@@ -35,16 +35,37 @@
 
 
 
-
-
-
     <div class="page-content">
 
-
-
-        <!--//section-->
-
-
+        <div class="breadcrumbs-wrap">
+            <div class="container">
+            <div class="filters-row align-items-center">
+                    <div class="filters-row-left"><span><strong>Preguntas</strong> </span>
+                        <div class="form-inline">
+                        </div>
+                    </div>
+            </div>
+                <div class="accordion accordion-flush" id="accordionFlushExample" style="width:90% ; padding-left:13%">
+                @php($i=1)
+                    @foreach($preguntas as $obj)
+                    <div class="accordion-item" style="margin-bottom: 0.7%;">
+                        <h2 class="accordion-header" id="flush-heading{{$i}}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$i}}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                {{$obj->Pregunta}}
+                            </button>
+                        </h2>
+                        <div id="flush-collapse{{$i}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$i}}" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">{{$obj->Respuesta}}</div>
+                        </div>
+                    </div>
+                    
+                    @php($i++)
+                    @endforeach
+                    
+                </div>
+            </div>
+        </div>
+        <br>
 
         <div class="breadcrumbs-wrap">
             <div class="container">
@@ -64,57 +85,51 @@
         </div>
 
 
-
-
-
         <div class="section page-content-first" id="response">
             @foreach ($doctores as $doctor)
-                <div class="container mt-6">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="doctor-page-photo text-center">
-                                <img src="{{ asset('dentco-html/images/' . $doctor->Foto) }}" class="img-fluid"
-                                    alt="">
-                            </div>
-                            <div class="mt-3 mt-md-5"></div>
-                            <ul class="marker-list-md">
-                                @foreach ($perfiles_profesionales as $perfil)
-                                    @if ($perfil->Doctor == $doctor->Id)
-                                        <li><i>{{ $perfil->Descripcion }}</i></li>
-                                    @endif
-                                @endforeach
+            <div class="container mt-6">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="doctor-page-photo text-center">
+                            <img src="{{ asset('dentco-html/images/' . $doctor->Foto) }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="mt-3 mt-md-5"></div>
+                        <ul class="marker-list-md">
+                            @foreach ($perfiles_profesionales as $perfil)
+                            @if ($perfil->Doctor == $doctor->Id)
+                            <li><i>{{ $perfil->Descripcion }}</i></li>
+                            @endif
+                            @endforeach
 
+
+                        </ul>
+                        </table>
+                    </div>
+                    <div class="col-lg-8 mt-4 mt-lg-0">
+                        <div class="col-md">
+                            <ul class="services-nav flex-column flex-nowrap">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Horario</a>
+                                    <div class="collapse show" id="submenu1">
+                                        <ul class="flex-column nav">
+                                            @foreach ($horarios as $horario)
+                                            @if ($horario->Doctor == $doctor->Id)
+                                            <li class="nav-item nav-link" onclick="modal_reserva_cita({{ $horario->Id }})">
+                                                {{ date('g:i A', strtotime($horario->Hora)) }}
+                                            </li>
+                                            @endif
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+                                </li>
 
                             </ul>
-                            </table>
-                        </div>
-                        <div class="col-lg-8 mt-4 mt-lg-0">
-                            <div class="col-md">
-                                <ul class="services-nav flex-column flex-nowrap">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#submenu1" data-toggle="collapse"
-                                            data-target="#submenu1">Horario</a>
-                                        <div class="collapse show" id="submenu1">
-                                            <ul class="flex-column nav">
-                                                @foreach ($horarios as $horario)
-                                                    @if ($horario->Doctor == $doctor->Id)
-                                                        <li class="nav-item nav-link"
-                                                            onclick="modal_reserva_cita({{ $horario->Id }})">
-                                                            {{ date('g:i A', strtotime($horario->Hora)) }}
-                                                        </li>
-                                                    @endif
-                                                @endforeach
 
-                                            </ul>
-                                        </div>
-                                    </li>
-
-                                </ul>
-
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
 
@@ -136,24 +151,18 @@
                             </div>
                             <div class="mt-2 mt-lg-0"></div>
                             <div class="footer-social d-none d-md-block d-lg-none">
-                                <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i
-                                        class="icon-facebook-logo"></i></a>
+                                <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 
-                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i
-                                        class="icon-google-logo"></i></a>
-                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i
-                                        class="icon-instagram"></i></a>
+                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="footer-social d-md-none d-lg-block">
-                                <a href="https://www.facebook.com/" target="blank" class="hovicon"><i
-                                        class="icon-facebook-logo"></i></a>
+                                <a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 
-                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i
-                                        class="icon-google-logo"></i></a>
-                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i
-                                        class="icon-instagram"></i></a>
+                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -168,16 +177,11 @@
                         <li><i class="icon-placeholder2"></i>Colonia San Ernesto, Pasaje San Carlos, #154, San Salvador
                             .
                             <br>
-                            <a href="contact.html" class="btn btn-xs btn-gradient"><i
-                                    class="icon-placeholder2"></i><span>Obtener dirección</span><i
-                                    class="icon-right-arrow"></i></a>
+                            <a href="contact.html" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Obtener dirección</span><i class="icon-right-arrow"></i></a>
                         </li>
-                        <li><i class="icon-telephone"></i><b><span class="phone"><span
-                                        class="text-nowrap">2521-3705</span></span></b>
-                        <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
-                                        href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
-                        <li><i class="icon-black-envelope"></i><a
-                                href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+                        <li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b>
+                        <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
+                        <li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -195,8 +199,7 @@
                         <a href="#">Politicas de Privacidad</a>
                     </div>
                     <div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">
-                            <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
-                                            href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span>
+                            <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span>
                             </li>
                     </div>
                 </div>
@@ -209,8 +212,7 @@
     </div>
 
 
-    <div class="modal fade" id="modal_reserva_cita" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
+    <div class="modal fade" id="modal_reserva_cita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-tipo="1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form action="{{ url('citas_reserva') }}" method="POST">
@@ -226,42 +228,39 @@
                     <input type="hidden" id="horario" name="Horario">
                     <input type="hidden" id="fecha" name="Fecha">
                     @guest
-                        <div class="modal-body">
-                            <div class="box-body">
+                    <div class="modal-body">
+                        <div class="box-body">
 
-                                <ul class="services-nav flex-column flex-nowrap">
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="collapse" data-target="#submenu1">Debe iniciar
-                                            sesion para reservar </a>
+                            <ul class="services-nav flex-column flex-nowrap">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="collapse" data-target="#submenu1">Debe iniciar
+                                        sesion para reservar </a>
+                                </li>
+
+                                <div class="modal-footer">
+                                    <br>
+                                    <li class="nav-item" style="padding-left:40% ;">
+                                        <a href="{{ url('login') }}" class="btn btn-hover-fill"><span>Ingresar</span></a>
+                                        <button type="button" onclick="cerrar_modal();" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                                     </li>
+                                    <br>
+                                </div>
 
-                                    <div class="modal-footer">
-                                        <br>
-                                        <li class="nav-item" style="padding-left:40% ;">
-                                            <a href="{{ url('login') }}"
-                                                class="btn btn-hover-fill"><span>Ingresar</span></a>
-                                            <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
-                                                data-dismiss="modal">Cancelar</button>
-                                        </li>
-                                        <br>
-                                    </div>
-
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
+                    </div>
                     @else
-                        <div class="modal-body">
-                            <div class="box-body">
+                    <div class="modal-body">
+                        <div class="box-body">
 
-                                ¿Desea reservar la cita?
-                            </div>
+                            ¿Desea reservar la cita?
                         </div>
-                        <div class="clearfix"></div>
-                        <div class="modal-footer">
-                            <button type="button" onclick="cerrar_modal();" class="btn btn-warning"
-                                data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Aceptar</button>
-                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="cerrar_modal();" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                    </div>
                     @endguest
             </div>
         </div>

@@ -84,6 +84,7 @@
                                         <a><i class="fa fa-folder"></i> Catalogos<span
                                                 class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
+                                            <li><a href="{{ url('catalogo/preguntas/') }}">Preguntas</a></li>
                                             <li><a href="{{ url('catalogo/especialidad/') }}">Especialidad</a></li>
                                             <li><a href="{{ url('catalogo/doctor/') }}">Doctor</a></li>
                                             <li><a href="{{ url('catalogo/horario/') }}">Horario</a></li>

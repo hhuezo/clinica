@@ -29,6 +29,7 @@ Route::get('reservas_citas','CitasController@verListadoReservas');
 Route::get('reservas_citas_doctor','CitasController@reservas_citas_doctor');
 Route::post('actualizar_citas','CitasController@actualizar');
 Route::resource('citas', 'CitasController');
+Route::resource('catalogo/preguntas', 'catalogo\PreguntaController');
 Route::get('suspender_citas','catalogo\DoctorController@suspender');
 Route::post('desactivar','catalogo\DoctorController@desactivar');
 Route::post('activar','catalogo\DoctorController@activar');
