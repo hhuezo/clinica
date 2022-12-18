@@ -8,10 +8,15 @@ use App\catalogo\Especialidad;
 use App\catalogo\Horario;
 use App\catalogo\PerfilProfesional;
 use App\catalogo\Pregunta;
+use Illuminate\Support\Facades\Hash;
 use App\Cita;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
+use RegistersUsers;
+use Mail;
+use App\Mail\EnviarMail;
 
 class CitasController extends Controller
 {
@@ -20,6 +25,12 @@ class CitasController extends Controller
         $categorias = Categoria::where('Activo', '=', 1)->get();
         $especialidades = Especialidad::where('Activo', '=', 1)->get();
         return view('citas.index', ['especialidades' => $especialidades, 'categorias' => $categorias]);
+    }
+
+    public function create()
+    {
+        // $data = 1;
+        return view('citas.create');
     }
 
 
@@ -31,7 +42,42 @@ class CitasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //d(substr($request->get('telefono'),0,4).substr($request->get('telefono'),-4));
+
+        $users = new User;
+        $users->name = $request->get('name');
+        $users->fecha_nacimiento = $request->get('fecha_nacimiento');
+        $users->genero = $request->get('genero');
+        $users->telefono = $request->get('telefono');
+        $users->peso = $request->get('peso');
+        $users->talla = $request->get('talla');
+        $users->email = $request->get('email');
+        $users->password = $request->get('telefono');
+        $users->assignRole($request->get('rol'));
+        $users->save();
+
+        //   $data = 0;
+        if ($request->get('email') == null) {
+            //confirmacion de mensaje de texto
+            $response = Http::post('http://grupomartori.com:8082/api/SMS', [
+                "Tipo" => 1,
+                "Telefono" => "+503" . substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4),
+                "Texto" => "Test Clinica"
+            ]);
+        }else{
+            //confirmacion de correo electronico    
+            $mailData = [
+                'title' => 'Confirmar correo electrónico',
+                'body' => 'This is for testing email using smtp.'
+            ];
+             
+            Mail::to($request->get('email'))->send(new EnviarMail($mailData));
+               
+        }
+
+
+        return redirect('listado_citas');
     }
 
     /**
@@ -90,7 +136,7 @@ class CitasController extends Controller
             ->whereNotIn('Id', $array_horarios)->where('Hora', '>', $date->format('H:i'))->orderBy('Hora')->get();
 
         $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
-        $preguntas = Pregunta::where('Activo','=',1)->get();
+        $preguntas = Pregunta::where('Activo', '=', 1)->where('Especialidad', '=', $id)->get();
 
         return view('citas.reserva', [
             'especialidad' => Especialidad::findOrFail($id), 'doctores' => $doctores, 'horarios' => $horarios,
@@ -209,14 +255,13 @@ class CitasController extends Controller
     public function listado_reservas()
     {
         //  $usuario = User::findOrFail(auth()->user()->id);
-   
 
-            $doctores = Doctor::where('Activo', '=', 1)->get();
 
-            return view('citas.listado', [
-                'doctores' => $doctores,
-            ]);
-        
+        $doctores = Doctor::where('Activo', '=', 1)->get();
+
+        return view('citas.listado', [
+            'doctores' => $doctores,
+        ]);
     }
 
     public function listado_reservas_doctor(Request $request)

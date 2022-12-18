@@ -16,9 +16,15 @@ class Pregunta extends Model
     protected $fillable = [
         'Pregunta',
         'Respuesta',
-        'Activo'
+        'Activo',
+        'Especialidad'
     ];
 
     protected $guarded = [];
+
+    public function especialidades()
+    {
+        return $this->belongsTo('App\catalogo\Especialidad', 'Especialidad', 'Id');
+    }
 
 }

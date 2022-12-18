@@ -2,6 +2,7 @@
 
 use App\Role;
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------

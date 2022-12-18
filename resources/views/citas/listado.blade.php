@@ -8,7 +8,7 @@
                 <div class="x_title">
                     <h2>Reserva de cita <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-
+                        <a href="{{url('citas/create')}}" class="btn btn-info float-right"> <i class="fa fa-plus"></i> &nbsp;Nueva Cita</a>
                     </ul>
                     <div class="clearfix"></div>
                 </div>

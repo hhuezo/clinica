@@ -45,6 +45,22 @@
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
 
+                <div class="form-group row">
+                    <label class="control-label col-md-3" align="right">Especialidad</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="Especialidad" id="Especialidad">
+                            @foreach ($especialidad as $obj)
+                                @if ($pregunta->Especialidad == $obj->Id)
+                                    <option value="{{ $obj->Id }}" selected>{{ $obj->Nombre }}</option>
+                                @else
+                                    <option value="{{ $obj->Id }}">{{ $obj->Nombre }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+
+                    </div>
+                </div>
+
 
                 <div class="form-group" align="center">
                     <button class="btn btn-success" type="submit">Guardar</button>

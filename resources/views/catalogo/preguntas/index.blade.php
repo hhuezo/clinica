@@ -29,6 +29,7 @@
                         <th>Id</th>
                         <th>Pregunta</th>
                         <th>Respuesta</th>
+                        <th>Espacialidad</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
                         <td align="center">{{ $obj->Id }}</td>
                         <td>{{ $obj->Pregunta }}</td>
                         <td>{{ $obj->Respuesta }}</td>
+                        <td>{{$obj->especialidades->Nombre}}</td>
                         <td align="center">
                             <a href="{{ URL::action('catalogo\PreguntaController@edit', $obj->Id) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                             &nbsp;&nbsp;

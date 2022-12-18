@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\catalogo;
 
+use App\catalogo\Especialidad;
 use App\catalogo\Pregunta;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class PreguntaController extends Controller
      */
     public function create()
     {
-        return view('catalogo.preguntas.create');
+        $especialidad = Especialidad::where('Activo','=',1)->get();
+        return view('catalogo.preguntas.create', compact('especialidad'));
     }
 
     /**
@@ -43,6 +45,7 @@ class PreguntaController extends Controller
         $pregunta = new Pregunta();
         $pregunta->Pregunta = $request->get('Pregunta');
         $pregunta->Respuesta = $request->get('Respuesta');
+        $pregunta->Especialidad = $request->get('Especialidad');
         $pregunta->Activo = 1;
         $pregunta->save();
 
@@ -69,7 +72,8 @@ class PreguntaController extends Controller
      */
     public function edit($id)
     {
-        return view('catalogo.preguntas.edit', ['pregunta' => Pregunta::findOrFail($id)]);
+        $especialidad = Especialidad::where('Activo','=',1)->get();
+        return view('catalogo.preguntas.edit', ['pregunta' => Pregunta::findOrFail($id),'especialidad' => $especialidad]);
     }
 
     /**
@@ -84,6 +88,7 @@ class PreguntaController extends Controller
         $pregunta = Pregunta::findOrFail($id);
         $pregunta->Pregunta = $request->get('Pregunta');
         $pregunta->Respuesta = $request->get('Respuesta');
+        $pregunta->Especialidad = $request->get('Especialidad');
         $pregunta->Activo = 1;
         $pregunta->update();
 

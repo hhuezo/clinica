@@ -36,17 +36,18 @@
 
 
     <div class="page-content">
-
+        @if($preguntas->count() > 1)
         <div class="breadcrumbs-wrap">
             <div class="container">
-            <div class="filters-row align-items-center">
+                <div class="filters-row align-items-center">
                     <div class="filters-row-left"><span><strong>Preguntas</strong> </span>
                         <div class="form-inline">
                         </div>
                     </div>
-            </div>
+                </div>
+
                 <div class="accordion accordion-flush" id="accordionFlushExample" style="width:90% ; padding-left:13%">
-                @php($i=1)
+                    @php($i=1)
                     @foreach($preguntas as $obj)
                     <div class="accordion-item" style="margin-bottom: 0.7%;">
                         <h2 class="accordion-header" id="flush-heading{{$i}}">
@@ -58,13 +59,15 @@
                             <div class="accordion-body">{{$obj->Respuesta}}</div>
                         </div>
                     </div>
-                    
+
                     @php($i++)
                     @endforeach
-                    
+
                 </div>
+
             </div>
         </div>
+        @endif
         <br>
 
         <div class="breadcrumbs-wrap">

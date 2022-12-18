@@ -45,6 +45,17 @@
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Especialidad</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="Especialidad" class="form-control">
+                            @foreach($especialidad as $obj)
+                            <option value="{{$obj->Id}}">{{$obj->Nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
 
                 <div class="form-group" align="center">
                     <button class="btn btn-success" type="submit">Guardar</button>
