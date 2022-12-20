@@ -216,10 +216,11 @@ class CitasController extends Controller
 
 
         $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
+        $preguntas = Pregunta::where('Especialidad','=', $request->get('Especialidad'))->get();
 
         return view('citas.horarios_get', [
             'especialidad' => Especialidad::findOrFail($request->get('Especialidad')), 'doctores' => $doctores, 'horarios' => $horarios,
-            'perfiles_profesionales' => $perfiles_profesionales
+            'perfiles_profesionales' => $perfiles_profesionales, 'preguntas' => $preguntas
         ]);
     }
 

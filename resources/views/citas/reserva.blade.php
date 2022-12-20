@@ -36,38 +36,7 @@
 
 
     <div class="page-content">
-        @if($preguntas->count() > 1)
-        <div class="breadcrumbs-wrap">
-            <div class="container">
-                <div class="filters-row align-items-center">
-                    <div class="filters-row-left"><span><strong>Preguntas</strong> </span>
-                        <div class="form-inline">
-                        </div>
-                    </div>
-                </div>
 
-                <div class="accordion accordion-flush" id="accordionFlushExample" style="width:90% ; padding-left:13%">
-                    @php($i=1)
-                    @foreach($preguntas as $obj)
-                    <div class="accordion-item" style="margin-bottom: 0.7%;">
-                        <h2 class="accordion-header" id="flush-heading{{$i}}">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$i}}" aria-expanded="false" aria-controls="flush-collapseOne">
-                                {{$obj->Pregunta}}
-                            </button>
-                        </h2>
-                        <div id="flush-collapse{{$i}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$i}}" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">{{$obj->Respuesta}}</div>
-                        </div>
-                    </div>
-
-                    @php($i++)
-                    @endforeach
-
-                </div>
-
-            </div>
-        </div>
-        @endif
         <br>
 
         <div class="breadcrumbs-wrap">
@@ -108,11 +77,46 @@
                         </ul>
                         </table>
                     </div>
-                    <div class="col-lg-8 mt-4 mt-lg-0">
+                    <div class="col-lg-4 mt-2 mt-lg-0" >
+                        <div class="col-md">
+                            <ul class="services-nav flex-column flex-nowrap">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Preguntas</a>
+                                    <div class="collapse show" id="submenu1">
+                                        <ul class="flex-column nav">
+                                            <div class="accordion accordion-flush" id="accordionFlushExample" style="width:100% ">
+                                                @php($i=1)
+                                                @foreach($preguntas as $obj)
+                                                <div class="accordion-item" style="margin-bottom: 0.7%;">
+                                                    <h2 class="accordion-header" id="flush-heading{{$i}}">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$i}}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                            {{$obj->Pregunta}}
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapse{{$i}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$i}}" data-bs-parent="#accordionFlushExample">
+                                                        <div class="accordion-body">{{$obj->Respuesta}}</div>
+                                                    </div>
+                                                </div>
+
+                                                @php($i++)
+                                                @endforeach
+
+                                            </div>
+
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt-2 mt-lg-0" >
                         <div class="col-md">
                             <ul class="services-nav flex-column flex-nowrap">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Horario</a>
+                                    @if($preguntas->count() > 1)
                                     <div class="collapse show" id="submenu1">
                                         <ul class="flex-column nav">
                                             @foreach ($horarios as $horario)
@@ -125,6 +129,7 @@
 
                                         </ul>
                                     </div>
+                                    @endif
                                 </li>
 
                             </ul>
