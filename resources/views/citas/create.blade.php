@@ -89,6 +89,35 @@
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Doctores</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="Doctor" id="Doctor" class="form-control" required>
+                            <option value="">Seleccione...</option>
+                            @foreach($doctores as $obj)
+                            <option value="{{$obj->Id}}">{{$obj->Nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fechaaa</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input name="Fecha" id="calendario" class="form-control" autofocus="true" type="date" required="true" value="{{date('Y-m-d')}}">
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Horario</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="Hora" id="Hora" class="form-control" required>
+                         
+                        </select>
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
+
 
                 <input name="rol" class="form-control" value="4" type="hidden">
 
@@ -108,5 +137,37 @@
     </div>
 </div>
 </div>
+<script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $("#calendario").change(function() {
+         
+            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
+            var parametros = {
+                "Doctor": document.getElementById('Doctor').value,
+                "Fecha": document.getElementById('calendario').value
+            };
+            $.ajax({
+                type: "get",
+                //ruta para obtener el horario del doctor
+                url: "{{ url('get_horario') }}",
+                data: parametros,
+                success: function(data) {
+                    console.log(data);
+                    var _select = '<option value="">SELECCIONE</option>'
+                    for (var i = 0; i < data.length; i++)
+                        _select += '<option value="' + data[i].Id + '"  >' + data[i].Hora +  '</option>';
+
+                    $('#Hora').html(_select);
+                }
+            });
+
+        });
+
+    });
+
+
+</script>
 
 @endsection

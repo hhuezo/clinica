@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('citas_reserva', 'CitasController@citas_reserva');
 Route::get('horarios_get', 'CitasController@horarios_get');
+Route::get('get_horario','CitasController@get_horario');
 Route::get('horario_get', 'CitasController@horario_get');
 Route::get('listado_citas','CitasController@listado_reservas');
 Route::get('reservas_citas','CitasController@verListadoReservas');

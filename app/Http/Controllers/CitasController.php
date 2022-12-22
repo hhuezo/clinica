@@ -29,8 +29,9 @@ class CitasController extends Controller
 
     public function create()
     {
-        // $data = 1;
-        return view('citas.create');
+        $horarios = [];
+        $doctores = Doctor::where('Activo','=', 1)->get();
+        return view('citas.create', compact('doctores','horarios'));
     }
 
 
@@ -57,6 +58,19 @@ class CitasController extends Controller
         $users->assignRole($request->get('rol'));
         $users->save();
 
+        $horario = Horario::findOrFail($request->get('Hora'));
+        //dd($horario->doctores->Especialidad );
+        $cita = new Cita;
+        $cita->Horario = $horario->Id;
+        $cita->Fecha = $request->get('Fecha');
+        $cita->Hora =  $horario->Hora;
+        $cita->Paciente = $users->id;
+        $cita->Espacialidad = $horario->doctores->Especialidad;
+        $cita->Doctor = $horario->Doctor;
+        $cita->save();
+
+
+
         //   $data = 0;
         if ($request->get('email') == null) {
             //confirmacion de mensaje de texto
@@ -76,7 +90,7 @@ class CitasController extends Controller
                
         }
 
-
+        alert()->success('La cita ha sido agendada correctamente');
         return redirect('listado_citas');
     }
 
@@ -175,6 +189,7 @@ class CitasController extends Controller
 
     public function horarios_get(Request $request)
     {
+        //logica para get_horario sin especialidad
 
         $date = Carbon::parse($request->get('Fecha') . ' 23:00:00');
         $now = Carbon::now();
@@ -222,6 +237,57 @@ class CitasController extends Controller
             'especialidad' => Especialidad::findOrFail($request->get('Especialidad')), 'doctores' => $doctores, 'horarios' => $horarios,
             'perfiles_profesionales' => $perfiles_profesionales, 'preguntas' => $preguntas
         ]);
+    }
+
+    public function get_horario(Request $request)
+    {
+        //logica para get_horario sin especialidad
+
+        $date = Carbon::parse($request->get('Fecha') . ' 23:00:00');
+        $now = Carbon::now();
+
+       /* if ($date < $now) {
+            alert()->error('La fecha ingresada no es válida');
+            //return redirect('citas/' . $request->get('Especialidad') . '/edit');
+        }
+
+
+        $array_doctor = array();
+
+        $doctores = Doctor::where('Especialidad', '=', $request->get('Especialidad'))->where('Activo', '=', 1)->get();
+
+
+        //dd($date);
+        foreach ($doctores as $doctor) {
+            array_push($array_doctor, $doctor->Id);
+        }*/
+
+        $array_horarios = array();
+        $citas = Cita::where('Fecha', '=', $date->format('Y-m-d'))->where('Activo', '=', 1)->get();
+
+
+        foreach ($citas as  $cita) {
+            array_push($array_horarios, $cita->Horario);
+        }
+
+
+        if ($date->format('Y-m-d') == $now->format('Y-m-d')) {
+            $horarios = Horario::where('Doctor', '=', $request->get('Doctor'))->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+                ->whereNotIn('Id', $array_horarios)->where('Hora', '>', $now->format('H:i'))->orderBy('Hora')->get();
+        } else if ($date->format('Y-m-d') > $now->format('Y-m-d')) {
+            $horarios = Horario::where('Doctor', '=', $request->get('Doctor'))->where('Activo', '=', 1)->where('Dia', '=', $date->format('w'))
+                ->whereNotIn('Id', $array_horarios)->orderBy('Hora')->get();
+        } else {
+
+            $horarios = Horario::where('Id', '=', 0)->get();
+        }
+        //dd($horarios);
+
+        return $horarios;
+         /*view('citas.horarios_get', [
+           'horarios' => $horarios,
+           
+        ]);*/
     }
 
     public function horario_get(Request $request)
