@@ -30,9 +30,27 @@
                 {{Form::token()}}
 
                 <div class="form-group">
+                    <label class="col-sm-3 control-label">DUI </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input name="dui" id="dui" class="form-control" autofocus="true" type="text" required="true" data-inputmask="'mask': ['99999999-9']">
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
+
+                <div class="form-group" style="display: show;" id="Nombre">
                     <label class="col-sm-3 control-label">Nombre</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" name="name" class="form-control" autofocus="true" required="true" onblur="this.value = this.value.toUpperCase()">
+                        <input type="text" name="nombre" id="nombre" class="form-control" autofocus="true" onblur="this.value = this.value.toUpperCase()">
+                    </div>
+                    <label class="col-sm-3 control-label">&nbsp;</label>
+                </div>
+
+                <div class="form-group" style="display: none;" id="Nombres">
+                    <label class="col-sm-3 control-label">Nombre</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="nombres" id="nombres" class="form-control" >
+
+                        </select>
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -40,7 +58,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Correo Electronico</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" name="email" class="form-control" autofocus="true">
+                        <input type="text" name="email" id="email" class="form-control" autofocus="true">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -48,7 +66,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Telefono</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" name="telefono" class="form-control" autofocus="true" data-inputmask="'mask': ['9999-9999']" required="true" onblur="this.value = this.value.toUpperCase()">
+                        <input type="text" name="telefono" id="telefono" class="form-control" autofocus="true" data-inputmask="'mask': ['9999-9999']" required="true" onblur="this.value = this.value.toUpperCase()">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -56,7 +74,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Fecha de Nacimiento</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="date" name="fecha_nacimiento" class="form-control" autofocus="true" required="true" onblur="this.value = this.value.toUpperCase()">
+                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" autofocus="true" required="true" onblur="this.value = this.value.toUpperCase()">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -77,7 +95,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Peso</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input name="peso" class="form-control" autofocus="true" type="number" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
+                        <input name="peso" class="form-control" autofocus="true" type="number" id="peso" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -85,10 +103,12 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Estatura</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input name="estatura" class="form-control" autofocus="true" type="number" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
+                        <input name="estatura" class="form-control" autofocus="true" type="number" id="estatura" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
+                <br>
+                <br>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Doctores</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -102,17 +122,18 @@
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Fechaaa</label>
+                    <label class="col-sm-3 control-label">Fecha</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input name="Fecha" id="calendario" class="form-control" autofocus="true" type="date" required="true" value="{{date('Y-m-d')}}">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Horario</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <select name="Hora" id="Hora" class="form-control" required>
-                         
+
                         </select>
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
@@ -127,10 +148,11 @@
                 </div>
 
                 {!!Form::close()!!}
-      
+
 
 
             </div>
+            <div id="data"></div>
 
         </div>
         @include('sweet::alert')
@@ -142,7 +164,7 @@
     $(document).ready(function() {
 
         $("#calendario").change(function() {
-         
+
             $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
             var parametros = {
                 "Doctor": document.getElementById('Doctor').value,
@@ -157,7 +179,7 @@
                     console.log(data);
                     var _select = '<option value="">SELECCIONE</option>'
                     for (var i = 0; i < data.length; i++)
-                        _select += '<option value="' + data[i].Id + '"  >' + data[i].Hora +  '</option>';
+                        _select += '<option value="' + data[i].Id + '"  >' + data[i].Hora + '</option>';
 
                     $('#Hora').html(_select);
                 }
@@ -165,9 +187,53 @@
 
         });
 
+        $('#dui').change(function() {
+            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
+            // alert(document.getElementById('dui').value);
+            var parametros = {
+                "Dui": document.getElementById('dui').value,
+            };
+            $.ajax({
+                type: "get",
+                //ruta para obtener el horario del doctor
+                url: "{{ url('get_paciente') }}",
+                data: parametros,
+                success: function(data) {
+                    console.log(data);
+                    if (data.length === 0) {
+                        $('#Nombres').hide();
+                        $('#Nombre').show();
+                    } else {
+                        var _select = '<option value="">SELECCIONE</option>'
+                        for (var i = 0; i < data.length; i++)
+                            _select += '<option value="' + data[i].id + '"  >' + data[i].name + '</option>';
+                        $('#Nombres').show();
+                        $('#Nombre').hide();
+                        $('#nombres').html(_select);
+                    }
+
+                }
+            });
+        });
+        $('#nombres').change(function() {
+            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
+            var parametros = {
+                "Usuario": document.getElementById('nombres').value
+            };
+            $.ajax({
+                type: "get",
+                //ruta para obtener el horario del doctor
+                url: "{{ url('gets_paciente') }}",
+                data: parametros,
+                success: function(data) {
+                    console.log(data);
+                    $('#data').html(data);
+                }
+            });
+        })
+
+
     });
-
-
 </script>
 
 @endsection

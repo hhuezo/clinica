@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'dui' => ['required','string','min:9'],
             'g-recaptcha-response' => function ($attribute, $value, $fail) {
                 $secretKey = config('services.recaptcha.secret');
                 $response = $value;
@@ -89,6 +90,7 @@ class RegisterController extends Controller
         $users->peso = $data['peso'];
         $users->talla = $data['talla'];
         $users->email = $data['email'];
+        $users->dui = $data['dui'];
         $users->password = Hash::make($data['password']);
         $users->assignRole($data['rol']);
         $users->save();

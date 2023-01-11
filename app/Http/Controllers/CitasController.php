@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Http;
 use RegistersUsers;
 use Mail;
 use App\Mail\EnviarMail;
+use App\Role;
 
 class CitasController extends Controller
 {
@@ -30,10 +31,22 @@ class CitasController extends Controller
     public function create()
     {
         $horarios = [];
-        $doctores = Doctor::where('Activo','=', 1)->get();
-        return view('citas.create', compact('doctores','horarios'));
+        $doctores = Doctor::where('Activo', '=', 1)->get();
+        return view('citas.create', compact('doctores', 'horarios'));
+    }
+    
+    public function listado_citas_secretaria(){
+        $citas = Cita::with('paciente')->with('doctor')->with('espacialidad')->where('Activo','=',1)->where('Fecha','>=',Carbon::now())->orderByDesc('Fecha')->get();
+        return view('citas.listado_citas',compact('citas'));
     }
 
+    public function pacientes(){
+        $rol = Role::findOrFail(4); // rol de paciente
+        $pacientes = $rol->role_users;
+
+        return view('citas.pacientes',compact('pacientes'));
+
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -45,29 +58,46 @@ class CitasController extends Controller
     {
 
         //d(substr($request->get('telefono'),0,4).substr($request->get('telefono'),-4));
+        //validacion de dui existente
+        $user_existente = User::where('dui', '=', $request->get('dui'))->first();
+        if ($user_existente) {
+            $horario = Horario::findOrFail($request->get('Hora'));
+            //dd($horario->doctores->Especialidad );
+            $cita = new Cita;
+            $cita->Horario = $horario->Id;
+            $cita->Fecha = $request->get('Fecha');
+            $cita->Hora =  $horario->Hora;
+            $cita->Paciente = $user_existente->id;
+            $cita->Espacialidad = $horario->doctores->Especialidad;
+            $cita->Doctor = $horario->Doctor;
+            $cita->save();
+        } else {
+            $users = new User;
+            $users->name = $request->get('nombre');
+            $users->fecha_nacimiento = $request->get('fecha_nacimiento');
+            $users->genero = $request->get('genero');
+            $users->telefono = $request->get('telefono');
+            $users->peso = $request->get('peso');
+            $users->talla = $request->get('talla');
+            $users->email = $request->get('email');
+            $users->dui = $request->get('dui');
+            $users->password = $request->get('telefono');
+            $users->assignRole($request->get('rol'));
+            $users->save();
 
-        $users = new User;
-        $users->name = $request->get('name');
-        $users->fecha_nacimiento = $request->get('fecha_nacimiento');
-        $users->genero = $request->get('genero');
-        $users->telefono = $request->get('telefono');
-        $users->peso = $request->get('peso');
-        $users->talla = $request->get('talla');
-        $users->email = $request->get('email');
-        $users->password = $request->get('telefono');
-        $users->assignRole($request->get('rol'));
-        $users->save();
+            $horario = Horario::findOrFail($request->get('Hora'));
+            //dd($horario->doctores->Especialidad );
+            $cita = new Cita;
+            $cita->Horario = $horario->Id;
+            $cita->Fecha = $request->get('Fecha');
+            $cita->Hora =  $horario->Hora;
+            $cita->Paciente = $users->id;
+            $cita->Espacialidad = $horario->doctores->Especialidad;
+            $cita->Doctor = $horario->Doctor;
+            $cita->save();
+        }
 
-        $horario = Horario::findOrFail($request->get('Hora'));
-        //dd($horario->doctores->Especialidad );
-        $cita = new Cita;
-        $cita->Horario = $horario->Id;
-        $cita->Fecha = $request->get('Fecha');
-        $cita->Hora =  $horario->Hora;
-        $cita->Paciente = $users->id;
-        $cita->Espacialidad = $horario->doctores->Especialidad;
-        $cita->Doctor = $horario->Doctor;
-        $cita->save();
+
 
 
 
@@ -79,15 +109,14 @@ class CitasController extends Controller
                 "Telefono" => "+503" . substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4),
                 "Texto" => "Test Clinica"
             ]);
-        }else{
+        } else {
             //confirmacion de correo electronico    
             $mailData = [
                 'title' => 'Confirmar correo electrónico',
                 'body' => 'This is for testing email using smtp.'
             ];
-             
+
             Mail::to($request->get('email'))->send(new EnviarMail($mailData));
-               
         }
 
         alert()->success('La cita ha sido agendada correctamente');
@@ -156,6 +185,28 @@ class CitasController extends Controller
             'especialidad' => Especialidad::findOrFail($id), 'doctores' => $doctores, 'horarios' => $horarios,
             'perfiles_profesionales' => $perfiles_profesionales, 'preguntas' => $preguntas
         ]);
+    }
+
+    public function get_paciente(Request $request)
+    {
+        //dd($request->get('Dui'));
+        $usuario = User::where('dui', '=', $request->get('Dui'))->get();
+        return $usuario;
+    }
+
+    public function gets_paciente(Request $request)
+    {
+        $usuario = User::findOrFail($request->get('Usuario'));
+?>
+        <script>
+            document.getElementById('email').value = '<?php echo $usuario->email; ?>';
+            document.getElementById('fecha_nacimiento').value = '<?php echo $usuario->fecha_nacimiento; ?>';
+            document.getElementById('genero').value = '<?php echo $usuario->genero; ?>';
+            document.getElementById('telefono').value = '<?php echo $usuario->telefono; ?>';
+            document.getElementById('peso').value = '<?php echo $usuario->peso; ?>';
+            document.getElementById('estatura').value = '<?php echo $usuario->talla; ?>';
+        </script>
+<?php
     }
 
     public function actualizar(Request $request)
@@ -231,7 +282,7 @@ class CitasController extends Controller
 
 
         $perfiles_profesionales = PerfilProfesional::where('Activo', '=', 1)->get();
-        $preguntas = Pregunta::where('Especialidad','=', $request->get('Especialidad'))->get();
+        $preguntas = Pregunta::where('Especialidad', '=', $request->get('Especialidad'))->get();
 
         return view('citas.horarios_get', [
             'especialidad' => Especialidad::findOrFail($request->get('Especialidad')), 'doctores' => $doctores, 'horarios' => $horarios,
@@ -246,7 +297,7 @@ class CitasController extends Controller
         $date = Carbon::parse($request->get('Fecha') . ' 23:00:00');
         $now = Carbon::now();
 
-       /* if ($date < $now) {
+        /* if ($date < $now) {
             alert()->error('La fecha ingresada no es válida');
             //return redirect('citas/' . $request->get('Especialidad') . '/edit');
         }
@@ -284,7 +335,7 @@ class CitasController extends Controller
         //dd($horarios);
 
         return $horarios;
-         /*view('citas.horarios_get', [
+        /*view('citas.horarios_get', [
            'horarios' => $horarios,
            
         ]);*/
