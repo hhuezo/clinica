@@ -36,7 +36,7 @@
         <?php
             foreach($citas as $obj)
             {
-                echo "{"."title: '".$obj->paciente->name."',
+                echo "{"."title: '".$obj->paciente->name." (".$obj->doctor->Nombre.")',
                 start: '".$obj->Fecha."T".$obj->Hora."'},";
             }
 
