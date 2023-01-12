@@ -51,6 +51,16 @@
                         <div class="form-group row">
 
 
+                        <input id="dui" class="form-control"  type="text" name="dui" placeholder="DUI *" value="{{ old('dui') }}" >
+                            @error('dui')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group row">
+
+
                             <select name="genero" id="genero" class="form-control" required>
                                 <option disabled selected value="">Genero *</option>
                                 <option value="1" {{ old('genero') == 1 ? 'selected' : '' }}>Femenino</option>

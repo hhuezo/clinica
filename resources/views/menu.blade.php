@@ -88,14 +88,17 @@
                                             <li><a href="{{ url('catalogo/especialidad/') }}">Especialidad</a></li>
                                             <li><a href="{{ url('catalogo/doctor/') }}">Doctor</a></li>
                                             <li><a href="{{ url('catalogo/horario/') }}">Horario</a></li>
-                                            <li><a href="{{ url('listado_citas') }}">Citas</a></li>
+                                            <li><a href="{{ url('admin_citas') }}">Citas</a></li>
 
 
                                         </ul>
                                     </li>
+                                
+                                    <li><a href="{{url('citas/listado_citas_secretaria')}}">Listado de Citas</a></li>
+                                    <li><a href="{{url('pacientes')}}">Listado de Pacientes</a></li>
                                 @endcan
                                 @can('citas doctor')
-                                    <li><a href="{{ url('listado_citas') }}">Citas</a></li>
+                                    <li><a href="{{ url('admin_citas') }}">Citas</a></li>
                                     <!--<li><a href="{{ url('suspender_citas') }}"> Suspender Citas</a></li>-->
                                 @endcan
 
