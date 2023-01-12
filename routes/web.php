@@ -28,6 +28,8 @@ Route::get('get_horario','CitasController@get_horario');
 Route::get('get_paciente','CitasController@get_paciente');
 Route::get('gets_paciente','CitasController@gets_paciente');
 Route::get('horario_get', 'CitasController@horario_get');
+Route::get('agregar_paciente','seguridad\UserController@agregar_paciente');
+Route::post('guardar_paciente','seguridad\UserController@guardar_paciente');
 Route::get('listado_citas','CitasController@listado_reservas');
 Route::get('citas/listado_citas_secretaria','CitasController@listado_citas_secretaria');
 Route::get('pacientes','CitasController@pacientes');

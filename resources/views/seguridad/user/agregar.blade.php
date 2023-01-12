@@ -7,9 +7,9 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-horizontal form-label-left">
 
             <div class="x_title">
-                <h2>Nueva cita <small></small></h2>
+                <h2><i class="fa fa-child"></i>&nbsp; Agregar Pacientito<small></small></h2>
                 <ul class="nav navbar-right panel_toolbox">
-                    <a href="{{url('agregar_paciente')}}" class="btn btn-success"><i class="fa fa-plus fa-child"></i> Agregar Pacientito</a>
+                    
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -26,11 +26,11 @@
             <div class="x_content">
                 <br />
 
-                {!!Form::open(array('url'=>'citas','method'=>'POST','autocomplete'=>'off'))!!}
+                {!!Form::open(array('url'=>'guardar_paciente','method'=>'POST','autocomplete'=>'off'))!!}
                 {{Form::token()}}
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">DUI </label>
+                    <label class="col-sm-3 control-label">DUI (Responsable)</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input name="dui" id="dui" class="form-control" autofocus="true" type="text" required="true" data-inputmask="'mask': ['99999999-9']">
                     </div>
@@ -41,16 +41,6 @@
                     <label class="col-sm-3 control-label">Nombre</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input type="text" name="nombre" id="nombre" class="form-control" autofocus="true" onblur="this.value = this.value.toUpperCase()">
-                    </div>
-                    <label class="col-sm-3 control-label">&nbsp;</label>
-                </div>
-
-                <div class="form-group" style="display: none;" id="Nombres">
-                    <label class="col-sm-3 control-label">Nombre</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select name="nombres" id="nombres" class="form-control" >
-
-                        </select>
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -159,81 +149,6 @@
     </div>
 </div>
 </div>
-<script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
 
-        $("#calendario").change(function() {
-
-            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
-            var parametros = {
-                "Doctor": document.getElementById('Doctor').value,
-                "Fecha": document.getElementById('calendario').value
-            };
-            $.ajax({
-                type: "get",
-                //ruta para obtener el horario del doctor
-                url: "{{ url('get_horario') }}",
-                data: parametros,
-                success: function(data) {
-                    console.log(data);
-                    var _select = '<option value="">SELECCIONE</option>'
-                    for (var i = 0; i < data.length; i++)
-                        _select += '<option value="' + data[i].Id + '"  >' + data[i].Hora + '</option>';
-
-                    $('#Hora').html(_select);
-                }
-            });
-
-        });
-
-        $('#dui').change(function() {
-            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
-            // alert(document.getElementById('dui').value);
-            var parametros = {
-                "Dui": document.getElementById('dui').value,
-            };
-            $.ajax({
-                type: "get",
-                //ruta para obtener el horario del doctor
-                url: "{{ url('get_paciente') }}",
-                data: parametros,
-                success: function(data) {
-                    console.log(data);
-                    if (data.length === 0) {
-                        $('#Nombres').hide();
-                        $('#Nombre').show();
-                    } else {
-                        var _select = '<option value="">SELECCIONE</option>'
-                        for (var i = 0; i < data.length; i++)
-                            _select += '<option value="' + data[i].id + '"  >' + data[i].name + '</option>';
-                        $('#Nombres').show();
-                        $('#Nombre').hide();
-                        $('#nombres').html(_select);
-                    }
-
-                }
-            });
-        });
-        $('#nombres').change(function() {
-            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
-            var parametros = {
-                "Usuario": document.getElementById('nombres').value
-            };
-            $.ajax({
-                type: "get",
-                //ruta para obtener el horario del doctor
-                url: "{{ url('gets_paciente') }}",
-                data: parametros,
-                success: function(data) {
-                    console.log(data);
-                    $('#data').html(data);
-                }
-            });
-        })
-
-
-    });
-</script>
 
 @endsection

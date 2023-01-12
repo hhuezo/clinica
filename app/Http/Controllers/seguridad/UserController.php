@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\seguridad;
 
 use App\catalogo\Doctor;
+use App\catalogo\Horario;
+use App\Cita;
 use App\Http\Controllers\Controller;
+use App\Mail\EnviarMail;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Laravel\Ui\Presets\React;
 
 class UserController extends Controller
 {
@@ -18,13 +24,15 @@ class UserController extends Controller
         return view('seguridad.user.index', ['usuarios' => $user]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('auth.register');
     }
-    public function agregar(){
-        
+    public function agregar()
+    {
+
         $roles = Role::get();
-            return view('seguridad.user.create', ['roles' => $roles]);
+        return view('seguridad.user.create', ['roles' => $roles]);
     }
 
     public function show()
@@ -32,8 +40,9 @@ class UserController extends Controller
         # code...
     }
 
-    public function store(Request $request){
-     
+    public function store(Request $request)
+    {
+
         $users = new User;
         $users->name = $request->get('name');
         $users->email = $request->get('email');
@@ -43,8 +52,61 @@ class UserController extends Controller
         $users->save();
         alert()->success('El registro ha sido agregado correctamente');
         return Redirect::to('seguridad/users/agregar');
-            
-        
+    }
+
+    public function agregar_paciente()
+    {
+        $horarios = [];
+        $doctores = Doctor::where('Activo', '=', 1)->get();
+        return view('seguridad.user.agregar', compact('doctores', 'horarios'));
+    }
+
+    public function guardar_paciente(Request $request)
+    {
+        $users = new User;
+        $users->name = $request->get('nombre');
+        $users->fecha_nacimiento = $request->get('fecha_nacimiento');
+        $users->genero = $request->get('genero');
+        $users->telefono = $request->get('telefono');
+        $users->peso = $request->get('peso');
+        $users->talla = $request->get('talla');
+        $users->email = $request->get('email');
+        $users->dui = $request->get('dui');
+        $users->password = $request->get('telefono');
+        $users->assignRole($request->get('rol'));
+        $users->save();
+
+        $horario = Horario::findOrFail($request->get('Hora'));
+        //dd($horario->doctores->Especialidad );
+        $cita = new Cita();
+        $cita->Horario = $horario->Id;
+        $cita->Fecha = $request->get('Fecha');
+        $cita->Hora =  $horario->Hora;
+        $cita->Paciente = $users->id;
+        $cita->Espacialidad = $horario->doctores->Especialidad;
+        $cita->Doctor = $horario->Doctor;
+        $cita->save();
+
+        //   $data = 0;
+        if ($request->get('email') == null) {
+            //confirmacion de mensaje de texto
+            $response = Http::post('http://grupomartori.com:8082/api/SMS', [
+                "Tipo" => 1,
+                "Telefono" => "+503" . substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4),
+                "Texto" => "Test Clinica"
+            ]);
+        } else {
+            //confirmacion de correo electronico    
+            $mailData = [
+                'title' => 'Confirmar correo electrónico',
+                'body' => 'This is for testing email using smtp.'
+            ];
+
+            Mail::to($request->get('email'))->send(new EnviarMail($mailData));
+        }
+
+        alert()->success('La cita ha sido agendada correctamente');
+        return redirect('listado_citas');
     }
 
     public function edit($id)
@@ -53,28 +115,26 @@ class UserController extends Controller
         $roles_actuales = $user->userRoles;
         $array_roles_actuales = array();
         $doctor = $user->userDoctores;
-        $doctores = Doctor::where('Activo','=',1)->get();
-        if($roles_actuales != []){
-                foreach($roles_actuales as $obj)
-            {
+        $doctores = Doctor::where('Activo', '=', 1)->get();
+        if ($roles_actuales != []) {
+            foreach ($roles_actuales as $obj) {
                 array_push($array_roles_actuales, $obj->id);
             }
-        }else{
+        } else {
             $roles_actuales = [];
         }
-        
+
         //dd($array_roles_actuales);
-        if($array_roles_actuales){
-            $roles = Role::whereNotIn('id',[$array_roles_actuales])->get();
-        }
-        else{
+        if ($array_roles_actuales) {
+            $roles = Role::whereNotIn('id', [$array_roles_actuales])->get();
+        } else {
             $roles = Role::get();
         }
 
 
         return view('seguridad.user.edit', [
-            'usuario' =>$user , 'roles' => $roles, 'roles_actuales' => $roles_actuales, 'doctor' => $doctor, 'doctores' => $doctores]);
-        
+            'usuario' => $user, 'roles' => $roles, 'roles_actuales' => $roles_actuales, 'doctor' => $doctor, 'doctores' => $doctores
+        ]);
     }
     public function update(Request $request, $id)
     {
@@ -102,7 +162,7 @@ class UserController extends Controller
             $roles_actuales = $user->userRoles;
 
             foreach ($roles_actuales as $obj) {
-                $user->removeRole( $obj->id);
+                $user->removeRole($obj->id);
             }
             $user->Activo = 0;
             $user->update();

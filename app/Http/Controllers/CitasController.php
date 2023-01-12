@@ -63,6 +63,18 @@ class CitasController extends Controller
         if ($user_existente) {
             $horario = Horario::findOrFail($request->get('Hora'));
             //dd($horario->doctores->Especialidad );
+
+            $user_existente->name = $request->get('nombre');
+            $user_existente->fecha_nacimiento = $request->get('fecha_nacimiento');
+            $user_existente->genero = $request->get('genero');
+            $user_existente->telefono = $request->get('telefono');
+            $user_existente->peso = $request->get('peso');
+            $user_existente->talla = $request->get('talla');
+            $user_existente->email = $request->get('email');
+            $user_existente->dui = $request->get('dui');
+            $user_existente->password = $request->get('telefono');
+            $user_existente->update();
+            
             $cita = new Cita;
             $cita->Horario = $horario->Id;
             $cita->Fecha = $request->get('Fecha');
@@ -96,10 +108,6 @@ class CitasController extends Controller
             $cita->Doctor = $horario->Doctor;
             $cita->save();
         }
-
-
-
-
 
         //   $data = 0;
         if ($request->get('email') == null) {
