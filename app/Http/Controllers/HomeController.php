@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cita;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -31,8 +33,18 @@ class HomeController extends Controller
         else if (auth()->user()->can('reserva citas')) {
             return view('welcome');
         }
-        else{
-            return view('administracion');
+        else{           
+
+            $date = Carbon::now();
+            $now = $date->format('Y-m-d');
+
+            $axo = substr($now,0,4);
+            $mes = substr($now,5,2);
+
+            $citas = Cita::whereMonth('Fecha', $mes)->whereYear('Fecha', $axo)->get();
+
+                       
+            return view('administracion',['citas'=>$citas, 'now'=>$now]);
         }
     }
 }
