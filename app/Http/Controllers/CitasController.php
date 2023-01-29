@@ -73,7 +73,7 @@ class CitasController extends Controller
             $user_existente->talla = $request->get('talla');
             $user_existente->email = $request->get('email');
             $user_existente->dui = $request->get('dui');
-            $user_existente->password = $request->get('telefono');
+            $user_existente->password = Hash::make($request->get('telefono'));
             $user_existente->update();
 
             $cita = new Cita;
@@ -94,7 +94,7 @@ class CitasController extends Controller
             $users->talla = $request->get('estatura');
             $users->email = $request->get('email');
             $users->dui = $request->get('dui');
-            $users->password = $request->get('telefono');
+            $users->password = Hash::make($request->get('telefono'));
             $users->assignRole($request->get('rol'));
             $users->save();
 
