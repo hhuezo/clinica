@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+
+
+<!-- Bootstrap -->
+    <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -38,6 +43,18 @@
                             @enderror
                         </div>
 
+                        <div class="form-group row" id="mensaje_error">
+                            <div class="alert alert-danger alert-dismissible " role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">×</span>
+                                </button>
+                                <strong>El correo ingresado ya existe</strong>
+                            </div>
+                        </div>
+
+
+
+
                         <div class="form-group row">
 
 
@@ -51,7 +68,7 @@
                         <div class="form-group row">
 
 
-                        <input id="dui" class="form-control"  type="text" name="dui" placeholder="DUI *" value="{{ old('dui') }}" >
+                        <input id="dui" class="form-control"  type="text" name="dui" placeholder="DUI *" value="{{ old('dui') }}" data-inputmask="'mask': ['99999999-9']">
                             @error('dui')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -101,8 +118,8 @@
                             @enderror
 
                         </div>
-                        
-                        
+
+
 
                         <div class="form-group row">
 
@@ -126,7 +143,7 @@
 
 
                         <br>
-                        
+
                         <!-- <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div> -->
       <br/>
                         <div class="form-group row mb-0">
@@ -150,6 +167,55 @@
 
         });
 
+    });
+</script>
+
+
+<!-- jQuery -->
+<script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+
+
+<!-- Custom Theme Scripts -->
+<script src="{{ asset('build/js/custom.min.js') }}"></script>
+
+
+<!-- mascara de entrada -->
+<script src="{{ asset('vendors/input-mask/jquery.inputmask.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#mensaje_error').hide();
+
+        $("#email").change(function() {
+            var parametros = {
+                "email": document.getElementById('email').value
+            };
+            $.ajax({
+                type: "get",
+                //ruta para obtener el horario del doctor
+                url: "{{ url('validation_email') }}",
+                data: parametros,
+                success: function(data) {
+                    console.log(data);
+                    if (data == 1) {
+                        $('#mensaje_error').show();
+                    } else {
+                        $('#mensaje_error').hide();
+                    }
+                    //$('#data').html(data);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(function() {
+           $('[data-mask]').inputmask()
     });
 </script>
 @endsection

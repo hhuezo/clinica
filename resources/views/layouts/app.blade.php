@@ -10,8 +10,6 @@
 
     <title>Ingresar</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,6 +33,22 @@
     <!-- Google map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Scripts
+        <script src="{{ asset('js/app.js') }}" defer></script>-->
+
+
 </head>
 
 <body style="background-image:url('dentco-html/images/LOGO_app.png'); background-repeat: no-repeat; background-size: 30% ; background-position-x:right ; background-position-y:bottom ;">
@@ -93,7 +107,7 @@
 
 
         <main class="py-4">
-            
+
             @yield('content')
         </main>
     </div>
