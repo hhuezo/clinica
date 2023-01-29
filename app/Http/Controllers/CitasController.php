@@ -64,7 +64,7 @@ class CitasController extends Controller
             $horario = Horario::findOrFail($request->get('Hora'));
             //dd($horario->doctores->Especialidad );
 
-            $user_existente->name = $request->get('nombre');
+            //$user_existente->name = $request->get('nombre');
             $user_existente->fecha_nacimiento = $request->get('fecha_nacimiento');
             $user_existente->genero = $request->get('genero');
             $user_existente->telefono = $request->get('telefono');
