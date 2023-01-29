@@ -34,7 +34,7 @@ class CitasController extends Controller
         $doctores = Doctor::where('Activo', '=', 1)->get();
         return view('citas.create', compact('doctores', 'horarios'));
     }
-    
+
     public function listado_citas_secretaria(){
         $citas = Cita::with('paciente')->with('doctor')->with('espacialidad')->where('Activo','=',1)->where('Fecha','>=',Carbon::now())->orderByDesc('Fecha')->get();
         return view('citas.listado_citas',compact('citas'));
@@ -74,7 +74,7 @@ class CitasController extends Controller
             $user_existente->dui = $request->get('dui');
             $user_existente->password = $request->get('telefono');
             $user_existente->update();
-            
+
             $cita = new Cita;
             $cita->Horario = $horario->Id;
             $cita->Fecha = $request->get('Fecha');
@@ -118,7 +118,7 @@ class CitasController extends Controller
                 "Texto" => "Test Clinica"
             ]);
         } else {
-            //confirmacion de correo electronico    
+            //confirmacion de correo electronico
             $mailData = [
                 'title' => 'Confirmar correo electrónico',
                 'body' => 'This is for testing email using smtp.'
@@ -345,7 +345,7 @@ class CitasController extends Controller
         return $horarios;
         /*view('citas.horarios_get', [
            'horarios' => $horarios,
-           
+
         ]);*/
     }
 
@@ -419,5 +419,12 @@ class CitasController extends Controller
 
 
         return view('citas.tabla', ['reserva' => $reserva]);
+    }
+
+    public function validation_email(Request $request)
+    {
+        $count = User::where('email','=',$request->get('email'))->count();
+
+        return $count;
     }
 }

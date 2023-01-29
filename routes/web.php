@@ -46,6 +46,8 @@ Route::get('activar_citas','catalogo\DoctorController@activar_citas');
 
 Route::resource('admin_citas', 'AdminCitasController');
 Route::get('get_horarios', 'AdminCitasController@get_horarios');
+Route::get('validation_email', 'CitasController@validation_email');
+
 
 Route::resource('seguridad/user', 'seguridad\UserController');
 Route::post('seguridad/user/add_rol', 'seguridad\UserController@add_rol');
