@@ -18,6 +18,7 @@ use RegistersUsers;
 use Mail;
 use App\Mail\EnviarMail;
 use App\Role;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class CitasController extends Controller
 {
@@ -90,7 +91,7 @@ class CitasController extends Controller
             $users->genero = $request->get('genero');
             $users->telefono = $request->get('telefono');
             $users->peso = $request->get('peso');
-            $users->talla = $request->get('talla');
+            $users->talla = $request->get('estatura');
             $users->email = $request->get('email');
             $users->dui = $request->get('dui');
             $users->password = $request->get('telefono');
@@ -119,12 +120,19 @@ class CitasController extends Controller
             ]);
         } else {
             //confirmacion de correo electronico
-            $mailData = [
-                'title' => 'Confirmar correo electrónico',
-                'body' => 'This is for testing email using smtp.'
-            ];
 
-            Mail::to($request->get('email'))->send(new EnviarMail($mailData));
+            if ($users instanceof MustVerifyEmail && ! $users->hasVerifiedEmail()) {
+                $users->sendEmailVerificationNotification();
+            }
+
+
+            //confirmacion de correo electronico    
+            // $mailData = [
+            //     'title' => 'Confirmar correo electrónico',
+            //     'body' => 'This is for testing email using smtp.'
+            // ];
+
+            // Mail::to($request->get('email'))->send(new EnviarMail($mailData));
         }
 
         alert()->success('La cita ha sido agendada correctamente');

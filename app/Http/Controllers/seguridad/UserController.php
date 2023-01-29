@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\EnviarMail;
 use App\Role;
 use App\User;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -96,13 +97,18 @@ class UserController extends Controller
                 "Texto" => "Test Clinica"
             ]);
         } else {
-            //confirmacion de correo electronico    
-            $mailData = [
-                'title' => 'Confirmar correo electrónico',
-                'body' => 'This is for testing email using smtp.'
-            ];
 
-            Mail::to($request->get('email'))->send(new EnviarMail($mailData));
+            if ($users instanceof MustVerifyEmail && ! $users->hasVerifiedEmail()) {
+                $users->sendEmailVerificationNotification();
+            }
+
+            //confirmacion de correo electronico    
+            // $mailData = [
+            //     'title' => 'Confirmar correo electrónico',
+            //     'body' => 'This is for testing email using smtp.'
+            // ];
+
+            // Mail::to($request->get('email'))->send(new EnviarMail($mailData));
         }
 
         alert()->success('La cita ha sido agendada correctamente');

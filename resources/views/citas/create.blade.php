@@ -43,7 +43,7 @@
                         <label class="col-sm-3 control-label">Nombre</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <input type="text" name="nombre" id="nombre" class="form-control" autofocus="true"
-                                onblur="this.value = this.value.toUpperCase()">
+                                >
                         </div>
                         <label class="col-sm-3 control-label">&nbsp;</label>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Correo Electronico</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="email" id="email" class="form-control" autofocus="true">
+                            <input type="email" name="email" id="email" class="form-control" autofocus="true">
                         </div>
                         <label class="col-sm-3 control-label">&nbsp;</label>
                     </div>
