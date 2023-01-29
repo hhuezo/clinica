@@ -25,7 +25,7 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
-      initialView: 'dayGridMonth',
+      initialView: 'timeGridDay',
       initialDate: '<?php echo $now; ?>',
       navLinks: true, // can click day/week names to navigate views
       editable: true,
@@ -88,7 +88,7 @@
 </head>
 <body>
 
- 
+
 
   <div id='calendar-container' class="div_calendar">
     <div id='calendar'></div>
