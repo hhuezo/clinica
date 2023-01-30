@@ -140,15 +140,22 @@
                         </div>
 
                         <input name="rol" class="form-control" value="4" type="hidden">
-
-
-                        <br>
-
-                        <!-- <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div> -->
-      <br/>
+                        
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-hover-fill"><i class="icon-right-arrow"></i><span>Registrar</span><i class="icon-right-arrow"></i></button>
                         </div>
+<br>
+                        <div class="form-group row">
+                        <div class="h-decor"></div>
+                        <br>
+                            <h6  ><i class="fa fa-warning"></i> Estimado Paciente, recibirá un correo electronico de confirmación para continuar con nuestros servicios</h6>
+                            <div class="h-decor"></div>
+
+                        </div>
+
+
+                        <!-- <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div> -->
+                      
                     </form>
                 </div>
             </div>
