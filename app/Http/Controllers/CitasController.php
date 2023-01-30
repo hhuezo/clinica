@@ -69,12 +69,12 @@ class CitasController extends Controller
             //$user_existente->name = $request->get('nombre');
             $user_existente->fecha_nacimiento = $request->get('fecha_nacimiento');
             $user_existente->genero = $request->get('genero');
-            $user_existente->telefono = $request->get('telefono');
+            $user_existente->telefono = substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4);
             $user_existente->peso = $request->get('peso');
             $user_existente->talla = $request->get('estatura');
             $user_existente->email = $request->get('email');
             $user_existente->dui = $request->get('dui');
-            $user_existente->password = Hash::make($request->get('telefono'));
+            $user_existente->password = Hash::make(substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4));
             $user_existente->update();
 
             $cita = new Cita;
@@ -90,12 +90,12 @@ class CitasController extends Controller
             $users->name = $request->get('nombre');
             $users->fecha_nacimiento = $request->get('fecha_nacimiento');
             $users->genero = $request->get('genero');
-            $users->telefono = $request->get('telefono');
+            $users->telefono = substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4);
             $users->peso = $request->get('peso');
             $users->talla = $request->get('estatura');
             $users->email = $request->get('email');
             $users->dui = $request->get('dui');
-            $users->password = Hash::make($request->get('telefono'));
+            $users->password = Hash::make(substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4));
             $users->assignRole($request->get('rol'));
             $users->save();
 

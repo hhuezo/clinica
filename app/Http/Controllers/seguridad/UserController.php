@@ -73,7 +73,7 @@ class UserController extends Controller
         $users->talla = $request->get('talla');
         $users->email = $request->get('email');
         $users->dui = $request->get('dui');
-        $users->password = $request->get('telefono');
+        $users->password = Hash::make(substr($request->get('telefono'), 0, 4) . substr($request->get('telefono'), -4));
         $users->assignRole($request->get('rol'));
         $users->save();
 
@@ -97,10 +97,10 @@ class UserController extends Controller
                 "Texto" => "Test Clinica"
             ]);
         } else {
-
+/*
             if ($users instanceof MustVerifyEmail && ! $users->hasVerifiedEmail()) {
                 $users->sendEmailVerificationNotification();
-            }
+            }*/ 
 
             //confirmacion de correo electronico    
             // $mailData = [
