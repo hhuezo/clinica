@@ -36,7 +36,7 @@ Route::get('pacientes','CitasController@pacientes');
 Route::get('reservas_citas','CitasController@verListadoReservas');
 Route::get('reservas_citas_doctor','CitasController@reservas_citas_doctor');
 Route::post('actualizar_citas','CitasController@actualizar');
-Route::resource('citas', 'CitasController');
+Route::resource('citas', 'CitasController')->middleware('verified');
 Route::resource('catalogo/preguntas', 'catalogo\PreguntaController');
 Route::get('suspender_citas','catalogo\DoctorController@suspender');
 Route::post('desactivar','catalogo\DoctorController@desactivar');
@@ -59,8 +59,8 @@ Route::post('seguridad/roles/add_permisos', 'seguridad\RolePermissionController@
 Route::post('seguridad/roles/delete_permisos', 'seguridad\RolePermissionController@delete_permiso');
 Route::resource('seguridad/permission', 'seguridad\PermissionController');
 
-Route::get('/consultas', 'ClinicaController@consultas')->middleware('verified');
-Route::get('/consultas_domicilio', 'ClinicaController@consultas_domicilio')->middleware('verified');
+Route::get('/consultas', 'ClinicaController@consultas');
+Route::get('/consultas_domicilio', 'ClinicaController@consultas_domicilio');
 Route::get('/jornadas', 'ClinicaController@jornadas');
 Route::get('/staff', 'ClinicaController@staff');
 Route::get('/alianzas', 'ClinicaController@alianzas');
