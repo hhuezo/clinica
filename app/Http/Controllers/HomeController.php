@@ -25,15 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        //dd("holi"); 
+
+        //dd("holi");
         if(auth()->user()->hasRole('administracion')){
             return view('administracion');
         }
         else if (auth()->user()->can('reserva citas')) {
             return view('welcome');
         }
-        else{           
+        else{
 
             $date = Carbon::now();
             $now = $date->format('Y-m-d');
@@ -41,9 +41,9 @@ class HomeController extends Controller
             $axo = substr($now,0,4);
             $mes = substr($now,5,2);
 
-            $citas = Cita::whereMonth('Fecha', $mes)->whereYear('Fecha', $axo)->get();
+            $citas = Cita::whereYear('Fecha', $axo)->get();
 
-                       
+
             return view('administracion',['citas'=>$citas, 'now'=>$now]);
         }
     }
