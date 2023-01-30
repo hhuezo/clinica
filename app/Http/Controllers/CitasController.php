@@ -18,6 +18,7 @@ use RegistersUsers;
 use Mail;
 use App\Mail\EnviarMail;
 use App\Role;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class CitasController extends Controller
 {
@@ -35,17 +36,18 @@ class CitasController extends Controller
         return view('citas.create', compact('doctores', 'horarios'));
     }
 
-    public function listado_citas_secretaria(){
-        $citas = Cita::with('paciente')->with('doctor')->with('espacialidad')->where('Activo','=',1)->where('Fecha','>=',Carbon::now())->orderByDesc('Fecha')->get();
-        return view('citas.listado_citas',compact('citas'));
+    public function listado_citas_secretaria()
+    {
+        $citas = Cita::with('paciente')->with('doctor')->with('espacialidad')->where('Activo', '=', 1)->where('Fecha', '>=', Carbon::now())->orderByDesc('Fecha')->get();
+        return view('citas.listado_citas', compact('citas'));
     }
 
-    public function pacientes(){
+    public function pacientes()
+    {
         $rol = Role::findOrFail(4); // rol de paciente
         $pacientes = $rol->role_users;
 
-        return view('citas.pacientes',compact('pacientes'));
-
+        return view('citas.pacientes', compact('pacientes'));
     }
 
     /**
@@ -69,10 +71,10 @@ class CitasController extends Controller
             $user_existente->genero = $request->get('genero');
             $user_existente->telefono = $request->get('telefono');
             $user_existente->peso = $request->get('peso');
-            $user_existente->talla = $request->get('talla');
+            $user_existente->talla = $request->get('estatura');
             $user_existente->email = $request->get('email');
             $user_existente->dui = $request->get('dui');
-            $user_existente->password = $request->get('telefono');
+            $user_existente->password = Hash::make($request->get('telefono'));
             $user_existente->update();
 
             $cita = new Cita;
@@ -90,10 +92,10 @@ class CitasController extends Controller
             $users->genero = $request->get('genero');
             $users->telefono = $request->get('telefono');
             $users->peso = $request->get('peso');
-            $users->talla = $request->get('talla');
+            $users->talla = $request->get('estatura');
             $users->email = $request->get('email');
             $users->dui = $request->get('dui');
-            $users->password = $request->get('telefono');
+            $users->password = Hash::make($request->get('telefono'));
             $users->assignRole($request->get('rol'));
             $users->save();
 
@@ -118,13 +120,27 @@ class CitasController extends Controller
                 "Texto" => "Test Clinica"
             ]);
         } else {
-            //confirmacion de correo electronico
-            $mailData = [
-                'title' => 'Confirmar correo electrónico',
-                'body' => 'This is for testing email using smtp.'
-            ];
+            //confirmacion de correo electronico 
+            /*
+            if ($user_existente) {
+                if ($user_existente instanceof MustVerifyEmail && !$user_existente->hasVerifiedEmail()) {
+                    $user_existente->sendEmailVerificationNotification();
+                }
+            } else {
 
-            Mail::to($request->get('email'))->send(new EnviarMail($mailData));
+                if ($users instanceof MustVerifyEmail && !$users->hasVerifiedEmail()) {
+                    $users->sendEmailVerificationNotification();
+                }*/
+            //}
+
+
+            //confirmacion de correo electronico    
+            // $mailData = [
+            //     'title' => 'Confirmar correo electrónico',
+            //     'body' => 'This is for testing email using smtp.'
+            // ];
+
+            // Mail::to($request->get('email'))->send(new EnviarMail($mailData));
         }
 
         alert()->success('La cita ha sido agendada correctamente');
@@ -423,7 +439,7 @@ class CitasController extends Controller
 
     public function validation_email(Request $request)
     {
-        $count = User::where('email','=',$request->get('email'))->count();
+        $count = User::where('email', '=', $request->get('email'))->count();
 
         return $count;
     }

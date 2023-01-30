@@ -9,7 +9,7 @@
             <div class="x_title">
                 <h2><i class="fa fa-child"></i>&nbsp; Agregar Pacientito<small></small></h2>
                 <ul class="nav navbar-right panel_toolbox">
-                    
+
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -148,7 +148,37 @@
         @include('sweet::alert')
     </div>
 </div>
-</div>
+<script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $("#calendario").change(function() {
+
+            $('#response').html('<div><img src="../../../public/img/ajax-loader.gif"/></div>');
+            var parametros = {
+                "Doctor": document.getElementById('Doctor').value,
+                "Fecha": document.getElementById('calendario').value
+            };
+            $.ajax({
+                type: "get",
+                //ruta para obtener el horario del doctor
+                url: "{{ url('get_horario') }}",
+                data: parametros,
+                success: function(data) {
+                    console.log(data);
+                    var _select = '<option value="">SELECCIONE</option>'
+                    for (var i = 0; i < data.length; i++)
+                        _select += '<option value="' + data[i].Id + '"  >' + data[i].Hora +
+                        '</option>';
+
+                    $('#Hora').html(_select);
+                }
+            });
+
+        });
+    });
+</script>
+
 
 
 @endsection
