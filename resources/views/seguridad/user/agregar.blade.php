@@ -85,7 +85,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Peso</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input name="peso" class="form-control" autofocus="true" type="number" id="peso" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
+                        <input name="peso" class="form-control" autofocus="true" type="number" id="peso" placeholder="lbs" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
@@ -93,7 +93,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Estatura</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input name="estatura" class="form-control" autofocus="true" type="number" id="estatura" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
+                        <input name="estatura" class="form-control" autofocus="true" placeholder="mts" type="number" id="estatura" step="0.01" required="true" onblur="this.value = this.value.toUpperCase()">
                     </div>
                     <label class="col-sm-3 control-label">&nbsp;</label>
                 </div>
