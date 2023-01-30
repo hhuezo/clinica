@@ -89,7 +89,7 @@ class UserController extends Controller
         $cita->save();
 
         //   $data = 0;
-        if ($request->get('email') == null) {
+      /*  if ($request->get('email') == null) {
             //confirmacion de mensaje de texto
             $response = Http::post('http://grupomartori.com:8082/api/SMS', [
                 "Tipo" => 1,
@@ -97,7 +97,7 @@ class UserController extends Controller
                 "Texto" => "Test Clinica"
             ]);
         } else {
-/*
+
             if ($users instanceof MustVerifyEmail && ! $users->hasVerifiedEmail()) {
                 $users->sendEmailVerificationNotification();
             }*/ 
@@ -109,7 +109,7 @@ class UserController extends Controller
             // ];
 
             // Mail::to($request->get('email'))->send(new EnviarMail($mailData));
-        }
+//        }
 
         alert()->success('La cita ha sido agendada correctamente');
         return redirect('listado_citas');

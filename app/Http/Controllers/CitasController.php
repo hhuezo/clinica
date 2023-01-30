@@ -112,7 +112,7 @@ class CitasController extends Controller
         }
 
         //   $data = 0;
-        if ($request->get('email') == null) {
+    /*  if ($request->get('email') == null) {
             //confirmacion de mensaje de texto
             $response = Http::post('http://grupomartori.com:8082/api/SMS', [
                 "Tipo" => 1,
@@ -121,7 +121,7 @@ class CitasController extends Controller
             ]);
         } else {
             //confirmacion de correo electronico 
-            /*
+           
             if ($user_existente) {
                 if ($user_existente instanceof MustVerifyEmail && !$user_existente->hasVerifiedEmail()) {
                     $user_existente->sendEmailVerificationNotification();
@@ -141,7 +141,7 @@ class CitasController extends Controller
             // ];
 
             // Mail::to($request->get('email'))->send(new EnviarMail($mailData));
-        }
+        //}
 
         alert()->success('La cita ha sido agendada correctamente');
         return redirect('listado_citas');
