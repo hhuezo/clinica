@@ -36,17 +36,18 @@ class CitasController extends Controller
         return view('citas.create', compact('doctores', 'horarios'));
     }
 
-    public function listado_citas_secretaria(){
-        $citas = Cita::with('paciente')->with('doctor')->with('espacialidad')->where('Activo','=',1)->where('Fecha','>=',Carbon::now())->orderByDesc('Fecha')->get();
-        return view('citas.listado_citas',compact('citas'));
+    public function listado_citas_secretaria()
+    {
+        $citas = Cita::with('paciente')->with('doctor')->with('espacialidad')->where('Activo', '=', 1)->where('Fecha', '>=', Carbon::now())->orderByDesc('Fecha')->get();
+        return view('citas.listado_citas', compact('citas'));
     }
 
-    public function pacientes(){
+    public function pacientes()
+    {
         $rol = Role::findOrFail(4); // rol de paciente
         $pacientes = $rol->role_users;
 
-        return view('citas.pacientes',compact('pacientes'));
-
+        return view('citas.pacientes', compact('pacientes'));
     }
 
     /**
@@ -70,7 +71,7 @@ class CitasController extends Controller
             $user_existente->genero = $request->get('genero');
             $user_existente->telefono = $request->get('telefono');
             $user_existente->peso = $request->get('peso');
-            $user_existente->talla = $request->get('talla');
+            $user_existente->talla = $request->get('estatura');
             $user_existente->email = $request->get('email');
             $user_existente->dui = $request->get('dui');
             $user_existente->password = Hash::make($request->get('telefono'));
@@ -119,11 +120,18 @@ class CitasController extends Controller
                 "Texto" => "Test Clinica"
             ]);
         } else {
-            //confirmacion de correo electronico
+            //confirmacion de correo electronico 
+            /*
+            if ($user_existente) {
+                if ($user_existente instanceof MustVerifyEmail && !$user_existente->hasVerifiedEmail()) {
+                    $user_existente->sendEmailVerificationNotification();
+                }
+            } else {
 
-            if ($users instanceof MustVerifyEmail && ! $users->hasVerifiedEmail()) {
-                $users->sendEmailVerificationNotification();
-            }
+                if ($users instanceof MustVerifyEmail && !$users->hasVerifiedEmail()) {
+                    $users->sendEmailVerificationNotification();
+                }*/
+            //}
 
 
             //confirmacion de correo electronico    
@@ -431,7 +439,7 @@ class CitasController extends Controller
 
     public function validation_email(Request $request)
     {
-        $count = User::where('email','=',$request->get('email'))->count();
+        $count = User::where('email', '=', $request->get('email'))->count();
 
         return $count;
     }
