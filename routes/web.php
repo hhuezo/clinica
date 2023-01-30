@@ -44,6 +44,11 @@ Route::post('activar','catalogo\DoctorController@activar');
 Route::get('desactivar_citas','catalogo\DoctorController@desactivar_citas');
 Route::get('activar_citas','catalogo\DoctorController@activar_citas');
 
+
+
+
+
+
 Route::resource('admin_citas', 'AdminCitasController');
 Route::get('get_horarios', 'AdminCitasController@get_horarios');
 Route::get('validation_email', 'CitasController@validation_email');
