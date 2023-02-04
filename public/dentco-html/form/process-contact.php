@@ -1,6 +1,6 @@
 <?php
 
-	$to = "";  // Your email here
+	$to = "mar.escobar91@gmail.com";  // Your email here
 	$from = $_REQUEST['email'];
 	$name = $_REQUEST['name'];
 	$phone = $_REQUEST['phone'];

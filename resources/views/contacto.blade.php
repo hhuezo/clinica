@@ -116,7 +116,8 @@
                         </div>
                     </div>
                     <div class="col-md col-lg-6 mt-4 mt-md-0">
-                        <form class="contact-form" id="contactForm" method="post" novalidate="novalidate">
+                        <form class="contact-form" id="contactForm" method="post" novalidate="novalidate" >
+                        {{ Form::token() }}
                             <div class="successform">
                                 <p>Su mensaje se envio correctamente</p>
                             </div>

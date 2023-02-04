@@ -12,6 +12,10 @@ class ClinicaController extends Controller
         return view('consultas',['texto'=>$texto]);
     }
 
+    public function enviarEmail(Request $request){
+        dd("holi");
+    }
+
 
     public function consultas_domicilio()
     {

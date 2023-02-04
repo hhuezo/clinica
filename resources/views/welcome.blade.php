@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description"
-        content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
+    <meta name="description" content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
     <meta name="author" content="websmirno.site">
     <meta name="format-detection" content="telephone=no">
     <title>Unidad Medica NR </title>
@@ -14,9 +13,8 @@
     <link href="{{ asset('dentco-html/vendor/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('dentco-html/vendor/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dentco-html/icons/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}"
-        rel="stylesheet">
-        <link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!--Favicon-->
     <link rel="icon" href="{{ asset('dentco-html/images/LOGO.png') }}" type="image/x-icon">
@@ -41,10 +39,7 @@
                                 <a href="#" class="link">
                                     <i class="icon-placeholder"></i><span>Nuestra Ubicación</span></a>
                                 <div class="link-drop p-0">
-                                    <div id="googleMapDrop1" class="google-map"><iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d969.0412183762217!2d-89.21020602076928!3d13.708462252300757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6331b0e5d0d6d7%3A0x48b6890c846b26dc!2sUnidad%20M%C3%A9dica%20NR!5e0!3m2!1ses-419!2ssv!4v1652302725765!5m2!1ses-419!2ssv"
-                                            width="600" height="450" style="border:0;" allowfullscreen=""
-                                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                                    <div id="googleMapDrop1" class="google-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d969.0412183762217!2d-89.21020602076928!3d13.708462252300757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6331b0e5d0d6d7%3A0x48b6890c846b26dc!2sUnidad%20M%C3%A9dica%20NR!5e0!3m2!1ses-419!2ssv!4v1652302725765!5m2!1ses-419!2ssv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
                                 </div>
                             </div>
                             <div class="col">
@@ -66,191 +61,37 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <a href="#" class="link">
-                                    <i class="icon-pencil-writing"></i><span>Formulario de contacto</span>
-                                </a>
-                                <div class="link-drop">
-                                    <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Escribanos</h5>
-                                    <form id="requestForm" method="post" novalidate>
-                                        <div class="successform">
-                                            <p>Su mensaje se envio correctamente!</p>
-                                        </div>
-                                        <div class="errorform">
-                                            <p>Algo salio mal, vuelva a intentarlo.</p>
-                                        </div>
-                                        <div class="input-group">
-                                            <span>
-                                                <i class="icon-user"></i>
-                                            </span>
-                                            <input name="requestname" type="text" class="form-control"
-                                                placeholder="Su nombre" />
-                                        </div>
-                                        <div class="row row-sm-space mt-1">
-                                            <div class="col">
-                                                <div class="input-group">
-                                                    <span>
-                                                        <i class="icon-email2"></i>
-                                                    </span>
-                                                    <input name="requestemail" type="text" class="form-control"
-                                                        placeholder="Su correo electronico" />
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="input-group">
-                                                    <span>
-                                                        <i class="icon-smartphone"></i>
-                                                    </span>
-                                                    <input name="requestphone" type="text" class="form-control"
-                                                        placeholder="Su Telefono" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="input-group">
-                                            <span>
-                                                <i class="bi bi-chat-dots"></i>
-                                            </span>
-                                            <input name="duda" type="text" class="form-control"
-                                                placeholder="Su consulta" />
-                                        </div>
-                                        <div class="text-right mt-2">
-                                            <button type="submit" class="btn btn-sm btn-hover-fill">Enviar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+    						<a href="#" class="link">
+    							<i class="icon-pencil-writing"></i>Formulario de contacto
+    						</a>
+    						<div class="link-drop">
+    							<a href="{{url('contacto')}}" style="text-decoration: none;">
+    								<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Contáctenos</h5>
+    							</a>
 
-
-                            <div class="col">
-                                <a href="#" class="link">
-                                    <i class="icon-pencil-writing"></i><span>Agendar Cita</span>
-                                </a>
-                                <div class="link-drop">
-                                    <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Formulario para
-                                        agendar cita</h5>
-                                    <form id="requestForm" method="post" novalidate>
-                                        <div class="successform">
-                                            <p>Su mensaje fue enviado correctamente!</p>
-                                        </div>
-                                        <div class="errorform">
-                                            <p>Lo sentimos parece que algo salio mal, vuelva a intentarlo.</p>
-                                        </div>
-                                        <div class="input-group">
-                                            <span>
-                                                <i class="icon-user"></i>
-                                            </span>
-                                            <input name="requestname" type="text" class="form-control"
-                                                placeholder="Su Nombre Completo" />
-                                        </div>
-                                        <div class="row row-sm-space mt-1">
-                                            <div class="col">
-                                                <div class="input-group">
-                                                    <span>
-                                                        <i class="icon-email2"></i>
-                                                    </span>
-                                                    <input name="requestemail" type="text" class="form-control"
-                                                        placeholder="Su Correo" />
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="input-group">
-                                                    <span>
-                                                        <i class="icon-smartphone"></i>
-                                                    </span>
-                                                    <input name="requestphone" type="text" class="form-control"
-                                                        placeholder="Su numero de Telefono" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="selectWrapper input-group mt-1">
-                                            <span>
-                                                &bnsp;
-                                            </span>
-                                            <select name="requestservice" class="form-control">
-                                                <option selected="selected" disabled="disabled">Seleccione un servicio
-                                                </option>
-                                                <option value="Consulta con Medicina General">Consulta con Medicina
-                                                    General</option>
-                                                <option value="Consulta con Ginecología y Obstetricia">Consulta con
-                                                    Ginecología y Obstetricia</option>
-                                                <option value="Consulta con Medicina Interna">Consulta con Medicina
-                                                    Interna</option>
-                                                <option value="Consulta con Pediatría">Consulta con Pediatría</option>
-                                                <option value="Consulta con Medicina de Estilo de Vida y Nutrición">
-                                                    Consulta con Medicina de Estilo de Vida y Nutrición</option>
-                                                <option value="Consulta con Geriatría">Consulta con Geriatría</option>
-                                                <option value="Consulta con Psiquiatría">Consulta con Psiquiatría
-                                                </option>
-                                                <option value="Consulta TAIES">Consulta TAIES</option>
-                                                <option value="Telemedicina">Telemedicina</option>
-                                                <option value="Consulta domiciliaria (Geriatría)">Consulta domiciliaria
-                                                    (Geriatría)</option>
-                                                <option value="Control de diabetes y presión arterial">Control de
-                                                    diabetes y presión arterial</option>
-                                                <option value="Control prenatal de bajo riesgo">Control prenatal de
-                                                    bajo riesgo</option>
-                                                <option value="Planificación familiar">Planificación familiar</option>
-                                                <option value="Toma de citologías">Toma de citologías</option>
-                                                <option value="Control de niño sano">Control de niño sano</option>
-                                                <option value="Control nutricional">Control nutricional</option>
-                                                <option value="Inyecciones">Inyecciones</option>
-                                                <option value="Curaciones y pequeña cirugía">Curaciones y pequeña
-                                                    cirugía</option>
-                                                <option value="Toma y lectura de electrocardiograma">Toma y lectura de
-                                                    electrocardiograma</option>
-                                                <option value="Toma de glucosa capilar">Toma de glucosa capilar
-                                                </option>
-                                                <option value="Terapias respiratorias">Terapias respiratorias</option>
-                                                <option value="Vacunaciones">Vacunaciones</option>
-                                            </select>
-                                        </div>
-                                        <div class="row row-sm-space mt-1">
-                                            <div class="col-sm-6">
-                                                <div class="input-group flex-nowrap">
-                                                    <span>
-                                                        <i class="icon-calendar2"></i>
-                                                    </span>
-                                                    <div class="datepicker-wrap">
-                                                        <input name="requestdate" type="text"
-                                                            class="form-control datetimepicker" placeholder="Fecha"
-                                                            readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 mt-1 mt-sm-0">
-                                                <div class="input-group flex-nowrap">
-                                                    <span>
-                                                        <i class="icon-clock"></i>
-                                                    </span>
-                                                    <div class="datepicker-wrap">
-                                                        <input name="requesttime" type="text"
-                                                            class="form-control timepicker" placeholder="Hora"
-                                                            readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="text-right mt-2">
-                                            <button type="submit" class="btn btn-sm btn-hover-fill">Enviar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col col-close"><a href="#" class="js-quickLinks-close"><i
-                                        class="icon-top" data-toggle="tooltip" data-placement="top"
-                                        title="Cerrar"></i></a></div>
+    						</div>
+    					</div>
+    					<div class="col">
+    						<a href="#" class="link">
+    							<i class="icon-pencil-writing"></i><span>Agendar Cita</span>
+    						</a>
+    						<div class="link-drop">
+    							<a href="{{url('citas')}}" style="text-decoration: none;">
+    								<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Cita</h5>
+    							</a>
+    						</div>
+    					</div>
+                            <div class="col col-close"><a href="#" class="js-quickLinks-close"><i class="icon-top" data-toggle="tooltip" data-placement="top" title="Cerrar"></i></a></div>
                         </div>
                     </div>
-                    <div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left"
-                            title="Open panel">+</span></div>
+                    <div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left" title="Open panel">+</span></div>
                 </div>
             </div>
             <div id="mainSliderWrapper">
                 <div class="loading-content">
                     <div class="inner-circles-loader"></div>
                 </div>
-                <div class="main-slider arrows-white arrows-bottom" id="mainSlider"
-                    data-slick='{"arrows": false, "dots": false}'>
+                <div class="main-slider arrows-white arrows-bottom" id="mainSlider" data-slick='{"arrows": false, "dots": false}'>
                     <div class="slide">
                         <div class="img--holder" data-animation="Booking a visitkenburns" data-bg="{{ asset('dentco-html/images/loop1.png') }}">
                         </div>
@@ -258,14 +99,10 @@
                             <div class="vert-wrap container">
                                 <div class="vert">
                                     <div class="container">
-                                        <div class="slide-txt2" data-animation="fadeInDown"
-                                            data-animation-delay="1s">Unidad Médica NR
+                                        <div class="slide-txt2" data-animation="fadeInDown" data-animation-delay="1s">Unidad Médica NR
                                             <br><b>Servicios médicos de calidad</b>
                                         </div>
-                                        <div class="slide-btn"><a href="{{url('servicios')}}" class="btn btn-white"
-                                                data-animation="fadeInUp" data-animation-delay="2s"><i
-                                                    class="icon-right-arrow"></i><span>Saber Más</span><i
-                                                    class="icon-right-arrow"></i></a></div>
+                                        <div class="slide-btn"><a href="{{url('servicios')}}" class="btn btn-white" data-animation="fadeInUp" data-animation-delay="2s"><i class="icon-right-arrow"></i><span>Saber Más</span><i class="icon-right-arrow"></i></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -277,14 +114,10 @@
                             <div class="vert-wrap container">
                                 <div class="vert">
                                     <div class="container">
-                                        <div class="slide-txt2" data-animation="fadeInDown"
-                                            data-animation-delay="1s">Atención
+                                        <div class="slide-txt2" data-animation="fadeInDown" data-animation-delay="1s">Atención
                                             <br><b>para toda la familia</b>
                                         </div>
-                                        <div class="slide-btn"><a href="{{url('servicios')}}" class="btn btn-white"
-                                                data-animation="fadeInUp" data-animation-delay="2s"><i
-                                                    class="icon-right-arrow"></i><span>Saber Más</span><i
-                                                    class="icon-right-arrow"></i></a></div>
+                                        <div class="slide-btn"><a href="{{url('servicios')}}" class="btn btn-white" data-animation="fadeInUp" data-animation-delay="2s"><i class="icon-right-arrow"></i><span>Saber Más</span><i class="icon-right-arrow"></i></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -296,13 +129,10 @@
                             <div class="vert-wrap container">
                                 <div class="vert">
                                     <div class="container">
-                                        <div class="slide-txt1" data-animation="fadeInDown"
-                                            data-animation-delay="1s">Unidad Médica NR
+                                        <div class="slide-txt1" data-animation="fadeInDown" data-animation-delay="1s">Unidad Médica NR
                                             <br><b>Ofrecemos seguros médicos</b>
                                         </div>
-                                        <div class="slide-btn"><a href="https://www.nrseguros.com.sv/"
-                                                class="btn btn-white" data-animation="fadeInUp"
-                                                data-animation-delay="2s"><i class="icon-right-arrow"></i><span>Saber
+                                        <div class="slide-btn"><a href="https://www.nrseguros.com.sv/" class="btn btn-white" data-animation="fadeInUp" data-animation-delay="2s"><i class="icon-right-arrow"></i><span>Saber
                                                     Más</span><i class="icon-right-arrow"></i></a></div>
                                     </div>
                                 </div>
@@ -315,14 +145,10 @@
                             <div class="vert-wrap container">
                                 <div class="vert">
                                     <div class="container">
-                                        <div class="slide-txt1" data-animation="fadeInDown"
-                                            data-animation-delay="2s">
+                                        <div class="slide-txt1" data-animation="fadeInDown" data-animation-delay="2s">
                                             <br><b></b>
                                         </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                                        <div class="slide-btn"><a href="acerca.html" class="btn btn-white"
-                                                data-animation="fadeInUp" data-animation-delay="2s"><i
-                                                    class="icon-right-arrow"></i><span>Saber Más</span><i
-                                                    class="icon-right-arrow"></i></a></div>
+                                        <div class="slide-btn"><a href="acerca.html" class="btn btn-white" data-animation="fadeInUp" data-animation-delay="2s"><i class="icon-right-arrow"></i><span>Saber Más</span><i class="icon-right-arrow"></i></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -352,8 +178,7 @@
                                 humana.</p>
                         </div>
                         <div class="mt-2 mt-md-4"></div>
-                        <a href="contacto.html" class="btn-link" data-toggle="modal"
-                            data-target="#modalBookingForm">Contactar<i class="icon-right-arrow"></i></a>
+                        <a href="contacto.html" class="btn-link" data-toggle="modal" data-target="#modalBookingForm">Contactar<i class="icon-right-arrow"></i></a>
                     </div>
                     <!--<div class="col-md-6 mt-3 mt-md-0"><img src="images/medicoin.jpg" class="w-100" alt="">
       <div class="video-wrap embed-responsive embed-responsive-16by9">
@@ -380,9 +205,7 @@
                                     <div class="service-box-icon"><i class="bi bi-clipboard2-pulse"></i></div>
                                     <div class="service-box-icon-bg"><i class="bi bi-clipboard2-pulse"></i></div>
                                     <h3 class="service-box-title">CONSULTAS MÉDICAS: PRESENCIALES</h3>
-                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
-                                                class="icon-right-arrow"></i><span>Saber Más</span><i
-                                                class="icon-right-arrow"></i></a></div>
+                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i class="icon-right-arrow"></i><span>Saber Más</span><i class="icon-right-arrow"></i></a></div>
                                 </div>
                             </div>
                             <div class="service-box service-box-greybg service-box--hiddenbtn">
@@ -390,9 +213,7 @@
                                     <div class="service-box-icon"><i class="bi bi-pc-display-horizontal"></i></div>
                                     <div class="service-box-icon-bg"><i class="bi bi-pc-display-horizontal"></i></div>
                                     <h3 class="service-box-title">CONSULTAS MÉDICAS: TELECONSULTA</h3>
-                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
-                                                class="icon-right-arrow"></i><span>Saber Más</span><i
-                                                class="icon-right-arrow"></i></a></div>
+                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i class="icon-right-arrow"></i><span>Saber Más</span><i class="icon-right-arrow"></i></a></div>
                                 </div>
                             </div>
                             <div class="service-box service-box-greybg service-box--hiddenbtn">
@@ -402,9 +223,7 @@
                                     <h3 class="service-box-title">TAIES (Tele-Asesoría Internacional Especializada) y
                                         Jornadas Médicas
                                     </h3>
-                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
-                                                class="icon-right-arrow"></i><span>Saber Más</span><i
-                                                class="icon-right-arrow"></i></a></div>
+                                    <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i class="icon-right-arrow"></i><span>Saber Más</span><i class="icon-right-arrow"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -415,9 +234,7 @@
                             <div class="service-box-caption text-center w-50 ml-auto">
                                 <h3 class="service-box-title">Servicios</h3>
 
-                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
-                                            class="icon-right-arrow"></i><span>Saber Más</span><i
-                                            class="icon-right-arrow"></i></a></div>
+                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i class="icon-right-arrow"></i><span>Saber Más</span><i class="icon-right-arrow"></i></a></div>
                             </div>
                         </div>
                     </div>
@@ -430,9 +247,7 @@
                                 <div class="service-box-icon"><i class="bi bi-clipboard2-pulse"></i></div>
                                 <div class="service-box-icon-bg"><i class="bi bi-clipboard2-pulse"></i></div>
                                 <h3 class="service-box-title">CONSULTAS MÉDICAS: PRESENCIALES</h3>
-                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
-                                            class="icon-right-arrow"></i><span>Know more</span><i
-                                            class="icon-right-arrow"></i></a></div>
+                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i class="icon-right-arrow"></i><span>Know more</span><i class="icon-right-arrow"></i></a></div>
                             </div>
                         </div>
                         <div class="service-box service-box-greybg service-box--hiddenbtn">
@@ -440,9 +255,7 @@
                                 <div class="service-box-icon"><i class="bi bi-journal-medical"></i></div>
                                 <div class="service-box-icon-bg"><i class="bi bi-journal-medical"></i></div>
                                 <h3 class="service-box-title">CONSULTAS MÉDICAS: TELECONSULTA</h3>
-                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i
-                                            class="icon-right-arrow"></i><span>Know more</span><i
-                                            class="icon-right-arrow"></i></a></div>
+                                <div class="btn-wrap"><a href="{{url('servicios')}}" class="btn"><i class="icon-right-arrow"></i><span>Know more</span><i class="icon-right-arrow"></i></a></div>
                             </div>
                         </div>
                     </div>
@@ -458,12 +271,10 @@
                     <h2 class="h1">El por qué escogernos</h2>
                     <div class="h-decor"></div>
                 </div>
-                <div class="row js-icn-carousel icn-carousel flex-column flex-sm-row text-center text-sm-left"
-                    data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}]}'>
+                <div class="row js-icn-carousel icn-carousel flex-column flex-sm-row text-center text-sm-left" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}]}'>
                     <div class="col-md">
                         <div class="icn-text icn-text-wmax">
-                            <div class="icn-text-circle"><i style="font-size: xx-large;	line-height: 81px;"
-                                    class="bi bi-clipboard2-pulse"></i></div>
+                            <div class="icn-text-circle"><i style="font-size: xx-large;	line-height: 81px;" class="bi bi-clipboard2-pulse"></i></div>
                             <div>
                                 <h5 class="icn-text-title">Sistema digital</h5>
                                 <!--<p>We provide comprehensive treatment planning and follow strict standards that ensure your surgery will go smoothly and provide the results you desire.</p>-->
@@ -487,8 +298,7 @@
                         </div>
                     </div>
                 </div><br><br><br><br>
-                <div class="row js-icn-carousel icn-carousel flex-column flex-sm-row text-center text-sm-left"
-                    data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}]}'>
+                <div class="row js-icn-carousel icn-carousel flex-column flex-sm-row text-center text-sm-left" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}]}'>
                     <div class="col-md">
                         <div class="icn-text">
                             <div class="icn-text-circle"><i class="icon-dental-chair"></i></div>
@@ -524,7 +334,7 @@
                 <div class="banner-call">
                     <div class="row no-gutters">
                         <div class="col-sm-5 col-lg-4 order-2 order-sm-1 mt-3 mt-md-0 text-center text-md-right">
-                            <img src="{{ asset('dentco-html/images/Servicios confiables.png') }}"  alt="" class="shift-left">
+                            <img src="{{ asset('dentco-html/images/Servicios confiables.png') }}" alt="" class="shift-left" style="opacity: 45%;">
                         </div>
                         <div class="col-sm-7 col-lg-7 d-flex align-items-center order-1 order-sm-2">
                             <div class="zs-mb-none">
@@ -539,12 +349,10 @@
                                     damos la bienvenida a nuevos pacientes para que prueben el servicio que tenemos para
                                     ofrecer. </p>
                                 <div class="mt-3 mt-lg-4 ">
-                                    <a href="https://wa.me/70002063" class="banner-call-phone">&nbsp;<i
-                                            class="bi bi-whatsapp"></i>7000 - 2063</a>
+                                    <a href="https://wa.me/70002063" class="banner-call-phone">&nbsp;<i class="bi bi-whatsapp"></i>7000 - 2063</a>
                                 </div>
                                 <div class="mt-3 mt-lg-4">
-                                    <i class="icon-telephone"></i><a href="tel:25213705"
-                                        class="banner-call-phone">&nbsp;2521 - 3705</a>
+                                    <i class="icon-telephone"></i><a href="tel:25213705" class="banner-call-phone">&nbsp;2521 - 3705</a>
                                 </div>
 
                             </div>
@@ -554,7 +362,7 @@
             </div>
         </div>
         <!--section call us-->
-        <div class="container">
+        <!-- <div class="container">
             <div class="text-center mb-2  mb-md-3 mb-lg-4">
                 <div class="h-sub theme-color">Walk with a Doc</div>
                 <h1>Marcando la diferencia</h1>
@@ -567,12 +375,10 @@
                     <img src="{{ asset('dentco-html/images/WWAD People.png') }}" class="w-100" alt="">
                     <div class="row mt-3">
                         <div class="col-6">
-                            <img src="{{ asset('dentco-html/images/content/about-03.jpg') }}"
-                             alt="">
+                            <img src="{{ asset('dentco-html/images/content/about-03.jpg') }}" alt="">
                         </div>
                         <div class="col-6">
-                            <img src="{{ asset('dentco-html/images/content/about-04.jpg') }}"
-                              class="w-100" alt="">
+                            <img src="{{ asset('dentco-html/images/content/about-04.jpg') }}" class="w-100" alt="">
                         </div>
                     </div>
                 </div>
@@ -582,11 +388,10 @@
                         en el Parque Bicentenario a las 4 pm (Punto de encuentro en plaza de parqueo sur).
                     </p>
                     <div class="mt-3 mt-md-7"></div>
-                    <h3>Más Información <span class="theme-color"></span></h3><a
-                        href="https://walkwithadoc.org/join-a-walk/locations/san-salvador-el-salvador/"><b>https://walkwithadoc.org/join-a-walk/locations/san-salvador-el-salvador/</a></b>
+                    <h3>Más Información <span class="theme-color"></span></h3><a href="https://walkwithadoc.org/join-a-walk/locations/san-salvador-el-salvador/"><b>https://walkwithadoc.org/join-a-walk/locations/san-salvador-el-salvador/</a></b>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!--footer-->
     <div class="footer mt-0">
@@ -600,23 +405,17 @@
                             </div>
                             <div class="mt-2 mt-lg-0"></div>
                             <div class="footer-social d-none d-md-block d-lg-none">
-                                <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i
-                                        class="icon-facebook-logo"></i></a>
-                                <a href="https://goo.gl/maps/B6pbzLm8aK7mRtCF8 " target="blank" class="hovicon"><i
-                                        class="icon-google-logo"></i></a>
-                                <a href="https://www.instagram.com/unidadmedicanr/" target="blank" class="hovicon"><i
-                                        class="icon-instagram"></i></a>
+                                <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
+                                <a href="https://goo.gl/maps/B6pbzLm8aK7mRtCF8 " target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/unidadmedicanr/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="footer-social d-md-none d-lg-block">
-                                <a href="https://www.facebook.com/unidadmedicanr/" target="blank" class="hovicon"><i
-                                        class="icon-facebook-logo"></i></a>
+                                <a href="https://www.facebook.com/unidadmedicanr/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 
-                                <a href="https://goo.gl/maps/B6pbzLm8aK7mRtCF8 " target="blank" class="hovicon"><i
-                                        class="icon-google-logo"></i></a>
-                                <a href="https://www.instagram.com/unidadmedicanr/" target="blank" class="hovicon"><i
-                                        class="icon-instagram"></i></a>
+                                <a href="https://goo.gl/maps/B6pbzLm8aK7mRtCF8 " target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/unidadmedicanr/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -631,16 +430,11 @@
                         <li><i class="icon-placeholder2"></i>Colonia San Ernesto, Pasaje San Carlos, #154, San Salvador
                             .
                             <br>
-                            <a href="contact.html" class="btn btn-xs btn-gradient"><i
-                                    class="icon-placeholder2"></i><span>Obtener dirección</span><i
-                                    class="icon-right-arrow"></i></a>
+                            <a href="contact.html" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Obtener dirección</span><i class="icon-right-arrow"></i></a>
                         </li>
-                        <li><i class="icon-telephone"></i><b><span class="phone"><span
-                                        class="text-nowrap">2521-3705</span></span></b></li>
-                        <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
-                                        href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
-                        <li><i class="icon-black-envelope"></i><a
-                                href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+                        <li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b></li>
+                        <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
+                        <li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -660,8 +454,7 @@
                         <a href="#">Politicas de Privacidad</a>
                     </div>
                     <div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">
-                            <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
-                                            href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span>
+                            <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span>
                             </li>
                     </div>
                 </div>
@@ -692,22 +485,19 @@
                                 <span>
                                     <i class="icon-user"></i>
                                 </span>
-                                <input type="text" name="name" class="form-control" autocomplete="off"
-                                    placeholder="Tu Nombre*" />
+                                <input type="text" name="name" class="form-control" autocomplete="off" placeholder="Tu Nombre*" />
                             </div>
                             <div class="input-group">
                                 <span>
                                     <i class="icon-email2"></i>
                                 </span>
-                                <input type="text" name="email" class="form-control" autocomplete="off"
-                                    placeholder="Correo Electronico*" />
+                                <input type="text" name="email" class="form-control" autocomplete="off" placeholder="Correo Electronico*" />
                             </div>
                             <div class="input-group">
                                 <span>
                                     <i class="icon-smartphone"></i>
                                 </span>
-                                <input type="text" name="phone" class="form-control" autocomplete="off"
-                                    placeholder="Numero Telefonico" />
+                                <input type="text" name="phone" class="form-control" autocomplete="off" placeholder="Numero Telefonico" />
                             </div>
                             <textarea name="message" class="form-control" placeholder="Tu comentario*"></textarea>
                             <div class="text-right mt-2">
@@ -739,8 +529,7 @@
                                 <span>
                                     <i class="icon-user"></i>
                                 </span>
-                                <input type="text" name="bookingname" class="form-control" autocomplete="off"
-                                    placeholder="Su Nombre*" />
+                                <input type="text" name="bookingname" class="form-control" autocomplete="off" placeholder="Su Nombre*" />
                             </div>
                             <div class="row row-xs-space mt-1">
                                 <div class="col-sm-6">
@@ -748,8 +537,7 @@
                                         <span>
                                             <i class="icon-email2"></i>
                                         </span>
-                                        <input type="text" name="bookingemail" class="form-control"
-                                            autocomplete="off" placeholder="Su Correo*" />
+                                        <input type="text" name="bookingemail" class="form-control" autocomplete="off" placeholder="Su Correo*" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6 mt-1 mt-sm-0">
@@ -757,8 +545,7 @@
                                         <span>
                                             <i class="icon-smartphone"></i>
                                         </span>
-                                        <input type="text" name="bookingphone" class="form-control"
-                                            autocomplete="off" placeholder="Su numero Telefonico" />
+                                        <input type="text" name="bookingphone" class="form-control" autocomplete="off" placeholder="Su numero Telefonico" />
                                     </div>
                                 </div>
                             </div>
@@ -777,8 +564,7 @@
                                     <i class="icon-calendar2"></i>
                                 </span>
                                 <div class="datepicker-wrap">
-                                    <input name="bookingdate" type="text" class="form-control datetimepicker"
-                                        placeholder="Dia" readonly>
+                                    <input name="bookingdate" type="text" class="form-control datetimepicker" placeholder="Dia" readonly>
                                 </div>
                             </div>
                             <div class="input-group flex-nowrap mt-1">
@@ -786,8 +572,7 @@
                                     <i class="icon-clock"></i>
                                 </span>
                                 <div class="datepicker-wrap">
-                                    <input name="bookingtime" type="text" class="form-control timepicker"
-                                        placeholder="Hora">
+                                    <input name="bookingtime" type="text" class="form-control timepicker" placeholder="Hora">
                                 </div>
                             </div>
                             <textarea name="bookingmessage" class="form-control" placeholder="Su comentario"></textarea>
@@ -801,21 +586,21 @@
         </div>
     </div>
     <!-- Vendors -->
-     <script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/cookie/jquery.cookie.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/moment.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/popper/popper.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/bootstrap/bootstrap.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/waypoints/sticky.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/slick/slick.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/countTo/jquery.countTo.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/form-validation/jquery.form.js') }}"></script>
-     <script src="{{ asset('dentco-html/vendor/form-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/cookie/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/moment.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/waypoints/sticky.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/countTo/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/form-validation/jquery.form.js') }}"></script>
+    <script src="{{ asset('dentco-html/vendor/form-validation/jquery.validate.min.js') }}"></script>
     <!-- Custom Scripts -->
     <script src="{{ asset('dentco-html/js/app.js') }}"></script>
     <script src="{{ asset('dentco-html/js/app-shop.js') }}"></script>

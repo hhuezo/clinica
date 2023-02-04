@@ -36,19 +36,14 @@ Route::get('pacientes','CitasController@pacientes');
 Route::get('reservas_citas','CitasController@verListadoReservas');
 Route::get('reservas_citas_doctor','CitasController@reservas_citas_doctor');
 Route::post('actualizar_citas','CitasController@actualizar');
-Route::resource('citas', 'CitasController')->middleware('verified');
+Route::resource('citas', 'CitasController');
 Route::resource('catalogo/preguntas', 'catalogo\PreguntaController');
 Route::get('suspender_citas','catalogo\DoctorController@suspender');
 Route::post('desactivar','catalogo\DoctorController@desactivar');
 Route::post('activar','catalogo\DoctorController@activar');
 Route::get('desactivar_citas','catalogo\DoctorController@desactivar_citas');
 Route::get('activar_citas','catalogo\DoctorController@activar_citas');
-
-
-
-
-
-
+Route::post('enviar_email','ClinicaController@enviarEmail');
 Route::resource('admin_citas', 'AdminCitasController');
 Route::get('get_horarios', 'AdminCitasController@get_horarios');
 Route::get('validation_email', 'CitasController@validation_email');
