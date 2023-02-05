@@ -76,7 +76,7 @@ class ClinicaController extends Controller
 
     public function contacto()
     {
-        alert()->success('La cita ha sido agendada correctamente');
+      //  alert()->success('La cita ha sido agendada correctamente');
         return view('contacto');
     }
 }
