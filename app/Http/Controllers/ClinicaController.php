@@ -17,7 +17,7 @@ class ClinicaController extends Controller
     public function enviarEmail(Request $request)
     {
 
-        //confirmacion de correo electronico    
+        //confirmacion de correo electronico
         $nombre = $request->get('name');
         $email = $request->get('email');
         $telefono = $request->get('phone');
@@ -76,6 +76,7 @@ class ClinicaController extends Controller
 
     public function contacto()
     {
+        alert()->success('La cita ha sido agendada correctamente');
         return view('contacto');
     }
 }
