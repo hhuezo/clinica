@@ -116,8 +116,8 @@
                         </div>
                     </div>
                     <div class="col-md col-lg-6 mt-4 mt-md-0">
-                        <form method="POST" novalidate="novalidate" action="{{url('enviar_email')}}">
-                        {{ Form::token() }}
+                        <form method="POST"  action="{{ url('enviar_email') }}">
+                            {{ Form::token() }}
                             <!-- <div class="successform">
                                 <p>Su mensaje se envio correctamente</p>
                             </div>
@@ -125,20 +125,22 @@
                                 <p>Algo parece haber salido mal, intentelo de nuevo por favor.</p>
                             </div> -->
                             <div>
-                                <input type="text" class="form-control" name="name" placeholder="Su Nombre*" required>
+                                <input type="text" class="form-control" name="name" placeholder="Su Nombre*"
+                                    required>
                             </div>
                             <div class="mt-15">
                                 <input type="text" class="form-control" name="email"
                                     placeholder="Correo Electronico*" required>
                             </div>
                             <div class="mt-15">
-                                <input type="text" class="form-control" name="phone" placeholder="Su Numero Telefonico" required>
+                                <input type="text" class="form-control" name="phone"
+                                    placeholder="Su Numero Telefonico" required>
                             </div>
                             <div class="mt-15">
                                 <textarea class="form-control" name="message" placeholder="Mensaje" required></textarea>
                             </div>
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-hover-fill"><i
+                               <button type="submit" class="btn btn-hover-fill"><i
                                         class="icon-right-arrow"></i><span>Enviar Mensaje</span><i
                                         class="icon-right-arrow"></i></button>
                             </div>
