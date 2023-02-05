@@ -30,7 +30,8 @@ class EnviarMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Confirmar correo electrónico')
-                    ->view('auth.verify_email');
+        //$mailData = $this->mailData;
+        return $this->subject('Unidad Medica NR')
+                    ->view('auth.contactenos');
     }
 }

@@ -116,27 +116,26 @@
                         </div>
                     </div>
                     <div class="col-md col-lg-6 mt-4 mt-md-0">
-                        <form class="contact-form" id="contactForm" method="post" novalidate="novalidate" >
+                        <form method="POST" novalidate="novalidate" action="{{url('enviar_email')}}">
                         {{ Form::token() }}
-                            <div class="successform">
+                            <!-- <div class="successform">
                                 <p>Su mensaje se envio correctamente</p>
                             </div>
                             <div class="errorform">
                                 <p>Algo parece haber salido mal, intentelo de nuevo por favor.</p>
-                            </div>
+                            </div> -->
                             <div>
-                                <input type="text" class="form-control" name="name" placeholder="Su Nombre*">
+                                <input type="text" class="form-control" name="name" placeholder="Su Nombre*" required>
                             </div>
                             <div class="mt-15">
                                 <input type="text" class="form-control" name="email"
-                                    placeholder="Correo Electronico*">
+                                    placeholder="Correo Electronico*" required>
                             </div>
                             <div class="mt-15">
-                                <input type="text" class="form-control" name="phone"
-                                    placeholder="Su Numero Telefonico">
+                                <input type="text" class="form-control" name="phone" placeholder="Su Numero Telefonico" required>
                             </div>
                             <div class="mt-15">
-                                <textarea class="form-control" name="message" placeholder="Mensaje"></textarea>
+                                <textarea class="form-control" name="message" placeholder="Mensaje" required></textarea>
                             </div>
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-hover-fill"><i
@@ -144,6 +143,7 @@
                                         class="icon-right-arrow"></i></button>
                             </div>
                         </form>
+                        @include('sweet::alert')
                     </div>
                 </div>
             </div>
