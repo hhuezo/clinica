@@ -11,7 +11,7 @@
             <h2>Listado de Pacientes </h2>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12" align="right">
-            <a href="{{ url('catalogo/doctor/create') }}"><button class="btn btn-info float-right"> <i class="fa fa-plus"></i> Nuevo</button></a>
+            <a href="{{ url('agregar_paciente') }}"><button class="btn btn-info float-right"> <i class="fa fa-plus"></i> Nuevo</button></a>
         </div>
         <div class="clearfix"></div>
     </div>

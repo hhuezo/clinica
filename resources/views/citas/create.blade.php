@@ -10,7 +10,7 @@
                     <h2>Nueva cita <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <a href="{{ url('agregar_paciente') }}" class="btn btn-success"><i class="fa fa-plus fa-child"></i>
-                            Agregar Pacientito</a>
+                            Agregar Paciente</a>
                     </ul>
                     <div class="clearfix"></div>
                 </div>

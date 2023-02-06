@@ -7,7 +7,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-horizontal form-label-left">
 
             <div class="x_title">
-                <h2><i class="fa fa-child"></i>&nbsp; Agregar Pacientito<small></small></h2>
+                <h2>&nbsp; Agregar Paciente<small></small></h2>
                 <ul class="nav navbar-right panel_toolbox">
 
                 </ul>
@@ -30,7 +30,7 @@
                 {{Form::token()}}
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">DUI (Responsable)</label>
+                    <label class="col-sm-3 control-label">DUI</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input name="dui" id="dui" class="form-control" autofocus="true" type="text" required="true" data-inputmask="'mask': ['99999999-9']">
                     </div>

@@ -30,8 +30,9 @@ class EnviarMail extends Mailable
      */
     public function build()
     {
-        //$mailData = $this->mailData;
-        return $this->subject('Unidad Medica NR')
+        
+        return $this->to('clinicanr@itwgsv.com')
+                    ->subject('Unidad Medica NR')
                     ->view('auth.contactenos');
     }
 }

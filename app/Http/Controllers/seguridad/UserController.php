@@ -112,7 +112,7 @@ class UserController extends Controller
 //        }
 
         alert()->success('La cita ha sido agendada correctamente');
-        return redirect('listado_citas');
+        return redirect('citas/listado_citas_secretaria');
     }
 
     public function edit($id)
