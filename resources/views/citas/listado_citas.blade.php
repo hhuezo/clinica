@@ -37,7 +37,11 @@
                 <tbody>
                     @foreach ($citas as $obj)
                     <tr>
+                        @if($obj->Paciente)
                         <td align="center">{{ $obj->pacientes->name}}</td>
+                        @else
+                        <td></td>
+                        @endif
                         <td>{{$obj->doctor->Nombre}}</td>
                         <td>{{ $obj->doctor->especialidad->Nombre }}</td>
                         <td>{{ date('d/m/Y', strtotime($obj->Fecha)) }}</td>

@@ -94,7 +94,7 @@
                                         </ul>
                                     </li>
 
-                                    <li><a href="{{url('citas/listado_citas_secretaria')}}">Listado de Citas</a></li>
+                                    <!-- <li><a href="{{url('citas/listado_citas_secretaria')}}">Listado de Citas</a></li> -->
                                     <li><a href="{{url('pacientes')}}">Listado de Pacientes</a></li>
                                 @endcan
                                 @can('citas doctor')
