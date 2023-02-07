@@ -89,18 +89,19 @@
                     </div>
                     <div class="question-box mt-3">
                         <h5 class="question-box-title">Preguntele a los expertos</h5>
-                        <form id="questionForm" method="post" novalidate>
+                        <form method="POST"  action="{{ url('enviar_email') }}">
+                        {{ Form::token() }}
                             <div class="successform">
                                 <p>Su mensaje se ha enviado correctamente</p>
                             </div>
                             <div class="errorform">
                                 <p>Parece que algo ha salido mal, intentelo de nuevo por favor.</p>
                             </div>
-                            <input type="text" class="form-control" name="name" placeholder="Su nombre*">
+                            <input type="text" class="form-control" name="name" placeholder="Su nombre*" required>
                             <input type="text" class="form-control" name="email"
-                                placeholder="Su correo electronico*">
-                            <input type="text" class="form-control" name="phone" placeholder="Telefono">
-                            <textarea class="form-control" name="message" placeholder="Su pregunta*"></textarea>
+                                placeholder="Su correo electronico*" required>
+                            <input type="text" class="form-control" name="phone" placeholder="Telefono" required>
+                            <textarea class="form-control" name="message" placeholder="Su pregunta*" required></textarea>
                             <button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i
                                     class="icon-right-arrow"></i><span>Enviar</span><i
                                     class="icon-right-arrow"></i></button>
