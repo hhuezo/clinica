@@ -56,8 +56,8 @@
     @foreach ($categorias as $categoria)
         <div class="text-center mb-2  mb-md-3 mb-lg-4">
             <div class="h-sub theme-color"> &nbsp;</div>
-            <h1>{{$categoria->Nombre}}</h1>
-            <div class="h-decor"></div>
+            <!-- <h1>{{$categoria->Nombre}}</h1>  
+            <div class="h-decor"></div>-->   
 
         </div>
 

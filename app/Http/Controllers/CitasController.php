@@ -24,8 +24,8 @@ class CitasController extends Controller
 {
     public function index()
     {
-        $categorias = Categoria::where('Activo', '=', 1)->get();
-        $especialidades = Especialidad::where('Activo', '=', 1)->get();
+        $categorias = Categoria::where('Activo', '=', 1)->where('Id','=',1)->get();
+        $especialidades = Especialidad::where('Activo', '=', 1)->where('Categoria','=',1)->get();
         return view('citas.index', ['especialidades' => $especialidades, 'categorias' => $categorias]);
     }
 
