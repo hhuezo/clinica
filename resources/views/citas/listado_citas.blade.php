@@ -38,7 +38,7 @@
                     @foreach ($citas as $obj)
                     <tr>
                         @if($obj->Paciente)
-                        <td align="center">{{ $obj->pacientes->name}}</td>
+                        <td align="center">{{ $obj->paciente->name}}</td>
                         @else
                         <td></td>
                         @endif

@@ -143,7 +143,7 @@
                             <select name="Doctor" id="Doctor" class="form-control" required>
                                 <option value="">Seleccione...</option>
                                 @foreach ($doctores as $obj)
-                                    <option value="{{ $obj->Id }}">{{ $obj->Nombre }}</option>
+                                    <option value="{{ $obj->Id }}">{{ $obj->Nombre }} {{$obj->especialidad->Nombre}}</option>
                                 @endforeach
                             </select>
                         </div>

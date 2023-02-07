@@ -202,12 +202,11 @@
 						</div>
 						<div class="doctor-box-text">
 							<p class="text-justify">
-								Pendiente
-								<!-- • Graduada de la Facultad de Medicina de la Universidad “Dr. José Matías Delgado”.<br /><br />
-								• Residencia en Medicina Interna en Cleveland Clinic/Hospital Fairview, Cleveland, Ohio E.U.A.<br /><br />
-								• Certificada por la American Board of Internal Medicine.<br /><br />
-								• Formación Actual: Subespecialidad en endocrinología en la Universidad Case Western Reserve, Centro Médico Cleveland – Endocrinología, Diabetes y Metabolismo.<br /><br />
-								• Idiomas: español, inglés e italiano. -->
+								• Graduada de la facultad de medicina de la Universidad de El Salvador<br /><br />
+								• Residencia de Obstetricia y Ginecologia Hospital Nacional Especializado de Maternidad Dr. Raul Arguello Escolan <br /><br />
+								• Ultrasonografia Ginecologica y Obstetrica Hospital Nacional San Rafael <br /><br />
+								• Asociación de ginecología y obstetricia de El Salvador. Marzo 2013 <br /><br />
+								• Español e Ingles<br /><br />
 							</p>
 						</div>
 						<div class="doctor-box-bottom">
