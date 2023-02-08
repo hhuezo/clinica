@@ -54,7 +54,7 @@
 							<div class="row">
 								<div class="col-md">
 									<div class="title-wrap">
-										<h5>Ubicacion</h5>
+										<h5>Ubicación</h5>
 										<div class="h-decor"></div>
 									</div>
 									<ul class="icn-list-lg">
@@ -118,7 +118,7 @@
 							<div class="row">
 								<div class="col-md">
 									<div class="title-wrap">
-										<h5>Ubicacion</h5>
+										<h5>Ubicación</h5>
 										<div class="h-decor"></div>
 									</div>
 									<ul class="icn-list-lg">
@@ -129,11 +129,11 @@
 								</div>
 								<div class="col-md mt-3 mt-md-0">
 									<div class="title-wrap">
-										<h5>Informacion de Contacto</h5>
+										<h5>Información de Contacto</h5>
 										<div class="h-decor"></div>
 									</div>
 									<ul class="icn-list-lg">
-										<li><i class="icon-telephone"></i>Telefono: <span class="theme-color"><span class="text-nowrap">2235 8230 / 2235 0525</span>
+										<li><i class="icon-telephone"></i>Teléfono: <span class="theme-color"><span class="text-nowrap">2235 8230 / 2235 0525</span>
 											</span>
 											</span>
 										</li>

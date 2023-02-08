@@ -45,7 +45,7 @@
 					<div class="text-center mt-4">
 						<p>Todos estos servicios se prestan para que los pacientes disfruten de un estilo de vida saludable
 							<br/> Contamos con la infraestructura necesaria para brindar una atención medica de calidad
-							<br/>Nuestras instalaciones cuentan con el equipo medico necesario para hacer más eficiente nuestro trabajo
+							<br/>Nuestras instalaciones cuentan con el equipo médico necesario para hacer más eficiente nuestro trabajo
 					</div>
 				</div>
 			</div>

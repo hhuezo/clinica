@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description"
-        content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
+    <meta name="description" content="html 5 template, dentist, stomatologist, dental clinic template, medical template, clinic template, surgery clinic theme, plastic surgery template">
     <meta name="author" content="websmirno.site">
     <meta name="format-detection" content="telephone=no">
     <title>Consultas Médicas</title>
@@ -14,8 +13,7 @@
     <link href="{{ asset('dentco-html/vendor/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('dentco-html/vendor/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dentco-html/icons/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}"
-        rel="stylesheet">
+    <link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
     <!--Favicon-->
@@ -42,8 +40,7 @@
                 <div class="col-md">
                     <ul class="services-nav flex-column flex-nowrap">
                         <li class="nav-item">
-                            <a class="nav-link" href="#submenu1" data-toggle="collapse"
-                                data-target="#submenu1">Consultas Médicas</a>
+                            <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Consultas Médicas</a>
                             <div class="collapse show" id="submenu1">
                                 <ul class="flex-column nav">
                                     <li class="nav-item"><a class="nav-link" href="">Consultas Presenciales</a>
@@ -78,8 +75,7 @@
                                     <li>
                                         <i class="icon-telephone"></i>
                                         <div class="d-flex flex-wrap">
-                                            <b><span class="phone"><span class="text-nowrap"><a
-                                                            href="https://wa.me/70002063">WhatsApp:
+                                            <b><span class="phone"><span class="text-nowrap"><a href="https://wa.me/70002063">WhatsApp:
                                                             7000-2063</a></span></span></b>
                                         </div>
                                     </li>
@@ -89,8 +85,8 @@
                     </div>
                     <div class="question-box mt-3">
                         <h5 class="question-box-title">Preguntele a los expertos</h5>
-                        <form method="POST"  action="{{ url('enviar_email') }}">
-                        {{ Form::token() }}
+                        <form method="POST" action="{{ url('enviar_email') }}">
+                            {{ Form::token() }}
                             <div class="successform">
                                 <p>Su mensaje se ha enviado correctamente</p>
                             </div>
@@ -98,13 +94,10 @@
                                 <p>Parece que algo ha salido mal, intentelo de nuevo por favor.</p>
                             </div>
                             <input type="text" class="form-control" name="name" placeholder="Su nombre*" required>
-                            <input type="text" class="form-control" name="email"
-                                placeholder="Su correo electronico*" required>
+                            <input type="text" class="form-control" name="email" placeholder="Su correo electronico*" required>
                             <input type="text" class="form-control" name="phone" placeholder="Telefono" required>
                             <textarea class="form-control" name="message" placeholder="Su pregunta*" required></textarea>
-                            <button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i
-                                    class="icon-right-arrow"></i><span>Enviar</span><i
-                                    class="icon-right-arrow"></i></button>
+                            <button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i class="icon-right-arrow"></i><span>Enviar</span><i class="icon-right-arrow"></i></button>
                         </form>
                     </div>
                 </div>
@@ -221,29 +214,22 @@
                     <div class="row flex-column flex-md-row flex-lg-column">
                         <div class="col-md col-lg-auto">
                             <div class="footer-logo">
-                                <img src="{{ asset('dentco-html/images/LOGO.png') }}" alt=""
-                                    class="img-fluid">
+                                <img src="{{ asset('dentco-html/images/LOGO.png') }}" alt="" class="img-fluid">
                             </div>
                             <div class="mt-2 mt-lg-0"></div>
                             <div class="footer-social d-none d-md-block d-lg-none">
-                                <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i
-                                        class="icon-facebook-logo"></i></a>
+                                <a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 
-                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i
-                                        class="icon-google-logo"></i></a>
-                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i
-                                        class="icon-instagram"></i></a>
+                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="footer-social d-md-none d-lg-block">
-                                <a href="https://www.facebook.com/" target="blank" class="hovicon"><i
-                                        class="icon-facebook-logo"></i></a>
+                                <a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 
-                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i
-                                        class="icon-google-logo"></i></a>
-                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i
-                                        class="icon-instagram"></i></a>
+                                <a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+                                <a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -258,16 +244,11 @@
                         <li><i class="icon-placeholder2"></i>Colonia San Ernesto, Pasaje San Carlos, #154, San Salvador
                             .
                             <br>
-                            <a href="contact.html" class="btn btn-xs btn-gradient"><i
-                                    class="icon-placeholder2"></i><span>Obtener dirección</span><i
-                                    class="icon-right-arrow"></i></a>
+                            <a href="contact.html" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Obtener dirección</span><i class="icon-right-arrow"></i></a>
                         </li>
-                        <li><i class="icon-telephone"></i><b><span class="phone"><span
-                                        class="text-nowrap">2521-3705</span></span></b>
-                        <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
-                                        href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
-                        <li><i class="icon-black-envelope"></i><a
-                                href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+                        <li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b>
+                        <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
+                        <li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -285,8 +266,7 @@
                         <a href="#">Politicas de Privacidad</a>
                     </div>
                     <div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">
-                            <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
-                                            href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span>
+                            <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span>
                             </li>
                     </div>
                 </div>
@@ -317,22 +297,19 @@
                                 <span>
                                     <i class="icon-user"></i>
                                 </span>
-                                <input type="text" name="name" class="form-control" autocomplete="off"
-                                    placeholder="Tu Nombre*" />
+                                <input type="text" name="name" class="form-control" autocomplete="off" placeholder="Tu Nombre*" />
                             </div>
                             <div class="input-group">
                                 <span>
                                     <i class="icon-email2"></i>
                                 </span>
-                                <input type="text" name="email" class="form-control" autocomplete="off"
-                                    placeholder="Correo Electronico*" />
+                                <input type="text" name="email" class="form-control" autocomplete="off" placeholder="Correo Electronico*" />
                             </div>
                             <div class="input-group">
                                 <span>
                                     <i class="icon-smartphone"></i>
                                 </span>
-                                <input type="text" name="phone" class="form-control" autocomplete="off"
-                                    placeholder="Numero Telefonico" />
+                                <input type="text" name="phone" class="form-control" autocomplete="off" placeholder="Numero Telefonico" />
                             </div>
                             <textarea name="message" class="form-control" placeholder="Tu comentario*"></textarea>
                             <div class="text-right mt-2">
@@ -364,8 +341,7 @@
                                 <span>
                                     <i class="icon-user"></i>
                                 </span>
-                                <input type="text" name="bookingname" class="form-control" autocomplete="off"
-                                    placeholder="Su Nombre*" />
+                                <input type="text" name="bookingname" class="form-control" autocomplete="off" placeholder="Su Nombre*" />
                             </div>
                             <div class="row row-xs-space mt-1">
                                 <div class="col-sm-6">
@@ -373,8 +349,7 @@
                                         <span>
                                             <i class="icon-email2"></i>
                                         </span>
-                                        <input type="text" name="bookingemail" class="form-control"
-                                            autocomplete="off" placeholder="Su Correo*" />
+                                        <input type="text" name="bookingemail" class="form-control" autocomplete="off" placeholder="Su Correo*" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6 mt-1 mt-sm-0">
@@ -382,8 +357,7 @@
                                         <span>
                                             <i class="icon-smartphone"></i>
                                         </span>
-                                        <input type="text" name="bookingphone" class="form-control"
-                                            autocomplete="off" placeholder="Su numero Telefonico" />
+                                        <input type="text" name="bookingphone" class="form-control" autocomplete="off" placeholder="Su numero Telefonico" />
                                     </div>
                                 </div>
                             </div>
@@ -393,8 +367,7 @@
                                         <span>
                                             <i class="icon-birthday"></i>
                                         </span>
-                                        <input type="text" name="bookingage" class="form-control"
-                                            autocomplete="off" placeholder="Su Edad" />
+                                        <input type="text" name="bookingage" class="form-control" autocomplete="off" placeholder="Su Edad" />
                                     </div>
                                 </div>
                             </div>
@@ -403,8 +376,7 @@
                                     <i class="icon-calendar2"></i>
                                 </span>
                                 <div class="datepicker-wrap">
-                                    <input name="bookingdate" type="text" class="form-control datetimepicker"
-                                        placeholder="Dia" readonly>
+                                    <input name="bookingdate" type="text" class="form-control datetimepicker" placeholder="Dia" readonly>
                                 </div>
                             </div>
                             <div class="input-group flex-nowrap mt-1">
@@ -412,8 +384,7 @@
                                     <i class="icon-clock"></i>
                                 </span>
                                 <div class="datepicker-wrap">
-                                    <input name="bookingtime" type="text" class="form-control timepicker"
-                                        placeholder="Hora">
+                                    <input name="bookingtime" type="text" class="form-control timepicker" placeholder="Hora">
                                 </div>
                             </div>
                             <textarea name="bookingmessage" class="form-control" placeholder="Su comentario"></textarea>

@@ -9,27 +9,27 @@
 	<meta name="author" content="websmirno.site">
 	<meta name="format-detection" content="telephone=no">
 	<title>Consultas a Domicilio</title>
-<!-- Stylesheets -->
-<link href="{{ asset('dentco-html/vendor/slick/slick.css') }}" rel="stylesheet">
-<link href="{{ asset('dentco-html/vendor/animate/animate.min.css') }}" rel="stylesheet">
-<link href="{{ asset('dentco-html/icons/style.css') }}" rel="stylesheet">
-<link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-<link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
-<!--Favicon-->
-<link rel="icon" href="{{ asset('dentco-html/images/LOGO.png') }}" type="image/x-icon">
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-<link href='https://css.gg/awards.css' rel='stylesheet'>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-<!-- Google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
+	<!-- Stylesheets -->
+	<link href="{{ asset('dentco-html/vendor/slick/slick.css') }}" rel="stylesheet">
+	<link href="{{ asset('dentco-html/vendor/animate/animate.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('dentco-html/icons/style.css') }}" rel="stylesheet">
+	<link href="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link href="{{ asset('dentco-html/css/style.css') }}" rel="stylesheet">
+	<!--Favicon-->
+	<link rel="icon" href="{{ asset('dentco-html/images/LOGO.png') }}" type="image/x-icon">
+	<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+	<link href='https://css.gg/awards.css' rel='stylesheet'>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+	<!-- Google map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiFdr5Z0WRIXKUOqoRRvzRQ5SkzhkUVjk"></script>
 </head>
 
 <body class="shop-page">
 
-    @include('menu_principal')
+	@include('menu_principal')
 
 
 
@@ -57,7 +57,8 @@
 									<h5 class="contact-box-title">Horas Laborales</h5>
 									<ul class="icn-list">
 										<li><i class="icon-clock"></i>Lun - Vie 08:00 - 17:00
-											<br>Sabado 15:00 - 17:00</li>
+											<br>Sabado 15:00 - 17:00
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -68,37 +69,41 @@
 										<li><i class="icon-telephone"></i>
 											<div class="d-flex flex-wrap">
 												<span>Telefono:&nbsp;&nbsp;</span>
-												<span>2521-3705</div>
+												<span>2521-3705
+											</div>
 										</li>
-							<li>
-								<i class="icon-telephone"></i>
-								<div class="d-flex flex-wrap">
-								<b><span class="phone"><span class="text-nowrap"><a href="https://wa.me/70002063">WhatsApp: 7000-2063</a></span></span></b></div>
-							</li>
+										<li>
+											<i class="icon-telephone"></i>
+											<div class="d-flex flex-wrap">
+												<b><span class="phone"><span class="text-nowrap"><a href="https://wa.me/70002063">WhatsApp: 7000-2063</a></span></span></b>
+											</div>
+										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="question-box mt-3">
 							<h5 class="question-box-title">Preguntele a los expertos</h5>
-							<form id="questionForm" method="post" novalidate>
+							<form method="POST" action="{{ url('enviar_email') }}">
+								{{ Form::token() }}
 								<div class="successform">
 									<p>Su mensaje se ha enviado correctamente</p>
 								</div>
 								<div class="errorform">
 									<p>Parece que algo ha salido mal, intentelo de nuevo por favor.</p>
 								</div>
-								<input type="text" class="form-control" name="name" placeholder="Su nombre*">
-								<input type="text" class="form-control" name="email" placeholder="Su correo electronico*">
-								<input type="text" class="form-control" name="phone" placeholder="Telefono">
-								<textarea class="form-control" name="message" placeholder="Su pregunta*"></textarea>
+								<input type="text" class="form-control" name="name" placeholder="Su nombre*" required>
+								<input type="text" class="form-control" name="email" placeholder="Su correo electronico*" required>
+								<input type="text" class="form-control" name="phone" placeholder="Telefono" required>
+								<textarea class="form-control" name="message" placeholder="Su pregunta*" required></textarea>
 								<button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i class="icon-right-arrow"></i><span>Enviar</span><i class="icon-right-arrow"></i></button>
 							</form>
 						</div>
 					</div>
 					<div class="col-md-8 col-lg-9 mt-4 mt-md-0">
 						<div class="title-wrap">
-							<h1>Consultas Medicas a Domicilio</h1></div>
+							<h1>Consultas Medicas a Domicilio</h1>
+						</div>
 						<div class="service-img">
 							<img src="{{ asset('dentco-html/images/consultaser.jpg') }}" class="img-fluid" alt="">
 						</div>
@@ -119,10 +124,10 @@
 
 								<li>Toma de pruebas de laboratorio químico</li>
 							</ul>
-                            <div class="mt-0 mt-lg-4"></div>
+							<div class="mt-0 mt-lg-4"></div>
 							<div class="mt-3"></div>
 							<div class="mt-3"></div>
-                            <p> Nota: La Unidad Médica NR se reserva el derecho de prestar servicios a domicilio en ciertas zonas del país, con el fin de proteger la integridad física de nuestro staff de profesionales. Sujeto a evaluación de zona geográfica</p>
+							<p> Nota: La Unidad Médica NR se reserva el derecho de prestar servicios a domicilio en ciertas zonas del país, con el fin de proteger la integridad física de nuestro staff de profesionales. Sujeto a evaluación de zona geográfica</p>
 							<!--<div class="mt-3 mt-md-5 px-1 pt-1 pb-15 pt-md-2 px-md-4 bg-grey">
 								<div id="faqAccordion1" class="faq-accordion" data-children=".faq-item">
 									<div class="faq-item">
@@ -158,68 +163,71 @@
 		</div>
 		<!--//section-->
 	</div>
-<!--footer-->
-<div class="footer mt-0">
-	<div class="container">
-		<div class="row py-1 py-md-2 px-lg-0">
-			<div class="col-lg-4 footer-col1">
-				<div class="row flex-column flex-md-row flex-lg-column">
-					<div class="col-md col-lg-auto">
-						<div class="footer-logo">
-							<img src="{{ asset('dentco-html/images/LOGO.png') }}" alt="" class="img-fluid">
-						</div>
-						<div class="mt-2 mt-lg-0"></div>
-						<div class="footer-social d-none d-md-block d-lg-none">
-							<a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
+	<!--footer-->
+	<div class="footer mt-0">
+		<div class="container">
+			<div class="row py-1 py-md-2 px-lg-0">
+				<div class="col-lg-4 footer-col1">
+					<div class="row flex-column flex-md-row flex-lg-column">
+						<div class="col-md col-lg-auto">
+							<div class="footer-logo">
+								<img src="{{ asset('dentco-html/images/LOGO.png') }}" alt="" class="img-fluid">
+							</div>
+							<div class="mt-2 mt-lg-0"></div>
+							<div class="footer-social d-none d-md-block d-lg-none">
+								<a href="https://www.facebook.com/unidadmedicanr" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 
-							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
-							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+								<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+								<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+							</div>
 						</div>
-					</div>
-					<div class="col-md">
-						<div class="footer-social d-md-none d-lg-block">
-							<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
+						<div class="col-md">
+							<div class="footer-social d-md-none d-lg-block">
+								<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 
-							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
-							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+								<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
+								<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-sm-6 col-lg-4">
+				<div class="col-sm-6 col-lg-4">
 
-			</div>
-			<div class="col-sm-6 col-lg-4">
-				<h3>Nuestros Contactos</h3>
-				<div class="h-decor"></div>
-				<ul class="icn-list">
-					<li><i class="icon-placeholder2"></i>Colonia San Ernesto,  Pasaje San Carlos, #154, San Salvador .
-						<br>
-						<a href="contact.html" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Obtener dirección</span><i class="icon-right-arrow"></i></a>
-					</li>
-					<li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b>
+				</div>
+				<div class="col-sm-6 col-lg-4">
+					<h3>Nuestros Contactos</h3>
+					<div class="h-decor"></div>
+					<ul class="icn-list">
+						<li><i class="icon-placeholder2"></i>Colonia San Ernesto, Pasaje San Carlos, #154, San Salvador .
+							<br>
+							<a href="contact.html" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Obtener dirección</span><i class="icon-right-arrow"></i></a>
+						</li>
+						<li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b>
 						<li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
-					<li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
-				</ul>
+						<li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<style>
+			.z-padd {
+				padding-left: 0px !important;
+			}
+		</style>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row text-center text-md-left">
+					<div class="col-sm">Copyright © 2022 <a href="#">Unidad Medica NR</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+						<a href="#">Politicas de Privacidad</a>
+					</div>
+					<div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">
+							<li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<style>
-		.z-padd{
-			padding-left: 0px !important;
-		}
-	</style>
-	<div class="footer-bottom">
-		<div class="container">
-			<div class="row text-center text-md-left">
-				<div class="col-sm">Copyright © 2022 <a href="#">Unidad Medica NR</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
-					<a href="#">Politicas de Privacidad</a></div>
-				<div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline"><li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li></div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--//footer-->
+	<!--//footer-->
 	<div class="backToTop js-backToTop">
 		<i class="icon icon-up-arrow"></i>
 	</div>
@@ -241,8 +249,8 @@
 							</div>
 							<div class="input-group">
 								<span>
-								<i class="icon-user"></i>
-							</span>
+									<i class="icon-user"></i>
+								</span>
 								<input type="text" name="name" class="form-control" autocomplete="off" placeholder="Tu Nombre*" />
 							</div>
 							<div class="input-group">
@@ -285,8 +293,8 @@
 							</div>
 							<div class="input-group">
 								<span>
-								<i class="icon-user"></i>
-							</span>
+									<i class="icon-user"></i>
+								</span>
 								<input type="text" name="bookingname" class="form-control" autocomplete="off" placeholder="Su Nombre*" />
 							</div>
 							<div class="row row-xs-space mt-1">
@@ -344,7 +352,7 @@
 		</div>
 	</div>
 	<!-- Vendors -->
-    <script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+	<script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 	<script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>
 	<script src="{{ asset('dentco-html/vendor/cookie/jquery.cookie.js') }}"></script>
 	<script src="{{ asset('dentco-html/vendor/bootstrap-datetimepicker/moment.js') }}"></script>
