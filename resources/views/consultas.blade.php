@@ -37,7 +37,7 @@
     <div class="section page-content-first">
         <div class="container mt-6">
             <div class="row">
-                <div class="col-md">
+                <div class="col-md"  style="width: 25%;">
                     <ul class="services-nav flex-column flex-nowrap">
                         <li class="nav-item">
                             <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Consultas Médicas</a>
@@ -98,7 +98,7 @@
                             <input type="text" class="form-control" name="phone" placeholder="Telefono" required>
                             <textarea class="form-control" name="message" placeholder="Su pregunta*" required></textarea>
                             <br>
-                            <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+                            <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}" style="transform: scale(0.75); margin-left:-13%;"></div>
                             <br>
                             @if(Session::has('g-recaptcha-response'))
                             <p class="alert {{Session::get('alert-class','alert-info')}}">

@@ -40,7 +40,7 @@
 		<div class="section page-content-first">
 			<div class="container mt-6">
 				<div class="row">
-					<div class="col-md">
+					<div class="col-md" style="width: 25%;">
 						<ul class="services-nav flex-column flex-nowrap">
 							<li class="nav-item">
 								<a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Consultas Medicas a Domicilio</a>
@@ -84,7 +84,7 @@
 						</div>
 						<div class="question-box mt-3">
 							<h5 class="question-box-title">Preguntele a los expertos</h5>
-							<form method="POST" action="{{ url('enviar_email') }}">
+							<form method="post" action="{{ url('enviar_email') }}">
 								{{ Form::token() }}
 								<div class="successform">
 									<p>Su mensaje se ha enviado correctamente</p>
@@ -92,18 +92,20 @@
 								<div class="errorform">
 									<p>Parece que algo ha salido mal, intentelo de nuevo por favor.</p>
 								</div>
-								<input type="text" class="form-control" name="name" placeholder="Su nombre*" required>
-								<input type="text" class="form-control" name="email" placeholder="Su correo electronico*" required>
-								<input type="text" class="form-control" name="phone" placeholder="Telefono" required>
-								<textarea class="form-control" name="message" placeholder="Su pregunta*" required></textarea>
+								<input type="text" class="form-control" name="name" placeholder="Su nombre*">
+								<input type="text" class="form-control" name="email" placeholder="Su correo electronico*">
+								<input type="text" class="form-control" name="phone" placeholder="Telefono">
+								<textarea class="form-control" name="message" placeholder="Su pregunta*"></textarea>
 								<br>
-								<div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
-								<br>
-								@if(Session::has('g-recaptcha-response'))
-								<p class="alert {{Session::get('alert-class','alert-info')}}">
-									{{Session::get('g-recaptcha-response')}}
-								</p>
-								@endif
+								<div>
+									<div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}" style="transform: scale(0.75); margin-left:-13%;" ></div>
+									<br>
+									@if(Session::has('g-recaptcha-response'))
+									<p class="alert {{Session::get('alert-class','alert-info')}}">
+										{{Session::get('g-recaptcha-response')}}
+									</p>
+									@endif
+								</div>
 								<button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i class="icon-right-arrow"></i><span>Enviar</span><i class="icon-right-arrow"></i></button>
 							</form>
 						</div>
@@ -359,9 +361,9 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- Recaptcha-->
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 	<!-- Vendors -->
 	<script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 	<script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>

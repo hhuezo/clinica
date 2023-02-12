@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
+use Session;
+
 class ClinicaController extends Controller
 {
     protected function validator(array $data)
@@ -38,21 +40,40 @@ class ClinicaController extends Controller
 
     public function enviarEmail(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|digits:10|numeric',
+            'message' => 'required',
+            'g-recaptcha-response' => function ($attribute, $value, $fail) {
+                $secretKey = config('services.recaptcha.secret');
+                $response = $value;
+                $userIp = $_SERVER['REMOTE_ADDR'];
+                $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$response.'&remoteip='.$userIp;
+                $response = \file_get_contents($url);
+                $response = json_decode($response);
+                if(!$response->success){
+                    Session::flash('g-recaptcha-response','por favor marcar la recaptcha');
+                    Session::flash('alert-class','alert-danger');
+                    $fail($attribute.'google reCaptcha failed');
 
+                }
+
+            }   
+
+        ]);
         //confirmacion de correo electronico
         $nombre = $request->get('name');
         $email = $request->get('email');
         $telefono = $request->get('phone');
         $mensajes =$request->get('message');
-
         $mailData = [$nombre,$email,$telefono,$mensajes];
+    
+        
         Mail::to($request->get('email'))->send(new EnviarMail($mailData));
 
         alert()->success('Su mensaje fue enviado correctamente');
         return redirect('contacto');
-
-
-
 
       /*   $receivers = Receiver::pluck('email');
         Mail::to($receivers)->send(new EmergencyCallReceived($call)); */
