@@ -5,9 +5,31 @@ namespace App\Http\Controllers;
 use App\Mail\EnviarMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class ClinicaController extends Controller
 {
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'g-recaptcha-response' => function ($attribute, $value, $fail) {
+                $secretKey = config('services.recaptcha.secret');
+                $response = $value;
+                $userIp = $_SERVER['REMOTE_ADDR'];
+                $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$response.'&remoteip='.$userIp;
+                $response = \file_get_contents($url);
+                $response = json_decode($response);
+                if(!$response->success){
+                    Session::flash('g-recaptcha-response','por favor marcar la recaptcha');
+                    Session::flash('alert-class','alert-danger');
+                    $fail($attribute.'google reCaptcha failed');
+
+                }
+
+            }   
+        ]);
+    }
+    
     public function consultas()
     {
         $texto = 'Consultas médicas';

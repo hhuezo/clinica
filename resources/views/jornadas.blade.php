@@ -98,6 +98,14 @@
                                 <input type="text" class="form-control" name="email" placeholder="Su correo electronico*" required>
                                 <input type="text" class="form-control" name="phone" placeholder="Telefono" required>
                                 <textarea class="form-control" name="message" placeholder="Su pregunta*" required></textarea>
+                                <br>
+                                <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+                                <br>
+                                @if(Session::has('g-recaptcha-response'))
+                                <p class="alert {{Session::get('alert-class','alert-info')}}">
+                                    {{Session::get('g-recaptcha-response')}}
+                                </p>
+                                @endif
                                 <button type="submit" class="btn btn-sm btn-hover-fill mt-15"><i class="icon-right-arrow"></i><span>Enviar</span><i class="icon-right-arrow"></i></button>
                             </form>
                         </div>
@@ -372,6 +380,8 @@
             </div>
         </div>
     </div>
+    <!-- Recaptcha-->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- Vendors -->
     <script src="{{ asset('dentco-html/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('dentco-html/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js') }}"></script>

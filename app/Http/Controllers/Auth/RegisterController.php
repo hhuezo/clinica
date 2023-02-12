@@ -60,7 +60,7 @@ class RegisterController extends Controller
                 $secretKey = config('services.recaptcha.secret');
                 $response = $value;
                 $userIp = $_SERVER['REMOTE_ADDR'];
-                $url = 'https://www.google.com/recaptcha/api/siteverif?secret=$secretKey&response=$response&remoteip=$userIp';
+                $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$response.'&remoteip='.$userIp;
                 $response = \file_get_contents($url);
                 $response = json_decode($response);
                 if(!$response->success){
@@ -70,7 +70,7 @@ class RegisterController extends Controller
 
                 }
 
-            }
+            }   
         ]);
     }
 

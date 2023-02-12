@@ -3,7 +3,7 @@
 
 
 <!-- Bootstrap -->
-    <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
 @section('content')
 <div class="container">
@@ -45,8 +45,7 @@
 
                         <div class="form-group row" id="mensaje_error">
                             <div class="alert alert-danger alert-dismissible " role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">×</span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                                 </button>
                                 <strong>El correo ingresado ya existe</strong>
                             </div>
@@ -58,7 +57,7 @@
                         <div class="form-group row">
 
 
-                        <input id="fecha_nacimiento" class="form-control"  type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento *" value="{{ old('fecha_nacimiento') }}">
+                            <input id="fecha_nacimiento" class="form-control" type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento *" value="{{ old('fecha_nacimiento') }}">
                             @error('fecha_nacimiento')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -68,7 +67,7 @@
                         <div class="form-group row">
 
 
-                        <input id="dui" class="form-control"  type="text" name="dui" placeholder="DUI *" value="{{ old('dui') }}" data-inputmask="'mask': ['99999999-9']">
+                            <input id="dui" class="form-control" type="text" name="dui" placeholder="DUI *" value="{{ old('dui') }}" data-inputmask="'mask': ['99999999-9']">
                             @error('dui')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -109,7 +108,7 @@
                         </div>
                         <div class="form-group row">
 
-                            <input id="talla" type="number" step="0.01" class="form-control" name="talla" placeholder="Estatura * mts" value="{{ old('talla') }}" required autocomplete="talla"  autofocus>
+                            <input id="talla" type="number" step="0.01" class="form-control" name="talla" placeholder="Estatura * mts" value="{{ old('talla') }}" required autocomplete="talla" autofocus>
 
                             @error('talla')
                             <span class="invalid-feedback" role="alert">
@@ -140,22 +139,30 @@
                         </div>
 
                         <input name="rol" class="form-control" value="4" type="hidden">
-                        
+                        <div class="form-group row">
+                            <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+                            <br>
+                            @if(Session::has('g-recaptcha-response'))
+                            <p class="alert {{Session::get('alert-class','alert-info')}}">
+                                {{Session::get('g-recaptcha-response')}}
+                            </p>
+                            @endif
+                        </div>
+
+                        <br>
+
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-hover-fill"><i class="icon-right-arrow"></i><span>Registrar</span><i class="icon-right-arrow"></i></button>
                         </div>
-<br>
-                        <div class="form-group row">
-                        <div class="h-decor"></div>
                         <br>
-                            <h6  ><i class="fa fa-warning"></i> Estimado Paciente, recibirá un correo electronico de confirmación para continuar con nuestros servicios</h6>
+                        <div class="form-group row">
+                            <div class="h-decor"></div>
+                            <br>
+                            <h6><i class="fa fa-warning"></i> Estimado Paciente, recibirá un correo electronico de confirmación para continuar con nuestros servicios</h6>
                             <div class="h-decor"></div>
 
                         </div>
 
-
-                        <!-- <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div> -->
-                      
                     </form>
                 </div>
             </div>
@@ -165,11 +172,11 @@
 </div>
 <script type="text/javascript">
     window.addEventListener('load', function() {
-            document.getElementById('fecha_nacimiento').type = 'text';
-            document.getElementById('fecha_nacimiento').addEventListener('blur', function() {
+        document.getElementById('fecha_nacimiento').type = 'text';
+        document.getElementById('fecha_nacimiento').addEventListener('blur', function() {
             document.getElementById('fecha_nacimiento').type = 'text';
         });
-            document.getElementById('fecha_nacimiento').addEventListener('focus', function() {
+        document.getElementById('fecha_nacimiento').addEventListener('focus', function() {
             document.getElementById('fecha_nacimiento').type = 'date';
 
         });
@@ -222,7 +229,7 @@
 
 <script>
     $(function() {
-           $('[data-mask]').inputmask()
+        $('[data-mask]').inputmask()
     });
 </script>
 @endsection
