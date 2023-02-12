@@ -31,7 +31,7 @@ class EnviarMail extends Mailable
     public function build()
     {
         
-        return $this->to('nr.unidadmedicatrs@gmail.com')
+        return $this->to('nr.unidadmedica@gmail.com')
                     ->subject('Unidad Medica NR')
                     ->view('auth.contactenos');
     }
