@@ -40,11 +40,8 @@ class ClinicaController extends Controller
 
     public function enviarEmail(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits:10|numeric',
-            'message' => 'required',
+
+        $this->validate($request, [
             'g-recaptcha-response' => function ($attribute, $value, $fail) {
                 $secretKey = config('services.recaptcha.secret');
                 $response = $value;
@@ -60,8 +57,8 @@ class ClinicaController extends Controller
                 }
 
             }   
-
         ]);
+       
         //confirmacion de correo electronico
         $nombre = $request->get('name');
         $email = $request->get('email');
