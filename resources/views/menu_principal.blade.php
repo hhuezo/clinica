@@ -5,14 +5,15 @@
     			<div class="js-quickLinks-wrap-m">
     			</div>
     		</div>
-    		<div class="header-topline d-none d-lg-flex">
+    		<div class="header-topline d-lg-flex">
     			<div class="container">
     				<div class="row align-items-center">
     					<div class="col-auto d-flex align-items-center">
-    						<div class="header-phone"><i class="icon-telephone"></i><a href="tel:25213705">2521-3705</a></div>
-    						<div class="header-phone"><span class="d-none d-sm-inline"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></div>
-    						<div class="header-info"><i class="icon-placeholder2"></i>Colonia San Ernesto, Pasaje San Carlos # 154, San Salvador.</div>
-    						<div class="header-info"><i class="icon-black-envelope"></i><a href="mailto:info@dentco.net">unidadmedica@unidadmedicanr.com</a></div>
+    						<div class="header-phone"><a href="tel:25213705"><i class="icon-telephone"></i><span class="d-none d-lg-flex d-sm-inline text-nowrap">2521-3705</span></a></div>
+							<div class="header-phone"><a href="https://wa.me/70002063"><i class="bi bi-whatsapp"></i><span class="d-none d-lg-flex d-sm-inline text-nowrap">7000-2063</span></a></div>
+    						<!-- <div class="header-phone"><i class="bi bi-whatsapp"></i><span ><b><a >&nbsp;&nbsp;&nbsp; </a></b></span></div> -->
+    						<div class="header-info" ><i class="icon-placeholder2"></i><span class="d-none d-lg-flex d-sm-inline text-nowrap">Colonia San Ernesto, Pasaje San Carlos # 154, San Salvador.</span> </div>
+    						<div class="header-info"><a href="mailto:info@dentco.net"><i class="icon-black-envelope"></i><span class="d-none d-lg-flex d-sm-inline text-nowrap">unidadmedica@unidadmedicanr.com</span> </a></div>
     					</div>
     					<div class="col-auto ml-auto d-flex align-items-center">
     						<span class="header-social">
