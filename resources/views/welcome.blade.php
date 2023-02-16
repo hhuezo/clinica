@@ -31,7 +31,7 @@
     <div class="page-content">
         <!--section slider-->
         <div class="section mt-0">
-            <div class="quickLinks-wrap js-quickLinks-wrap-d d-none d-lg-flex">
+            <!-- <div class="quickLinks-wrap js-quickLinks-wrap-d d-none d-lg-flex">
                 <div class="quickLinks js-quickLinks">
                     <div class="container">
                         <div class="row no-gutters">
@@ -61,32 +61,32 @@
                                 </div>
                             </div>
                             <div class="col">
-    						<a href="#" class="link">
-    							<i class="icon-pencil-writing"></i>Formulario de contacto
-    						</a>
-    						<div class="link-drop">
-    							<a href="{{url('contacto')}}" style="text-decoration: none;">
-    								<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Contáctenos</h5>
-    							</a>
+                                <a href="#" class="link">
+                                    <i class="icon-pencil-writing"></i>Formulario de con
+                                </a>
+                                <div class="link-drop">
+                                    <a href="{{url('contacto')}}" style="text-decoration: none;">
+                                        <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Contáctenos</h5>
+                                    </a>
 
-    						</div>
-    					</div>
-    					<div class="col">
-    						<a href="#" class="link">
-    							<i class="icon-pencil-writing"></i><span>Agendar Cita</span>
-    						</a>
-    						<div class="link-drop">
-    							<a href="{{url('citas')}}" style="text-decoration: none;">
-    								<h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Cita</h5>
-    							</a>
-    						</div>
-    					</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <a href="#" class="link">
+                                    <i class="icon-pencil-writing"></i><span>Agendar Cita</span>
+                                </a>
+                                <div class="link-drop">
+                                    <a href="{{url('citas')}}" style="text-decoration: none;">
+                                        <h5 class="link-drop-title"><i class="icon-pencil-writing"></i>Cita</h5>
+                                    </a>
+                                </div>
+                            </div>
                             <div class="col col-close"><a href="#" class="js-quickLinks-close"><i class="icon-top" data-toggle="tooltip" data-placement="top" title="Cerrar"></i></a></div>
                         </div>
                     </div>
-                    <div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left" title="Open panel">+</span></div>
+                    <div class="quickLinks-open js-quickLinks-open"><span data-toggle="tooltip" data-placement="left" title="Open panel">+</span></div> 
                 </div>
-            </div>
+            </div> -->
             <div id="mainSliderWrapper">
                 <div class="loading-content">
                     <div class="inner-circles-loader"></div>
@@ -434,7 +434,7 @@
                         </li>
                         <li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b></li>
                         <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
-                        <li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+                        <li><i class="icon-black-envelope"></i><a href="mailto:unidadmedica@unidadmedicanr.com">unidadmedica@unidadmedicanr.com</a></li>
                     </ul>
                 </div>
             </div>

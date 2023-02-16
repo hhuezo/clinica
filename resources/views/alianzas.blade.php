@@ -73,7 +73,7 @@
 											</span>
 											</span>
 										</li>
-										<!--<li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>-->
+										<!--<li><i class="icon-black-envelope"></i><a href="mailto:unidadmedica@unidadmedicanr.com">unidadmedica@unidadmedicanr.com</a></li>-->
 									</ul>
 								</div>
 							</div>
@@ -137,7 +137,7 @@
 											</span>
 											</span>
 										</li>
-										<!--<li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>-->
+										<!--<li><i class="icon-black-envelope"></i><a href="mailto:unidadmedica@unidadmedicanr.com">unidadmedica@unidadmedicanr.com</a></li>-->
 									</ul>
 								</div>
 							</div>
@@ -211,7 +211,7 @@
 					</li>
 					<li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">2521-3705</span></span></b></li>
 						<li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
-					<li><i class="icon-black-envelope"></i><a href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+					<li><i class="icon-black-envelope"></i><a href="mailto:unidadmedica@unidadmedicanr.com">unidadmedica@unidadmedicanr.com</a></li>
 				</ul>
 			</div>
 		</div>

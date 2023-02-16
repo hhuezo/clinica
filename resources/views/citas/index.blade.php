@@ -148,7 +148,7 @@
                         <li class="z-padd"><i class="bi bi-whatsapp"></i><span class="text-nowrap"><b><a
                                         href="https://wa.me/70002063">&nbsp;&nbsp;&nbsp; 7000-2063</a></b></span></li>
                         <li><i class="icon-black-envelope"></i><a
-                                href="mailto:nr.unidadmedica@gmail.com">nr.unidadmedica@gmail.com</a></li>
+                                href="mailto:unidadmedica@unidadmedicanr.com">unidadmedica@unidadmedicanr.com</a></li>
                     </ul>
                 </div>
             </div>
