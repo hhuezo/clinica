@@ -10636,7 +10636,8 @@ body.noScroll {
   word-spacing: -2px;
   align-items: center;
   min-height: 48px;
-  background: #2F609E; }
+  background: #2F609E;
+}
   .header-topline,
   .header-topline a {
     color: #fff; }
@@ -10710,7 +10711,7 @@ body.noScroll {
 
 @media (max-width: 1023px) {
   .header-topline {
-    background-color: #22201f;
+    background-color: #2F609E;
     color: #fff;
     min-height: 36px;
     max-width: 100%; }
